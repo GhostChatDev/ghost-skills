@@ -208,7 +208,7 @@ rotation, joints) and say why.
 - **Assuming the Phaser 3 API in Phaser 4.** Check which major version is
   installed before copying a snippet from anywhere, including this one.
 
-## Acceptance criteria and verification (the verification checklist)
+## Verification checklist
 
 - [ ] `npm run build` (or the project's own build) finishes with no error.
 - [ ] The page opens with no uncaught console error.
