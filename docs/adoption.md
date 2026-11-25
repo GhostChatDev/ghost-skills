@@ -10,14 +10,14 @@ It is not about running that repository's code.
 2. **Read the source's own rules file.** Usually `AGENTS.md`, `SKILL.md`,
    `CLAUDE.md` or a `skills/` folder. Read it at the commit recorded in
    `docs/repositories.md`, not at `main`, so you can say what you copied.
-3. **Write the skill in your own words.** One folder under `skills/` or
-   `game-skills/`, one `SKILL.md`. Short sentences. Plain words. Keep the
+3. **Write the skill in your own words.** One folder under `skills/`, one
+   `SKILL.md`. Short sentences. Plain words. Keep the
    meaning; do not paste a wall of text.
 4. **Name the source in the skill.** Put the source URL and the licence in the
    skill file. If the licence needs it, copy the licence text into
    `THIRD-PARTY-NOTICES.md` (create that file only when you first need it).
-5. **Add the row to `skills/INDEX.md` or `game-skills/INDEX.md`.** Name, folder,
-   when to use it, status (`ready` or `missing`).
+5. **Add the row to `skills/INDEX.md` or `skills/ghost-game-engine/README.md`.**
+   Name, folder, when to use it, status (`ready` or `missing`).
 6. **Add it to `skills/ghost-game-engine/manifest.json`** (the only manifest) if
    it comes from a verified source.
 7. **Run the checklist in `docs/checks.md`.** Every item must hold.

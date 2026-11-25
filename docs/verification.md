@@ -7,14 +7,17 @@ Plain record. If it is not listed here as run, it was not run.
 - Every upstream repository in `docs/repositories.md`: name, licence, archived
   state and description read from the GitHub API at the time recorded there.
 - `README.md`, `AGENTS.md`, `PROJECT-INSTRUCTIONS.md`, `MISSING.md`,
-  `skills/INDEX.md`, `game-skills/INDEX.md`: read after writing.
+  `skills/INDEX.md`, `skills/ghost-game-engine/README.md`: read after writing.
+- The 20 skills under `skills/ghost-game-engine/`: each has a purpose, when to
+  use it, prerequisites, steps, references, licence cautions, acceptance
+  criteria and known limitations. Checked by `grep` for the section headings on
+  the committed files.
 - The 5 full skills and the 8 stubs under `skills/`:
   - `explain-like-im-new`, `social-media`, `planner`, `marketing-copy`,
     `clear-writer` hold the text from the request, word for word.
   - `skill-06` to `skill-13` hold only the MISSING line. See `MISSING.md`.
 - `manifest.json` and both indexes: each `ready` row names a folder that
   exists, and each folder has a `SKILL.md`.
-
 ## Not checked
 
 - **No human reviewed the skill text.** The rules are the person's own words.
