@@ -1,53 +1,50 @@
 # PROJECT-BUNDLE: Ghost Skills
 
-One file to upload to a Ghost Chat Project. Once it is in the Project, every chat
-and every Ghost Code session inside that Project can read it.
+One file to upload to a Ghost Chat Project. Once it is there, every chat and every
+Ghost Code session inside that Project can read it.
+
+It carries everything an agent needs on its own: the rules, the index, all 25 skills
+in full, and the upstream licence table the game skills point at. Nothing else has
+to be uploaded, and no file path outside this one is needed.
 
 How to use it:
 
 1. Open the Project in Ghost Chat (sidebar, then Projects).
-2. Add this file to the Project files.
-3. Paste the instruction block in section 2 into the Project instructions.
-4. Start a chat or a Ghost Code session inside the Project.
+2. Add this one file to the Project files.
+3. Paste section 1 into the Project instructions.
+4. Paste section 2 into the Project instructions, under it.
+5. Start a chat or a Ghost Code session inside the Project.
 
-This file is a copy. The source of truth is the folder `skills/` in the repository.
-If the two disagree, the repository wins and this bundle is rebuilt from it.
+This file is a copy. The source of truth is `skills/` and `docs/` in the repository.
+If the two disagree, the repository wins and this file is rebuilt from it.
 
-Contents: 25 skills (5 writing skills, 20 game skills).
+Contents: the rules, an index of 25 skills, the 25 skills in full (5 writing, 20 game),
+and the upstream source rows.
 
-## 1. Index
-
-| # | Skill | Status |
-| --- | --- | --- |
-| 1 | Explain Like I'm New | ready |
-| 2 | Social Media | ready |
-| 3 | Planner | ready |
-| 4 | Marketing Copy | ready |
-| 5 | Clear Writer | ready |
-| 6 | Animation and game feel | ready |
-| 7 | Asset pipeline and licensing | ready |
-| 8 | Dialogue and narrative | ready |
-| 9 | Enemy AI and behavior trees | ready |
-| 10 | Engine Selection | ready |
-| 11 | Game Planning and Scope | ready |
-| 12 | LittleJS Small Games | ready |
-| 13 | Multiplayer with Colyseus | ready |
-| 14 | Music and audio playback | ready |
-| 15 | Performance and accessibility | ready |
-| 16 | Phaser 2D | ready |
-| 17 | PixiJS rendering | ready |
-| 18 | Procedural world generation | ready |
-| 19 | Release and documentation | ready |
-| 20 | Retro sound effects | ready |
-| 21 | Three.js 3D | ready |
-| 22 | Tilemaps and level design | ready |
-| 23 | Turn-based with boardgame.io | ready |
-| 24 | Unity and desktop tool boundaries | ready |
-| 25 | Web game testing | ready |
-
-## 2. Project instructions (paste into the Project)
+## 1. Rules to paste into the Project instructions
 
 ```text
+This Project shares a skill library, carried by PROJECT-BUNDLE.md in this Project.
+Before you answer or write any code:
+1. Read the index in section 3 of PROJECT-BUNDLE.md. It lists every skill with its
+   folder and when to use it.
+2. Read the full text of the skills that match the task. Reading is not applying:
+   apply the ones that match, and say which ones you used.
+3. Follow every skill that matches. If I name a skill, follow that one first, then
+   the others that match. Never drop a skill to be shorter.
+4. Licence questions: read section 5 of PROJECT-BUNDLE.md. A blank cell means it was
+   not read, so say that; never state a licence from memory.
+5. Never invent a skill. If a skill is missing, say so and ask me for its real text.
+```
+
+## 2. Instruction block
+
+```text
+# PROJECT-INSTRUCTIONS.md
+
+Paste everything below the line into your Ghost Chat Project's instructions.
+
+---
 
 This Project shares a skill library. Before you answer or write any code:
 
@@ -65,9 +62,42 @@ The skills live in the `skills/` folder. `skills/INDEX.md` lists them, with the
 folder and when to use each one.
 ```
 
-## 3. The skills, in full
+## 3. Index: every skill, its folder, when to use it, status
 
-### Skill 1
+| Skill name | Folder | When to use it | Status |
+| --- | --- | --- | --- |
+| Explain Like I'm New | `skills/explain-like-im-new/` | The user is new, a term needs plain words, or they ask how do I. | ready |
+| Social Media | `skills/social-media/` | Writing posts for X, Instagram, LinkedIn, Reddit or TikTok. | ready |
+| Planner | `skills/planner/` | Turning a goal into steps, a checklist or a schedule. | ready |
+| Marketing Copy | `skills/marketing-copy/` | Ads, landing pages, emails or promo copy that sells without hype. | ready |
+| Clear Writer | `skills/clear-writer/` | Rewriting or editing text so it is clear, short and friendly. | ready |
+| Animation and game feel | `skills/ghost-game-engine/animation-and-game-feel/` | Tweening, easing, squash and stretch, screen shake, hit pause. | ready |
+| Asset pipeline and licensing | `skills/ghost-game-engine/asset-pipeline-and-licensing/` | Before adding an image, font, sound or model: its source and its licence. | ready |
+| Dialogue and narrative | `skills/ghost-game-engine/dialogue-and-narrative/` | Dialogue lines, branching conversations, Yarn files or story text. | ready |
+| Enemy AI and behavior trees | `skills/ghost-game-engine/enemy-ai-and-behavior-trees/` | Enemies that chase, patrol, flee or act in phases, and the trees behind them. | ready |
+| Engine Selection | `skills/ghost-game-engine/engine-selection/` | A game is requested and no engine is chosen, or someone asks which engine to use. | ready |
+| Game Planning and Scope | `skills/ghost-game-engine/game-planning-and-scope/` | A game is asked for; scope, milestones or a cut list must be decided before code. | ready |
+| LittleJS Small Games | `skills/ghost-game-engine/littlejs-small-games/` | A small, compact browser game that must load fast and stay tiny. | ready |
+| Multiplayer with Colyseus | `skills/ghost-game-engine/multiplayer-with-colyseus/` | Two or more players in one session, with rooms and server state. | ready |
+| Music and audio playback | `skills/ghost-game-engine/music-and-audio-playback/` | Background music, volume, muting and looping sound in a browser game. | ready |
+| Performance and accessibility | `skills/ghost-game-engine/performance-and-accessibility/` | The game stutters, loads slowly, or must work with a keyboard and a screen reader. | ready |
+| Phaser 2D | `skills/ghost-game-engine/phaser-2d/` | A fuller 2D browser game with scenes, physics and an asset loader. | ready |
+| PixiJS rendering | `skills/ghost-game-engine/pixijs-rendering/` | Custom 2D drawing where rendering is the point and no full engine is wanted. | ready |
+| Procedural world generation | `skills/ghost-game-engine/procedural-world-generation/` | Worlds, levels or rooms made by code from a seed. | ready |
+| Release and documentation | `skills/ghost-game-engine/release-and-documentation/` | Shipping: README, controls, credits, build steps and a licence note. | ready |
+| Retro sound effects | `skills/ghost-game-engine/retro-sound-effects/` | Short chiptune-style effects: jump, hit, pickup, explosion. | ready |
+| Three.js 3D | `skills/ghost-game-engine/threejs-3d/` | 3D in the browser: a world, a camera, lighting or 3D models. | ready |
+| Tilemaps and level design | `skills/ghost-game-engine/tilemaps-and-level-design/` | Levels on a grid: tiles, Tiled maps, collision layers, spawn points. | ready |
+| Turn-based with boardgame.io | `skills/ghost-game-engine/turn-based-with-boardgameio/` | Turn-based or card games with moves, turns and validated state. | ready |
+| Unity and desktop tool boundaries | `skills/ghost-game-engine/unity-and-desktop-tool-boundaries/` | Unity, desktop editors or MCP bridges are mentioned and the limits must be explained. | ready |
+| Web game testing | `skills/ghost-game-engine/web-game-testing/` | Before calling a browser game done: what to play, click and check. | ready |
+
+Every row says `ready`: the rules are written in full. This library has no empty
+placeholder skills.
+
+## 4. The skills, in full
+
+### Skill 1: Explain Like I'm New
 
 Repository file: `skills/explain-like-im-new/SKILL.md`
 
@@ -79,8 +109,7 @@ The user is new. Explain in plain words with no jargon (or explain any term you
 must use). Go step by step, say exactly where to click or type, and show small
 examples. End with one short practice idea.
 
-
-### Skill 2
+### Skill 2: Social Media
 
 Repository file: `skills/social-media/SKILL.md`
 
@@ -92,8 +121,7 @@ Write social posts that feel human. Hook in the first line, one idea per post,
 short lines, a question or call to action at the end. Match the platform's style
 and length limits. Suggest hashtags only where they help. Give 3 options.
 
-
-### Skill 3
+### Skill 3: Planner
 
 Repository file: `skills/planner/SKILL.md`
 
@@ -105,8 +133,7 @@ Turn goals into plans. Break the goal into steps with time estimates, order them
 and put them in a checklist or a simple schedule table. Flag deadlines and
 dependencies. Keep it realistic; suggest what to drop if it doesn't fit.
 
-
-### Skill 4
+### Skill 4: Marketing Copy
 
 Repository file: `skills/marketing-copy/SKILL.md`
 
@@ -119,8 +146,7 @@ outcome they get. Give headlines, short body copy and a clear call to action.
 Adapt length and tone to the channel (X, Instagram, LinkedIn, Reddit, email,
 landing page). Offer 3 variations to test.
 
-
-### Skill 5
+### Skill 5: Clear Writer
 
 Repository file: `skills/clear-writer/SKILL.md`
 
@@ -132,8 +158,7 @@ Rewrite and edit text to be clear, short and friendly. Keep the user's meaning
 and voice. Use short sentences and simple words. Show the improved version
 first, then list the main changes in a few bullets.
 
-
-### Skill 6
+### Skill 6: Animation and game feel
 
 Repository file: `skills/ghost-game-engine/animation-and-game-feel/SKILL.md`
 
@@ -201,8 +226,7 @@ tweens first; a new dependency needs a stated reason.
 - Feel is judgement: no test proves a jump feels right; a person must play it.
 - Screen shake causes motion sickness for some players; it must be optional.
 
-
-### Skill 7
+### Skill 7: Asset pipeline and licensing
 
 Repository file: `skills/ghost-game-engine/asset-pipeline-and-licensing/SKILL.md`
 
@@ -272,8 +296,7 @@ assume a file is MIT or free for commercial use.
 - Licence reading is judgement; an ambiguous licence is a stop, not a guess.
 - Generated art may still carry the generator's terms.
 
-
-### Skill 8
+### Skill 8: Dialogue and narrative
 
 Repository file: `skills/ghost-game-engine/dialogue-and-narrative/SKILL.md`
 
@@ -345,8 +368,7 @@ licence before shipping, and do not copy its source into the repository.
 - Dialogue runtimes do not gate the game for you; the game must read the flags.
 - Localisation needs a column-based export from the start, which is easy to skip.
 
-
-### Skill 9
+### Skill 9: Enemy AI and behavior trees
 
 Repository file: `skills/ghost-game-engine/enemy-ai-and-behavior-trees/SKILL.md`
 
@@ -417,8 +439,7 @@ hand when the behaviour is small; adding a package needs a stated reason.
 - Behavior trees do not solve pathfinding; they call it.
 - Debug views cost time to build; without one, odd behaviour is hard to explain.
 
-
-### Skill 10
+### Skill 10: Engine Selection
 
 Repository file: `skills/ghost-game-engine/engine-selection/SKILL.md`
 
@@ -513,8 +534,7 @@ Own rules. Engine facts: `docs/ghost-game-engine/repositories.md`.
 - Do not install two engines in one project.
 - Do not quote a licence or a version you did not read.
 
-
-### Skill 11
+### Skill 11: Game Planning and Scope
 
 Repository file: `skills/ghost-game-engine/game-planning-and-scope/SKILL.md`
 
@@ -598,8 +618,7 @@ Own rules. Nothing copied from an outside repository.
 - Do not add a second loop "to make it interesting".
 - Do not start coding before the brief is written.
 
-
-### Skill 12
+### Skill 12: LittleJS Small Games
 
 Repository file: `skills/ghost-game-engine/littlejs-small-games/SKILL.md`
 
@@ -674,8 +693,7 @@ Steps: open the page, play once to the end, refresh, read the console.
 - Do not vendor the engine into the repository.
 - Do not grow a jam game into a campaign without switching engine and saying so.
 
-
-### Skill 13
+### Skill 13: Multiplayer with Colyseus
 
 Repository file: `skills/ghost-game-engine/multiplayer-with-colyseus/SKILL.md`
 
@@ -749,8 +767,7 @@ never put secrets in the client.
 - Needs a server and a deployment step; it cannot run on a static host.
 - Latency cannot be removed, only hidden with prediction and interpolation.
 
-
-### Skill 14
+### Skill 14: Music and audio playback
 
 Repository file: `skills/ghost-game-engine/music-and-audio-playback/SKILL.md`
 
@@ -822,8 +839,7 @@ as the licence requires.
   re-checked on return.
 - Gapless looping is unreliable across browsers; short loops may click.
 
-
-### Skill 15
+### Skill 15: Performance and accessibility
 
 Repository file: `skills/ghost-game-engine/performance-and-accessibility/SKILL.md`
 
@@ -899,8 +915,7 @@ Fonts must be licensed for embedding.
   try it.
 - A low-end phone cannot be emulated exactly in a sandbox.
 
-
-### Skill 16
+### Skill 16: Phaser 2D
 
 Repository file: `skills/ghost-game-engine/phaser-2d/SKILL.md`
 
@@ -981,8 +996,7 @@ Steps: build, open, press every control, refresh, read the console.
 - Do not claim a version or licence you did not read.
 - Do not build a second game loop beside Phaser's `update`.
 
-
-### Skill 17
+### Skill 17: PixiJS rendering
 
 Repository file: `skills/ghost-game-engine/pixijs-rendering/SKILL.md`
 
@@ -1058,8 +1072,7 @@ each extra library deliberately and record its licence.
 - No physics, no scene manager, no audio: all of that is additions.
 - A custom renderer means more code to test than with a full engine.
 
-
-### Skill 18
+### Skill 18: Procedural world generation
 
 Repository file: `skills/ghost-game-engine/procedural-world-generation/SKILL.md`
 
@@ -1129,8 +1142,7 @@ of someone else's tiles is still their art; keep the notice.
 - Guarantees cost performance; validation gets slower as worlds grow.
 - No generator makes a world fun; tuning is hand work after generation.
 
-
-### Skill 19
+### Skill 19: Release and documentation
 
 Repository file: `skills/ghost-game-engine/release-and-documentation/SKILL.md`
 
@@ -1195,8 +1207,7 @@ Keep every notice the third-party licences require, including in minified builds
 - Store submission is a separate process with its own account requirements.
 - No documentation proves the game is fun or finished.
 
-
-### Skill 20
+### Skill 20: Retro sound effects
 
 Repository file: `skills/ghost-game-engine/retro-sound-effects/SKILL.md`
 
@@ -1264,8 +1275,7 @@ notice and the link in the repository.
 - Generated effects sound retro: they will not fit a realistic game.
 - Browsers need a user gesture before any sound plays.
 
-
-### Skill 21
+### Skill 21: Three.js 3D
 
 Repository file: `skills/ghost-game-engine/threejs-3d/SKILL.md`
 
@@ -1350,8 +1360,7 @@ licence of every model and texture you add, separately from the library.
   check runs on software rendering.
 - Large scenes need instancing, merging or level-of-detail or they stutter.
 
-
-### Skill 22
+### Skill 22: Tilemaps and level design
 
 Repository file: `skills/ghost-game-engine/tilemaps-and-level-design/SKILL.md`
 
@@ -1418,8 +1427,7 @@ found online is not covered by the engine's licence.
 - Object layers do not enforce anything; the code must read them correctly.
 - Very large maps need chunking or culling, which is extra work.
 
-
-### Skill 23
+### Skill 23: Turn-based with boardgame.io
 
 Repository file: `skills/ghost-game-engine/turn-based-with-boardgameio/SKILL.md`
 
@@ -1488,8 +1496,7 @@ the library's licence and any hosting terms before you promise online play.
 - The library handles turns, not art, animation or matchmaking quality.
 - Online play still needs somewhere to run the server.
 
-
-### Skill 24
+### Skill 24: Unity and desktop tool boundaries
 
 Repository file: `skills/ghost-game-engine/unity-and-desktop-tool-boundaries/SKILL.md`
 
@@ -1572,8 +1579,7 @@ integration works until it was actually run.
 - Unity builds are slow and often need paid runner minutes.
 - MCP bridges run locally; a cloud sandbox has no route to them.
 
-
-### Skill 25
+### Skill 25: Web game testing
 
 Repository file: `skills/ghost-game-engine/web-game-testing/SKILL.md`
 
@@ -1640,3 +1646,87 @@ recorded.
 - Software rendering is slower than a real graphics card; a slow first frame in
   the check may not happen for players.
 
+## 5. Upstream sources and licences
+
+The game skills point here for every licence question. Read the row before you name
+a licence. A blank cell means it was not read: say so, do not guess.
+
+| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | Kind | What it is |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| phaserjs/phaser | MIT | no | master | 2026-08-21 | not read | engine | 2D web game framework |
+| mrdoob/three.js | MIT | no | **dev** | 2026-11-25 | 119346 | renderer | 3D renderer for the web, no game rules of its own |
+| pixijs/pixijs | MIT | no | **dev** | 2026-11-24 | 48898 | renderer | 2D WebGL renderer |
+| KilledByAPixel/LittleJS | MIT | no | main | 2026-11-23 | 4407 | engine | Tiny 2D/3D browser game engine |
+| chr15m/jsfxr | Unlicense | no | master | 2026-05-05 | 468 | library | Retro sound-effect generator. **It is a fork** of `grumdrig/jsfxr` (same Unlicense, master, last push 2023-05-04) |
+| goldfire/howler.js | MIT | no | master | 2025-11-23 | 25457 | library | Audio playback library for the web |
+| melonjs/melonJS | MIT | no | master | 2026-11-25 | 6524 | engine | Full HTML5 engine: 2D and 3D, WebGL/WebGPU, physics, Tiled maps, glTF, WebAudio |
+| colyseus/colyseus | MIT | no | master | 2026-11-25 | 7582 | server framework | Server-authoritative multiplayer rooms for Node.js |
+| boardgameio/boardgame.io | MIT | no | main | 2026-10-30 | 12500 | library | State management and networking for turn-based games |
+| Unity-Technologies/unity-agent-plugin | NOASSERTION (see its own licence file) | no | main | 2026-11-24 | 674 | integration | Unity plugin for third-party agent platforms; C#; needs the Unity Editor |
+| JannisX11/blockbench | GPL-3.0 | no | master | 2026-11-23 | not read | editor | Low-poly 3D model editor for game assets (read earlier this session) |
+| ashblue/fluid-behavior-tree | not read | not read | **develop** | not read | not read | library | Behaviour trees for Unity, builder-pattern, code driven. `GET /repos` answered **200**; branch seen, other fields not kept |
+| YarnSpinnerTool/YarnSpinner | not read | not read | not read | not read | not read | library | Dialogue compiler and engine-agnostic runtime (C#). `GET /repos` answered **200**; fields not kept |
+| Syomus/ProceduralToolkit | not read | not read | not read | not read | not read | library | Procedural generation library for Unity. `GET /repos` answered **200**; fields not kept |
+| annulusgames/LitMotion | MIT | not read | main | not read | not read | library | Tween library for Unity. Licence read from `/repos/annulusgames/LitMotion/license` (`LICENSE`, MIT) |
+| CoderGamester/mcp-unity | MIT | not read | main | not read | not read | integration | MCP plugin connecting an agent to the Unity Editor. Licence read from `/repos/CoderGamester/mcp-unity/license` (`LICENSE.md`, MIT) |
+| Cysharp/UniTask | MIT | not read | master | not read | not read | library | Async/await helper for Unity. Licence read from `/repos/Cysharp/UniTask/license` (`LICENSE`, MIT) |
+| MirrorNetworking/Mirror | MIT | not read | master | not read | not read | networking library | Multiplayer networking for Unity. Licence read from `/repos/MirrorNetworking/Mirror/license` (`LICENSE`, MIT) |
+| game-ci/unity-builder | not read | not read | not read | not read | not read | build action | GitHub Action that builds Unity projects. `GET /repos` answered **200**; fields not kept |
+| godotengine/godot | MIT | no | master | 2026-11-24 | 120749 | engine | Full 2D and 3D engine, multi-platform (read in an earlier API pass this session) |
+| BabylonJS/Babylon.js | Apache-2.0 | no | master | 2026-11-24 | 26441 | engine | JavaScript 3D engine for the web (read in an earlier API pass) |
+| playcanvas/engine | MIT | no | main | 2026-11-25 | 17368 | engine | Web graphics engine on WebGPU and WebGL2 |
+| pmndrs/react-three-fiber | MIT | no | master | 2026-10-21 | 33925 | renderer | React renderer for Three.js |
+| dimforge/rapier | Apache-2.0 | no | master | 2026-11-01 | 6116 | physics library | 2D and 3D physics engine (Rust, WASM build) |
+| excaliburjs/Excalibur | BSD-2-Clause | no | main | 2026-11-23 | 2384 | engine | TypeScript 2D engine for the web |
+| kaplayjs/kaplay | MIT | no | master | 2026-11-21 | 1847 | library | Small JavaScript/TypeScript 2D game library |
+| raysan5/raylib | Zlib | no | master | 2026-11-24 | 35780 | library | Simple C library for game programming |
+| libgdx/libgdx | Apache-2.0 | no | master | 2026-11-19 | 25559 | framework | Java framework: desktop, Android, HTML5, iOS |
+| MonoGame/MonoGame | NOASSERTION (see its own LICENSE.txt) | no | develop | 2026-11-21 | 14670 | framework | C# cross-platform framework |
+| love2d/love | NOASSERTION (see its own licence file) | no | main | 2026-11-05 | 9006 | framework | 2D framework for Lua |
+| mapeditor/tiled | NOASSERTION (see its own licence files) | no | master | 2026-11-23 | 13089 | editor | Level and tile map editor |
+| KDE/krita | GPL-3.0 | not read | not read | not read | not read | editor | Digital painting tool for game art. Licence read from `/repos/KDE/krita/license` (`COPYING`, GPL v3); other fields not kept |
+| IvanMurzak/Unity-MCP | Apache-2.0 | no | main | 2026-11-24 | 4694 | integration | MCP server and CLI that exposes the Unity Editor to an agent |
+
+Notes that change how a skill uses these rows:
+
+- **Both renderers default to `dev`.** three.js and PixiJS publish from `dev`,
+  not `main` or `master`. Pinning a branch name takes work in progress: pin a
+  commit SHA (the manifest already asks for one).
+- **jsfxr is a fork.** `chr15m/jsfxr` (the URL the brief gives) is a fork of
+  `grumdrig/jsfxr`. Cite the fork you actually use, and keep its Unlicense
+  notice.
+- **melonJS is a full engine**, with 3D, physics, Tiled and glTF support. Do not
+  describe it as a tilemap add-on.
+- **`unity-agent-plugin` has no machine-readable licence.** Treat it as
+  unusable for redistribution until a person reads its licence file.
+- **Blockbench is GPL-3.0.** Assets you make with it are yours; its source code
+  is not MIT. Say so before suggesting anyone vendor it.
+
+**What this means for a skill.** A skill may say a source exists and when it
+fits. A skill must **not** repeat a licence, branch or version claim: it points
+here. Where a cell says `not read`, the agent opens
+`https://github.com/<owner>/<repo>` and its `LICENSE` file before telling anyone
+what they may do with the code.
+
+## Not verified
+
+| Repository | Result |
+| --- | --- |
+| ashblue/fluid-behavior-tree | `GET /repos` answered **200**; only the branch (`develop`) was read out, so its licence, archived flag and stars are **not read**. Open `https://github.com/ashblue/fluid-behavior-tree` and its `LICENSE` before relying on it. |
+| YarnSpinnerTool/YarnSpinner | `GET /repos` answered **200**; no field was copied out. Open `https://github.com/YarnSpinnerTool/YarnSpinner` and its `LICENSE` before relying on it. |
+| Syomus/ProceduralToolkit | **Not contacted.** The API returned "Too many API requests" when asked. Open `https://github.com/Syomus/ProceduralToolkit` and its `LICENSE` before relying on it. |
+| game-ci/unity-builder | `GET /repos` answered **200**; no field was copied out. Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
+| KDE/krita | The repository answered `200` to `GET /repos/KDE/krita`, but the licence and branch fields were not read out of that answer, so no row above claims them. Open `https://github.com/KDE/krita` and its licence file first. |
+| IvanMurzak/Unity-MCP | Read: `Apache-2.0`, branch `main`, 2026-11-24. See its row in the table above. |
+| jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |
+
+## Rules for anyone editing this file
+
+1. Read the value from the API, or leave the cell blank. Never fill a cell from
+   memory.
+2. `NOASSERTION` means GitHub could not name the licence. Open the repository's
+   own licence file before telling a user what they may do with the code.
+3. Archived means do not suggest it for new work; say why it is still listed.
+4. A 404 is a fact worth recording. It stays in "Not verified" until it answers.
+5. This file is the only place a version number or a licence claim may be
+   copied from. A skill file points here instead of repeating the claim.
