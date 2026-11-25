@@ -9,7 +9,7 @@
       "tags": "lowercase words for matching a task",
       "engines": "engines or libs the skill names; empty when engine-neutral",
       "requires": "tools or environment needed; empty when none",
-      "references": "upstream source; verify at docs/ghost-game-engine/repositories.md"
+      "references": "upstream source; verify at docs/repositories.md"
     },
     "verification": "the value of verified_on is the date a person or agent actually read the source; null means not verified and the skill must say so"
   },
