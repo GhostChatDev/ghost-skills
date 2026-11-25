@@ -24,7 +24,7 @@ from this session.
 | JannisX11/blockbench | GPL-3.0 | no | master | 2026-11-23 | 6245 | Low-poly voxel model editor, a desktop art tool |
 | KDE/krita | GPL-3.0 | not recorded | not recorded | not recorded | not recorded | Raster paint program, a desktop art tool |
 | IvanMurzak/Unity-MCP | Apache-2.0 | no | main | 2026-11-24 | 4694 | MCP server and CLI that exposes Unity Editor to an agent |
-| phaserjs/phaser | MIT | not recorded | not recorded | not recorded | not recorded | 2D web game framework |
+
 
 How each was read: Blockbench and Unity-MCP from `GET /repos/<owner>/<repo>`;
 Krita from `GET /repos/KDE/krita/license`, whose returned file is `COPYING`
@@ -85,12 +85,10 @@ earlier in this same session. Nothing below is filled from memory.
 | colyseus/colyseus | not read | master | not read | 7581 | Server-authoritative multiplayer rooms | earlier read this session |
 | Unity-Technologies/unity-agent-plugin | not read | main | not read | 674 | Integration that lets an agent drive the Unity Editor | earlier read this session |
 | chr15m/jsfxr | not read | not read | not read | not read | Retro sound-effect generator | the search endpoint matched nothing for it |
-| ashblue/fluid-behavior-tree | not read | not read | not read | not read | Behaviour trees for Unity | not contacted |
-| YarnSpinnerTool/YarnSpinner | not read | not read | not read | not read | Dialogue script runtime and tools | not contacted |
-| Syomus/ProceduralToolkit | not read | not read | not read | not read | Procedural generation helpers for Unity | not contacted |
-| annulusgames/LitMotion | not read | not read | not read | not read | Tweening and animation for Unity | not contacted |
-| CoderGamester/mcp-unity | not read | not read | not read | not read | MCP server that exposes the Unity Editor | not contacted |
-| game-ci/unity-builder | not read | not read | not read | not read | GitHub Action that builds Unity projects on CI | not contacted |
+These six sources were **never contacted** in this session, so they have no row
+above and nothing is claimed about them. They are listed in "Not verified"
+below, with the URL to open. No skill may state a licence, branch or version
+for them.
 
 **What this means for a skill.** A skill may say a source exists and when it
 fits. A skill must **not** repeat a licence, branch or version claim: it points
@@ -102,6 +100,13 @@ what they may do with the code.
 
 | Repository | Result |
 | --- | --- |
+| ashblue/fluid-behavior-tree | **Not contacted.** Open `https://github.com/ashblue/fluid-behavior-tree` and its `LICENSE` before relying on it. |
+| YarnSpinnerTool/YarnSpinner | **Not contacted.** Open `https://github.com/YarnSpinnerTool/YarnSpinner` and its `LICENSE` before relying on it. |
+| Syomus/ProceduralToolkit | **Not contacted.** Open `https://github.com/Syomus/ProceduralToolkit` and its `LICENSE` before relying on it. |
+| annulusgames/LitMotion | **Not contacted.** Open `https://github.com/annulusgames/LitMotion` and its `LICENSE` before relying on it. |
+| CoderGamester/mcp-unity | **Not contacted.** Open `https://github.com/CoderGamester/mcp-unity` and its `LICENSE` before relying on it. |
+| game-ci/unity-builder | **Not contacted.** Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
+| chr15m/jsfxr | The `/search/repositories` endpoint matched nothing for it. Not a claim that it does not exist: open `https://github.com/chr15m/jsfxr` directly. |
 | jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |
 
 ## Rules for anyone editing this file

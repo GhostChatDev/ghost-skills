@@ -66,7 +66,11 @@ The final run was made in the sandbox and never committed. Result:
   `phaser-2d` and `littlejs-small-games` used the short headings `Rules`,
   `Compatibility and licence`, `Verification` and `Source`; they were renamed
   in commit `be971bf` and now match the rest.
-- 23 relative links in `skills/ghost-game-engine/README.md` resolve.
+- `skills/ghost-game-engine/README.md` is the library index: it lists all 20
+  skills with one relative link each, in the form
+  `skills/ghost-game-engine/<id>/SKILL.md`. The link targets were **not** opened
+  one by one; the folder names came from `manifest.json`, whose 20 paths were
+  checked against the disk.
 - All 13 rows of `skills/INDEX.md` carry a `ready` or `missing` status.
 - `skills/skill-06` to `skills/skill-13` contain the MISSING line.
 
