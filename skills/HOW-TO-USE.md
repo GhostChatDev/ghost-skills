@@ -23,19 +23,25 @@ user's own project.
 
 ## 3. Read a skill in this order
 
-Each `SKILL.md` has the same sections in the same order. Heading wording varies
-slightly between skills (listed below), so use the order, not the exact words:
+Each `SKILL.md` follows the same section order. Heading wording varies between
+skills (every variant found in the library is listed below), so use the order,
+not the exact words. The seven newer library skills
+(`phaser-2d`, `zzfx-sound-effects`, `tonejs-music`, `motion-ui`, `animejs-motion`,
+`threejs-3d`, `tsparticles`) carry the fullest form, including `## Code examples`
+and a `## Sources checked` date; the older ones use `## Steps` and
+`## Acceptance criteria and verification` and state their licence cautions under
+`## Compatibility and licence cautions`.
 
 | Order | Section heading (as written in the files) | Why |
 | --- | --- | --- |
 | 1 | `## Purpose` — sometimes followed by `## When to use it` | confirms you opened the right file |
 | 2 | `## When not to use it` | the fastest way to avoid a wrong choice |
-| 3 | `## Required setup and version` / `## Setup and supported version` / `## Supported version` | tells you whether the project can take it |
+| 3 | `## Required inputs and prerequisites` / `## Required setup and version` / `## Setup and supported version` / `## Supported version` | tells you whether the project can take it |
 | 4 | `## Steps` | the plan, in order |
 | 5 | `## Code examples` | the actual work, and the pattern to copy |
-| 6 | `## Common mistakes` / `## Common mistakes and how to avoid them` | read before coding, not after the bug |
-| 7 | `## Verification checklist` / `## Acceptance criteria and verification` | what you must prove before saying it works |
-| 8 | `## Upstream references`, `## Licence and attribution`, `## Sources checked` | what to credit, and whether the claim is current |
+| 6 | `## Common mistakes` / `## Common mistakes and how to avoid them` / `## Do not` | read before coding, not after the bug |
+| 7 | `## Acceptance criteria and verification` / `## Verification checklist` | what you must prove before saying it works |
+| 8 | `## Upstream references` / `## Source`, then `## Licence and attribution` / `## Compatibility and licence cautions`, then `## Sources checked` | what to credit, and whether the claim is current |
 
 Skills that touch sound, animation or frame rate also carry the topic headings
 that matter for them: `## Browser audio restrictions`, `## Accessibility`,
