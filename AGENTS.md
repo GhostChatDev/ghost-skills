@@ -15,6 +15,21 @@ that points at it.
 6. A skill folder with only the MISSING line has no rules yet. Do not fill it in
    yourself. Ask the user for the real text.
 
+## Game work: `ghost-game-engine`
+
+When the task is a game, also read `skills/ghost-game-engine/manifest.json` and
+open only the skills it lists that match the task.
+
+7. Inspect the target game repository before choosing an engine. Look at what is
+   already there; never pick from memory or from a list alone.
+8. Follow the target repository's own instructions, and report a conflict between
+   them and a skill instead of silently choosing one.
+9. Pick one primary engine per game. Do not combine competing engines by default.
+10. These are repository instructions. They are **not** automatically registered
+    Ghost Chat Skills, and they are not globally loaded agent capabilities. An
+    agent sees them only when it reads this repository or a Project that holds
+    these files.
+
 ## Status marks
 
 `skills/INDEX.md` marks each skill `ready` or `missing`. `ready` means the rules
