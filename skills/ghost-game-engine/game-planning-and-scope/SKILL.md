@@ -26,7 +26,7 @@ building a game nobody can finish.
 
 If a field is missing, ask once, then assume the smallest option and say so.
 
-## Rules
+## Steps
 
 1. Write the one-build brief before any code: platform, the one screen, the one
    loop, up to three mechanics, the done check, the assets, what is left later.
@@ -41,12 +41,16 @@ If a field is missing, ask once, then assume the smallest option and say so.
 6. Keep a "later" list. Nothing from it enters the first build.
 7. If the idea cannot fit the time budget, say which feature you dropped and why.
 
-## Compatibility and licence
+## Upstream references
+
+None. This skill is engine-neutral and cites no upstream project.
+
+## Compatibility and licence cautions
 
 No engine, no package and no dependency of its own. Licence values live in
 `docs/ghost-game-engine/repositories.md`; never quote one from memory.
 
-## Verification
+## Acceptance criteria and verification
 
 Acceptance criteria, all checkable:
 

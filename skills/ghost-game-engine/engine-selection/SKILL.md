@@ -23,7 +23,7 @@ looking at the target repository as it really is.
 - Whether the person will open an editor, or only wants a build.
 - What the target repository already contains.
 
-## Rules
+## Steps
 
 1. Inspect the target repository before choosing. Look for `package.json`, an
    existing engine folder, `ProjectSettings/` (Unity), `project.godot`,
@@ -45,14 +45,23 @@ looking at the target repository as it really is.
    reads from this repository or from a Project. The Skills toggle is not
    involved and still allows only 5 skills on at a time.
 
-## Compatibility and licence
+## Upstream references
+
+Every engine named above is listed with its source URL in
+`docs/ghost-game-engine/repositories.md`. Citation list:
+phaserjs/phaser, mrdoob/three.js, pixijs/pixijs, KilledByAPixel/LittleJS,
+melonjs/melonJS, godotengine/godot, Unity-Technologies/unity-agent-plugin,
+raysan5/raylib, libgdx/libgdx, MonoGame/MonoGame, love2d/love,
+excaliburjs/Excalibur, kaplayjs/kaplay. Read the row before repeating a fact.
+
+## Compatibility and licence cautions
 
 Each engine's licence and default branch: `docs/ghost-game-engine/repositories.md`.
 A licence is a fact from that file, never from memory. A copyleft licence
 (GPL) in an engine affects what the person may do with their build: say so
 plainly and let them decide.
 
-## Verification
+## Acceptance criteria and verification
 
 Acceptance criteria:
 
