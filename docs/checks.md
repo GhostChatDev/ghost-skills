@@ -68,10 +68,13 @@ The final run was made in the sandbox and never committed. Result:
   in commit `be971bf` and now match the rest.
 - `skills/ghost-game-engine/README.md` is the library index: it lists all 20
   skills with one relative link each, in the form
-  `skills/ghost-game-engine/<id>/SKILL.md`. The link targets were **not** opened
-  one by one; the folder names came from `manifest.json`, whose 20 paths were
-  checked against the disk.
-- All 13 rows of `skills/INDEX.md` carry a `ready` or `missing` status.
+  `<id>/SKILL.md` (relative to that folder). It was rebuilt in commit `10d6b68`;
+  before that it was a copy of the root `README.md` and linked nothing. The link
+  targets were **not** opened one by one; the 20 folder names came from
+  `manifest.json`, whose paths were checked against the disk.
+- `skills/INDEX.md` holds 14 rows, one per folder: the 5 writing skills, one row
+  for `skills/ghost-game-engine/` that points at its own index, and the 8 stubs.
+
 - `skills/skill-06` to `skills/skill-13` contain the MISSING line.
 
 **Not checked:** no upstream repository was contacted after the API rate limit
