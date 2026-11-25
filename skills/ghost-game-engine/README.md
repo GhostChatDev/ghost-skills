@@ -1,52 +1,71 @@
-# ghost-skills
+# ghost-game-engine — the skill index
 
-Shared skills for Ghost Code and Ghost Chat.
+Instruction library for game work. It is **not** a game, not an installed
+engine, and not a package. Every entry is a written instruction file at
+`skills/ghost-game-engine/<skill-name>/SKILL.md`.
 
-One skill = one folder. Each folder holds a `SKILL.md` file. `skills/INDEX.md`
-lists every skill, where it lives, when to use it, and whether it is ready or
-still missing.
+## Read this first, then load only what matches
 
-Markdown only. No app, no game engine, no packages.
+1. Read this index.
+2. Open **only** the `SKILL.md` files whose "when to use it" line matches the
+   task in front of you. Do not load all 20.
+3. Read the target game repository's own instructions (`AGENTS.md`, `README`,
+   its checks) before choosing an engine. If they conflict with these skills,
+   say so and follow the target repository; report the conflict.
+4. Read `docs/repositories.md` before naming a licence or a version. A row that
+   says `not read` means nobody has confirmed it yet: open the project's own
+   `LICENSE` first and never guess.
 
-## How to use this repo
+These are repository instructions. They are **not** registered Ghost Chat
+Skills and **not** globally loaded agent capabilities. An agent sees them only
+when this repository (or a Project holding it) is chosen for the session.
 
-Two ways. Pick one.
+## The 20 skills
 
-1. **Ghost Code:** in the `+` menu, choose this repo (`GhostChatDev/ghost-skills`)
-   before your first message. The agent then reads the skills from the repo.
-2. **Ghost Chat Project:** put your chat or session inside the **Ghost Skills**
-   Project. Paste the block from `PROJECT-INSTRUCTIONS.md` into the Project's
-   instructions.
+| # | Skill | File | Use it when |
+| --- | --- | --- | --- |
+| 1 | Game planning and scope | [game-planning-and-scope/SKILL.md](game-planning-and-scope/SKILL.md) | starting any game: one screen, one loop, three mechanics, the done check |
+| 2 | Engine selection | [engine-selection/SKILL.md](engine-selection/SKILL.md) | before writing code: pick one primary engine, and say why |
+| 3 | Phaser 2D | [phaser-2d/SKILL.md](phaser-2d/SKILL.md) | a fuller 2D browser game with scenes, physics and input |
+| 4 | LittleJS small games | [littlejs-small-games/SKILL.md](littlejs-small-games/SKILL.md) | one small idea, one file, fast to load |
+| 5 | Three.js 3D | [threejs-3d/SKILL.md](threejs-3d/SKILL.md) | a 3D world; its game systems must be planned separately |
+| 6 | PixiJS rendering | [pixijs-rendering/SKILL.md](pixijs-rendering/SKILL.md) | custom 2D rendering only; it is not a gameplay engine |
+| 7 | Tilemaps and level design | [tilemaps-and-level-design/SKILL.md](tilemaps-and-level-design/SKILL.md) | laying out levels, tilesets, collision layers |
+| 8 | Enemy AI and behaviour trees | [enemy-ai-and-behavior-trees/SKILL.md](enemy-ai-and-behavior-trees/SKILL.md) | enemies that decide, not just walk |
+| 9 | Dialogue and narrative | [dialogue-and-narrative/SKILL.md](dialogue-and-narrative/SKILL.md) | branching dialogue, quests, text the player chooses |
+| 10 | Procedural world generation | [procedural-world-generation/SKILL.md](procedural-world-generation/SKILL.md) | worlds or levels built from a seed |
+| 11 | Animation and game feel | [animation-and-game-feel/SKILL.md](animation-and-game-feel/SKILL.md) | tweening, juice, hit stop, screenshake |
+| 12 | Retro sound effects | [retro-sound-effects/SKILL.md](retro-sound-effects/SKILL.md) | generated beeps, blips and chiptune sounds |
+| 13 | Music and audio playback | [music-and-audio-playback/SKILL.md](music-and-audio-playback/SKILL.md) | music, mixing, unlock-on-tap, volume |
+| 14 | Multiplayer with Colyseus | [multiplayer-with-colyseus/SKILL.md](multiplayer-with-colyseus/SKILL.md) | real online play; needs a server you run |
+| 15 | Turn-based with boardgame.io | [turn-based-with-boardgameio/SKILL.md](turn-based-with-boardgameio/SKILL.md) | turns, moves, hidden state, a rules object |
+| 16 | Asset pipeline and licensing | [asset-pipeline-and-licensing/SKILL.md](asset-pipeline-and-licensing/SKILL.md) | bringing in art, sound or code from anywhere else |
+| 17 | Web game testing | [web-game-testing/SKILL.md](web-game-testing/SKILL.md) | before saying a browser game works |
+| 18 | Performance and accessibility | [performance-and-accessibility/SKILL.md](performance-and-accessibility/SKILL.md) | frame budget, draw calls, keyboard and touch, contrast |
+| 19 | Release and documentation | [release-and-documentation/SKILL.md](release-and-documentation/SKILL.md) | a build someone else can run and read |
+| 20 | Unity and desktop tool boundaries | [unity-and-desktop-tool-boundaries/SKILL.md](unity-and-desktop-tool-boundaries/SKILL.md) | Unity, Godot, art tools and build machines: what an agent can and cannot do |
 
-## What this library can and cannot do
+The machine-readable list is [manifest.json](manifest.json): stable id, path,
+description, tags, engines, required environment, external references.
 
-- A repo is **not** auto-loaded into every agent. An agent only sees a repo you
-  pick for that session.
-- A Project shares its instructions and files with every chat and session
-  inside it. That is how one Project can carry this whole library.
-- The Skills toggle still allows **only 5 skills on at a time**. That limit does
-  not change. This library is how you keep *all* your skills in one place anyway:
-  the files are here, and the agent reads them from the repo or the Project.
-- Ghost Code never merges. It commits to its own `ghost-code/` branch and opens a
-  draft pull request. **You merge the pull request on GitHub.** Main stays
-  untouched until you do.
+## Engine-selection rules
 
-## Files
+- Choose **one primary engine per game.** Do not stack two game engines.
+- Phaser: a fuller 2D browser game.
+- LittleJS: a compact browser game, small and fast.
+- Three.js: 3D rendering; you plan its game systems yourself.
+- PixiJS: custom 2D rendering, not a full gameplay engine.
+- melonJS: an alternative engine to evaluate, not a default dependency.
+- Add jsfxr, Howler, a dialogue library or a multiplayer library only when the
+  game needs it, and say why.
+- Unity packages and desktop art tools are separate workflows with their own
+  prerequisites. An agent cannot drive a desktop application's UI; it can write
+  files and project settings, and the human runs the editor.
+- Never add a paid service or external dependency without saying why.
 
-| File | What it is |
-| --- | --- |
-| `AGENTS.md` | Rules an agent follows before any task. |
-| `PROJECT-INSTRUCTIONS.md` | Short block to paste into a Ghost Chat Project. |
-| `skills/INDEX.md` | Table of every skill: name, folder, when to use, status. |
-| `skills/<folder>/SKILL.md` | One skill. |
-| `skills/ghost-game-engine/README.md` | The game-development library: index, engine-selection rules, upstream references. |
-| `skills/ghost-game-engine/<skill-name>/SKILL.md` | One game skill, with the upstream source to read in `docs/repositories.md`. |
-| `skills/ghost-game-engine/manifest.json` | Every skill's id, path, tags, engines and references. No source code is vendored. |
-| `docs/repositories.md` | The upstream sources: what was read and when, licence, archived state. |
-| `docs/adoption.md` | How to bring in a skill from outside, without copying its licence or its secrets. |
-| `docs/verification.md` | What was actually read, and what was not. |
-| `docs/checks.md` | The manual checklist to tick before merging a change. There is no code here to run. |
-| `MISSING.md` | Skills still waiting for your real text. |
+## Adoption elsewhere
 
----
-<img src="https://ghostchat.tech/icons/ghost-code-dev.png" width="20" height="20" alt="" align="top"> Built by [Ghost Code Dev](https://ghostchat.tech)
+See `docs/adoption.md`. Short version: pick the skills you need, pin this
+repository at a commit SHA, copy those folders into the target repository,
+record the source, the SHA, the paths and the notices in the target's own
+`AGENTS.md`, and never replace that file. A link alone gives no access.
