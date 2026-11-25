@@ -27,7 +27,7 @@ generate them, keep them small, play them without stutter.
 1. List the events first, with how often each can fire per second.
 2. Generate the sounds with a small tool (jsfxr-style generators are the common
    choice; read the row for `chr15m/jsfxr` in
-   `docs/ghost-game-engine/repositories.md` before naming its licence).
+   `docs/repositories.md` before naming its licence).
 3. Keep files small and short: effects under about a quarter of a second, in a
    format every browser plays.
 4. Normalise loudness across effects so one does not blast the mix.
@@ -42,7 +42,7 @@ generate them, keep them small, play them without stutter.
 ## Upstream references
 
 `chr15m/jsfxr` and the generator it is built on. Licence and verification state:
-`docs/ghost-game-engine/repositories.md`.
+`docs/repositories.md`.
 
 ## Compatibility and licence cautions
 

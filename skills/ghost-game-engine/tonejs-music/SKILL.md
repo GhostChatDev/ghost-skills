@@ -71,24 +71,35 @@ const kick = new Tone.MembraneSynth().connect(master);
 
 const loops = [];
 let started = false;
+let starting = null;                   // the promise of an in-flight start
 
 export async function startMusic() {
-  if (started) return;                 // never start twice
-  await Tone.start();                  // must be inside a user gesture
+  if (started) return;
+  // Two taps before the first await resolves both reach here: the second one
+  // waits for the same start instead of building a second band.
+  if (starting) return starting;
+  starting = (async () => {
+    await Tone.start();                // must be inside a user gesture
 
-  loops.push(
-    new Tone.Loop((time) => {
-      pad.triggerAttackRelease(["C3", "E3", "G3"], "2n", time);
-    }, "2m").start(0),
-    new Tone.Loop((time) => {
-      kick.triggerAttackRelease("C1", "8n", time);
-    }, "4n").start(0)
-  );
+    loops.push(
+      new Tone.Loop((time) => {
+        pad.triggerAttackRelease(["C3", "E3", "G3"], "2n", time);
+      }, "2m").start(0),
+      new Tone.Loop((time) => {
+        kick.triggerAttackRelease("C1", "8n", time);
+      }, "4n").start(0)
+    );
 
-  const transport = Tone.getTransport();
-  transport.bpm.value = 96;
-  transport.start();
-  started = true;
+    const transport = Tone.getTransport();
+    transport.bpm.value = 96;
+    transport.start();
+    started = true;
+  })();
+  try {
+    await starting;
+  } finally {
+    starting = null;
+  }
 }
 
 export function setVolume(level) {        // 0..1

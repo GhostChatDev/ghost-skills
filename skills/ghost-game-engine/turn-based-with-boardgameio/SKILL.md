@@ -23,7 +23,7 @@ with moves that are validated rather than trusted.
 - Whether play is local, online, or both (the library's multiplayer transport may
   be hosted or your own).
 - Read the row for `boardgameio/boardgame.io` in
-  `docs/ghost-game-engine/repositories.md` before naming its licence; it is
+  `docs/repositories.md` before naming its licence; it is
   listed as reachable with fields not yet recorded.
 
 ## Steps
@@ -44,7 +44,7 @@ with moves that are validated rather than trusted.
 ## Upstream references
 
 `boardgameio/boardgame.io`. Licence and verification state:
-`docs/ghost-game-engine/repositories.md`.
+`docs/repositories.md`.
 
 ## Compatibility and licence cautions
 

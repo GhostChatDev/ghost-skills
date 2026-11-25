@@ -33,7 +33,7 @@ gives you drawing; movement, collisions and rules are your code.
 - The camera and control scheme (keyboard, mouse, touch).
 - The style decision: low-poly, voxel or realistic, said out loud.
 - Read the licence row for `mrdoob/three.js` in
-  `docs/ghost-game-engine/repositories.md` before stating one, and see
+  `docs/repositories.md` before stating one, and see
   "Compatibility and licence" below for what was verified.
 
 ## Supported version
@@ -269,7 +269,7 @@ memory on a phone within a few rounds.
 
 ## Upstream references
 
-`mrdoob/three.js`. Facts and licence: `docs/ghost-game-engine/repositories.md`.
+`mrdoob/three.js`. Facts and licence: `docs/repositories.md`.
 Read the official manual and examples pages for the API you use.
 
 ## Compatibility and licence cautions

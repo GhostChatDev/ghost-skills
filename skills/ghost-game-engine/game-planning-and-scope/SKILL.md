@@ -48,7 +48,7 @@ None. This skill is engine-neutral and cites no upstream project.
 ## Compatibility and licence cautions
 
 No engine, no package and no dependency of its own. Licence values live in
-`docs/ghost-game-engine/repositories.md`; never quote one from memory.
+`docs/repositories.md`; never quote one from memory.
 
 ## Acceptance criteria and verification
 

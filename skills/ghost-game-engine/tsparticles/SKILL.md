@@ -62,6 +62,34 @@ look like — and the library animates them for you.
 
 ## Code examples
 
+### First: give the container an element and a size
+
+`id` in the config is the **id of an element on the page**. With
+`fullScreen: { enable: false }` the canvas fills that element, so the element
+must exist and must have a size. If the element is missing, tsParticles appends
+a new div to `<body>` with no width or height and nothing visible is drawn.
+
+```html
+<!-- A background layer behind the game, and a layer for bursts on top. -->
+<div id="starfield" class="fx-layer fx-layer--behind" aria-hidden="true"></div>
+<div id="confetti" class="fx-layer fx-layer--front" aria-hidden="true"></div>
+```
+
+```css
+.fx-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   /* never blocks a tap on a game control */
+}
+.fx-layer--behind { z-index: 0; }
+.fx-layer--front  { z-index: 30; }
+```
+
+`pointer-events: none` matters: a full-screen canvas over the game would eat
+every click and tap. `aria-hidden="true"` keeps decoration out of screen readers.
+
 ### A starfield background (the confirmed v4 API)
 
 ```js
@@ -130,7 +158,7 @@ export async function celebrate() {
 }
 ```
 
-`life.value` is in **seconds**; the `setTimeout` is a safety net so the canvas
+`life.duration.value` is in **seconds**; the `setTimeout` is a safety net so the canvas
 is released even if the config is edited later.
 
 ### Respecting reduced motion

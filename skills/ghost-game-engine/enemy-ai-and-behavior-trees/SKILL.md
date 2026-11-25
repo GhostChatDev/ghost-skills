@@ -44,7 +44,7 @@ simple cases, a behavior tree when behaviour branches.
 ## Upstream references
 
 Unity projects may use a behavior-tree package; read its row in
-`docs/ghost-game-engine/repositories.md` before naming a licence. In JavaScript,
+`docs/repositories.md` before naming a licence. In JavaScript,
 a small tree written by hand is usually less work than a dependency. Behaviour
 tree articles from the engine's own docs are the reference.
 
