@@ -113,7 +113,7 @@ export const SOUNDS = {
 
 ```js
 // audio.js — volume, mute, unlock and throttle in one small module
-import { zzfx } from "zzfx";           // npm install zzfx
+import { zzfx, ZZFX } from "zzfx";     // npm install zzfx — ZZFX carries the shared context
 import { SOUNDS } from "./sounds.js";
 
 const SETTINGS_KEY = "game.audio.v1";

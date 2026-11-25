@@ -215,13 +215,6 @@ reduce.addEventListener("change", (e) => {
 });
 ```
 
-// Also react if the setting changes while the page is open:
-reduce.addEventListener("change", (e) => {
-  if (e.matches) intro.pause();
-  else intro.play();
-});
-```
-
 Reduced motion is not only a preference; it is a medical need for some players
 (vestibular disorders). Offer an in-game "reduce motion" toggle too, and store
 it, so players on shared or console-like setups can turn effects down.

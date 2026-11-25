@@ -31,12 +31,15 @@ reversed from wherever it is, which CSS keyframes cannot do easily.
 
 ## Setup and supported version
 
-- **motion 14.14.0** (`latest` on npm when checked). React projects
-  `npm install motion` and import from `"motion/react"`; the plain-DOM entry
-  point is the package's own documented one — check the import line in the
-  installed package's README before writing it, because it has changed between
-  major versions.
-- No build step for the DOM build, but a bundler is the normal path.
+- **motion 14.14.0** (`latest` on npm when checked). The package has separate
+  entry points, each verified from `motion@14.14.0`'s own `exports` map:
+  - **React:** `npm install motion`, then `import { motion } from "motion/react"`.
+  - **Plain DOM / canvas / Phaser overlays:** `import { animate } from "motion"`
+    (the package root, the DOM build — no React needed).
+  - **Vue:** Motion has no first-party Vue entry; the Vue port is the separate
+    package `motion-v` (`npm install motion-v`, `import { motion } from "motion-v"`).
+- No build step is strictly required for the DOM build, but a bundler is the
+  normal path.
 - Keep one version across the project; mixing a motion 11 API with 14 silently
   drops options.
 
@@ -87,8 +90,37 @@ export function Panel({ open, children }) {
 ```
 
 `useReducedMotion()` returns `true` when the system asks for less motion, so the
-same component satisfies the preference without a second CSS file. When in doubt
-about an import path, read the README of the installed version.
+same component satisfies the preference without a second CSS file. The import
+paths above are from the upstream README and the published `exports` map.
+
+Plain JavaScript, no framework (a DOM overlay, a Phaser HUD, a canvas page):
+
+```js
+import { animate } from "motion";        // package root = the DOM build
+
+const DURATION = 0.18;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+
+// A screen change: fade the old panel out, then the new one in.
+export async function showPanel(fromEl, toEl) {
+  if (fromEl) {
+    await animate(fromEl, { opacity: 0 }, {
+      duration: reduce.matches ? 0 : DURATION,
+      easing: "ease-out",
+    }).finished;
+    fromEl.hidden = true;
+  }
+  toEl.hidden = false;
+  animate(toEl, { opacity: [0, 1], y: reduce.matches ? [0, 0] : [12, 0] }, {
+    duration: reduce.matches ? 0 : DURATION,
+    easing: "ease-out",
+  });
+}
+```
+
+`animate()` returns controls with `.finished` (a promise), `.pause()`,
+`.play()`, `.stop()` and `.cancel()` — keep the returned object if a screen can
+change again before the animation ends, and `stop()` the old one.
 
 A press/hover response that also works with a keyboard:
 
