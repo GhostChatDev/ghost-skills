@@ -24,10 +24,10 @@ scale, in a project that builds and runs.
   source you name.
 - The resolution and orientation, keyboard, mouse or touch.
 - The art: made pictures or code-drawn shapes.
-- Read the licence row for Phaser in `docs/ghost-game-engine/repositories.md`
-  before you state one. The GitHub API answers `mit` for `phaserjs/phaser` with
-default branch `master` (read 2026-11-25); confirm the version in
-  `package.json` after install.
+- Read the licence row for Phaser in `docs/repositories.md` before you state
+  one. That row records what an API call returned for `phaserjs/phaser`; if a
+  cell there is blank, read the repository's own `LICENSE` file instead of
+  quoting from memory. Confirm the version in `package.json` after install.
 
 ## Steps and rules
 
@@ -44,9 +44,8 @@ default branch `master` (read 2026-11-25); confirm the version in
 
 ## Compatibility and licence cautions
 
-See the licence row above and `docs/ghost-game-engine/repositories.md` for the
-recorded values and the date they were read. Never state a licence that file
-does not hold.
+See the Phaser row in `docs/repositories.md` for the recorded values and the
+date they were read. Never state a licence that file does not hold.
 
 ## Acceptance criteria and verification
 
@@ -68,7 +67,7 @@ Steps: build, open, press every control, refresh, read the console.
 
 ## Upstream references
 
-`phaserjs/phaser`. Facts and licence: `docs/ghost-game-engine/repositories.md`.
+`phaserjs/phaser`. Facts and licence: `docs/repositories.md`.
 
 ## Do not
 

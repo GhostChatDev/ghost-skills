@@ -41,9 +41,9 @@ record of where each file came from and what its licence allows.
 
 ## Upstream references
 
-Art and modelling tools are separate programs with their own licences; for
-example Blockbench and Krita are listed with their own entries in
-`docs/ghost-game-engine/repositories.md`. Read the row before naming a licence.
+Art and modelling tools are separate programs with their own licences. Blockbench
+and Krita each have a row in `docs/repositories.md`; both record **GPL-3.0**, so
+never repeat a claim that is not in that row.
 
 ## Compatibility and licence cautions
 

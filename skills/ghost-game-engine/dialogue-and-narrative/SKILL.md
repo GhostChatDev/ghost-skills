@@ -23,8 +23,9 @@ a writer and testable by an agent.
 - The rules: who speaks, what variables the story reads (flags, items).
 - Font and text size decided, and that the text fits the screen.
 - `jonnyreeves/yarn-bound` returned **404** in this session (see
-  `docs/ghost-game-engine/repositories.md`): do not cite it. Read the row for
-  Yarn Spinner in the same file before naming its licence.
+  `docs/repositories.md`): do not cite it. Read the Yarn Spinner row in the same
+  file before naming its licence; the row exists, but its licence cell is blank,
+  so read the repository first.
 
 ## Steps
 
@@ -46,7 +47,7 @@ a writer and testable by an agent.
 
 `YarnSpinnerTool/YarnSpinner` for Unity and its Unity integration; the runtime is
 also usable from other engines. Licence and verification state:
-`docs/ghost-game-engine/repositories.md`.
+`docs/repositories.md`.
 
 ## Compatibility and licence cautions
 

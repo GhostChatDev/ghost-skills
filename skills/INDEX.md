@@ -10,6 +10,7 @@ task.
 | Planner | `skills/planner/` | Turning a goal into steps, a checklist or a schedule. | ready |
 | Marketing Copy | `skills/marketing-copy/` | Writing ads, landing pages, emails or promo copy that sells. | ready |
 | Clear Writer | `skills/clear-writer/` | Rewriting or editing text so it is clear, short and friendly. | ready |
+| Ghost Game Engine (20 game skills) | `skills/ghost-game-engine/` | Any game task. Start at `skills/ghost-game-engine/README.md`, which lists all 20 skills, and load only the ones that match. | ready |
 | skill-06 | `skills/skill-06/` | Waiting for the user's real skill text. | missing |
 | skill-07 | `skills/skill-07/` | Waiting for the user's real skill text. | missing |
 | skill-08 | `skills/skill-08/` | Waiting for the user's real skill text. | missing |

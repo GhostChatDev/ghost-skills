@@ -21,9 +21,9 @@ hundred lines that run anywhere.
 
 - The one mechanic and the win or lose condition.
 - The source of the engine file you load, with its version, and the engine's
-  licence read from `docs/ghost-game-engine/repositories.md`. The GitHub API
-  answers `mit` for `KilledByAPixel/LittleJS`, default branch `main` (read
-  2026-11-25).
+  licence read from its own `LICENSE` file. The LittleJS row in
+  `docs/repositories.md` records a default branch only; its licence cell is
+  blank there, so read the repository before stating one.
 - A way to open the page: a local server, not `file://`, if you load files.
 
 ## Steps and rules
@@ -41,8 +41,7 @@ hundred lines that run anywhere.
 
 ## Compatibility and licence cautions
 
-Licence and branch: `docs/ghost-game-engine/repositories.md`. Check it before
-repeating a claim. Loading the engine from a CDN pins a version in the URL.
+Licence and branch: `docs/repositories.md`. Check it before repeating a claim. Loading the engine from a CDN pins a version in the URL.
 
 ## Acceptance criteria and verification
 
@@ -63,7 +62,7 @@ Steps: open the page, play once to the end, refresh, read the console.
 
 ## Upstream references
 
-`KilledByAPixel/LittleJS`. Facts: `docs/ghost-game-engine/repositories.md`.
+`KilledByAPixel/LittleJS`. Facts: `docs/repositories.md`.
 
 ## Do not
 

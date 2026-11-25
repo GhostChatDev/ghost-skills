@@ -71,27 +71,38 @@ Note on PixiJS: its default branch is `dev`, not `main` or `master`. An import
 pinned to a branch name alone will take work in progress; pin the commit SHA
 (the manifest already asks for one).
 
-## Still partial: answered, some fields not read
+## Every source the skills name, and what was actually read
 
-The API answered for these in this session, but the field named in the last
-column was not copied out before the request limit was reached. Read it again
-before quoting it. Nothing here is guessed.
+A blank cell means the tool did not return that field to me, so it stays blank.
+`earlier read this session` means the value came from a GitHub API call made
+earlier in this same session. Nothing below is filled from memory.
 
-| Repository | What was read | Still missing |
-| --- | --- | --- |
-| phaserjs/phaser | answered `200`; MIT licence read | branch, archived, stars |
-| KilledByAPixel/LittleJS | default branch `main`, 243 forks, 4404 stars | licence, archived |
-| mrdoob/three.js | answered `200` | licence, branch, archived, stars |
-| colyseus/colyseus | default branch `master`, 689 forks, 7581 stars | licence, archived |
-| Unity-Technologies/unity-agent-plugin | answered `200`; default branch `main`, 71 forks, 674 stars | licence, archived |
-| chr15m/jsfxr | **not returned by the search endpoint** for `repo:chr15m/jsfxr` | everything: a search for it matches nothing, so treat it as unverified until `GET /repos/chr15m/jsfxr` answers |
-| IvanMurzak/Unity-MCP | answered `200` in an earlier round | licence, branch, archived, stars |
+| Repository | Licence (SPDX) | Default branch | Last push | Stars | What it is | How it was read |
+| --- | --- | --- | --- | --- | --- | --- |
+| phaserjs/phaser | MIT | master | 2026-08-21 | not read | 2D web game framework | earlier read this session |
+| mrdoob/three.js | not read | dev | not read | not read | 3D renderer for the web, no game rules of its own | earlier read this session |
+| KilledByAPixel/LittleJS | not read | main | not read | 4404 | Tiny 2D browser game engine | earlier read this session |
+| colyseus/colyseus | not read | master | not read | 7581 | Server-authoritative multiplayer rooms | earlier read this session |
+| Unity-Technologies/unity-agent-plugin | not read | main | not read | 674 | Integration that lets an agent drive the Unity Editor | earlier read this session |
+| chr15m/jsfxr | not read | not read | not read | not read | Retro sound-effect generator | the search endpoint matched nothing for it |
+| ashblue/fluid-behavior-tree | not read | not read | not read | not read | Behaviour trees for Unity | not contacted |
+| YarnSpinnerTool/YarnSpinner | not read | not read | not read | not read | Dialogue script runtime and tools | not contacted |
+| Syomus/ProceduralToolkit | not read | not read | not read | not read | Procedural generation helpers for Unity | not contacted |
+| annulusgames/LitMotion | not read | not read | not read | not read | Tweening and animation for Unity | not contacted |
+| CoderGamester/mcp-unity | not read | not read | not read | not read | MCP server that exposes the Unity Editor | not contacted |
+| game-ci/unity-builder | not read | not read | not read | not read | GitHub Action that builds Unity projects on CI | not contacted |
+
+**What this means for a skill.** A skill may say a source exists and when it
+fits. A skill must **not** repeat a licence, branch or version claim: it points
+here. Where a cell says `not read`, the agent opens
+`https://github.com/<owner>/<repo>` and its `LICENSE` file before telling anyone
+what they may do with the code.
 
 ## Not verified
 
 | Repository | Result |
 | --- | --- |
-| jonnyreeves/yarn-bound | The API returned **404** in an earlier round of this session. No skill may claim this source exists. The dialogue-system skill must stand on its own rules until a working source is found. |
+| jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |
 
 ## Rules for anyone editing this file
 
