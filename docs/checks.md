@@ -15,7 +15,8 @@ change.
 ## Indexes
 
 - [ ] `skills/INDEX.md` has a row for every folder in `skills/`.
-- [ ] `game-skills/INDEX.md` has a row for every folder in `game-skills/`.
+- [ ] `skills/ghost-game-engine/README.md` lists every folder in
+      `skills/ghost-game-engine/`, and `manifest.json` names every skill's path.
 - [ ] Each row gives: skill name, folder, when to use it, status.
 - [ ] Status says `ready` when the rules are written, `missing` for a stub.
 - [ ] Every folder named in an index exists, and every folder is in an index.
@@ -34,6 +35,11 @@ change.
       the Skills toggle allows only 5 skills on.
 - [ ] `manifest.json` lists only sources recorded in `docs/repositories.md`.
 - [ ] No secrets, keys, tokens or real personal details anywhere.
-- [ ] Markdown only: no `package.json`, no `.html`, no `.js`, no `.mjs`, no
-      website. A `.mjs` or page file makes the Ghost Screenshots check fail,
-      because it treats the folder as a site to photograph.
+- [ ] Markdown and JSON only: no `package.json`, no `.html`, no `.js`, `.mjs`,
+      `.cjs`, `.ts`, `.jsx`, `.tsx`, `.css`, `.py`, `.rb`, `.go`, no website.
+      The Ghost Screenshots check reads every commit: if it finds any file with
+      one of those extensions (looked for up to 5 folders deep, `.github`
+      skipped), it serves the folder as a website and fails with `FAIL: no
+      index.html found`. So a validator script cannot live in this repository,
+      whatever language it is written in. That is why the checks here are a
+      checklist instead of a script.
