@@ -21,25 +21,3 @@ task.
 
 `ready` means the rules are written in full. `missing` means the folder holds an
 empty stub. See `MISSING.md` for what to send.
-
-## Game-development library: `ghost-game-engine`
-
-A second, larger library lives in `skills/ghost-game-engine/`. Read it only when
-the task is a game. Its own index and manifest:
-
-- `skills/ghost-game-engine/README.md` — purpose, structure, what it is not.
-- `skills/ghost-game-engine/manifest.json` — the schema and all 20 skills.
-- `skills/ghost-game-engine/<skill>/SKILL.md` — the skill itself.
-
-20 skills: `game-planning-and-scope`, `engine-selection`, `phaser-2d`,
-`littlejs-small-games`, `threejs-3d`, `pixijs-rendering`,
-`tilemaps-and-level-design`, `enemy-ai-and-behavior-trees`,
-`dialogue-and-narrative`, `procedural-world-generation`,
-`animation-and-game-feel`, `retro-sound-effects`, `music-and-audio-playback`,
-`multiplayer-with-colyseus`, `turn-based-with-boardgameio`,
-`asset-pipeline-and-licensing`, `web-game-testing`,
-`performance-and-accessibility`, `release-and-documentation`,
-`unity-and-desktop-tool-boundaries`.
-
-Load only the ones the current task needs. Pick one primary engine per game; do
-not combine competing engines by default.
