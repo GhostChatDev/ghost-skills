@@ -32,6 +32,17 @@ Plain record. If it is not listed here as run, it was not run.
   exists, and each folder has a `SKILL.md`. The Ghost Game Engine row points at
   `skills/ghost-game-engine/README.md`, which links a `SKILL.md` one folder
   down for each of its 20 skills.
+- `phaser-2d` and `littlejs-small-games` were re-read on 2026-11-25 (lines 38-50)
+  after an earlier reviewer report said they carried a `## Rules` heading instead
+  of `## Steps`. On the branch they carry `## Compatibility and licence cautions`
+  and `## Acceptance criteria and verification`; the earlier heading search found
+  `## Steps` in both. The report was about a stale sandbox copy.
+- `docs/adoption.md` was read through on 2026-11-25. An earlier reviewer report
+  said it pointed at a `game-skills/` folder that does not exist. A search of the
+  branch for `game-skills/` returned **no matches**, so that is no longer true.
+- `README.md` was read through on 2026-11-25: it lists the game library, the
+  manifest and every doc, and says a repo is not auto-loaded, a Project is
+  shared, the Skills toggle still allows 5 on, and Ghost Code never merges.
 - `docs/repositories.md`: on 2026-11-25 the API reads recorded earlier were
   extended with licence answers for `annulusgames/LitMotion` (MIT),
   `CoderGamester/mcp-unity` (MIT), `boardgameio/boardgame.io` (MIT) and
