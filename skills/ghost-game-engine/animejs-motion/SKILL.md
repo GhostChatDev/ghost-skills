@@ -144,8 +144,11 @@ function buildIntro() {
 
 // Controls exist on the returned instance: play, pause, restart, seek.
 // Read the docs for the full set before using a method by name.
-let intro = buildIntro();
-document.querySelector("#skip").addEventListener("click", () => intro.seek(9999));
+//
+// Do NOT declare the instance here. The reduced-motion section below owns the
+// single `let intro`, builds it once and wires the Skip button in one place.
+// Two `let intro` in one file is a SyntaxError; two build sites leave Skip
+// pointing at a timeline that was never made.
 ```
 
 ### SVG line drawing (the clean way)
@@ -209,13 +212,32 @@ function showFinalState() {
   if (logoPath) logoPath.style.strokeDashoffset = "0";
 }
 
-// `intro` comes from buildIntro() above. Build it once, here, so the listener
-// below always has a real object. null when motion is reduced from the start.
+// The ONE place the intro instance exists. Never declare `intro` twice: build
+// it here, and let both the reduced-motion branch and the Skip button use this
+// same variable.
 let intro = null;
-if (reduce.matches) {
-  showFinalState();
-} else {
+
+function startIntro() {
   intro = buildIntro();
+}
+
+// Skip must not assume a timeline exists: with reduced motion on there is no
+// timeline at all (the final state is already on screen), so `intro` is null.
+// Optional chaining + hiding the button keeps Skip clickable-safe in both modes.
+const skipButton = document.querySelector("#skip");
+if (skipButton) {
+  skipButton.hidden = true;                    // nothing to skip until we play
+  skipButton.addEventListener("click", () => {
+    intro?.seek(9999);                         // null-safe: no TypeError
+    skipButton.hidden = true;
+  });
+}
+
+if (reduce.matches) {
+  showFinalState();                            // intro stays null on purpose
+} else {
+  startIntro();
+  if (skipButton) skipButton.hidden = false;
 }
 
 // Also react if the setting changes while the page is open.
@@ -224,8 +246,10 @@ reduce.addEventListener("change", (e) => {
   if (e.matches) {
     if (intro) { intro.pause(); intro = null; }
     showFinalState();
+    if (skipButton) skipButton.hidden = true;
   } else {
-    intro = buildIntro();
+    startIntro();
+    if (skipButton) skipButton.hidden = false;
   }
 });
 ```
@@ -253,6 +277,9 @@ it, so players on shared or console-like setups can turn effects down.
    field.
 7. **Huge staggered sequences with no skip.** Players press a button to skip
    intros; make every sequence skippable and let input continue the game.
+   Skipping must not assume a timeline exists: with reduced motion on there is
+   none, so call `intro?.seek(...)`, never `intro.seek(...)`. Declare the
+   instance **once** in the whole file (a second `let intro` is a SyntaxError).
 8. **Importing from the wrong path.** Anime.js v4 is imported as `"animejs"`.
    A path that worked with a v3 CDN build is not a v4 entry point.
 
