@@ -50,8 +50,10 @@ pin the commit SHA (the manifest already asks for one).
 | ashblue/fluid-behavior-tree | not read | not read | **develop** | not read | not read | library | Behaviour trees for Unity, builder-pattern, code driven. `GET /repos` answered **200**; branch seen, other fields not kept |
 | YarnSpinnerTool/YarnSpinner | not read | not read | not read | not read | not read | library | Dialogue compiler and engine-agnostic runtime (C#). `GET /repos` answered **200**; fields not kept |
 | Syomus/ProceduralToolkit | not read | not read | not read | not read | not read | library | Procedural generation library for Unity. `GET /repos` answered **200**; fields not kept |
-| annulusgames/LitMotion | not read | not read | not read | not read | not read | library | Tween library for Unity. `GET /repos` answered **200**; fields not kept |
-| CoderGamester/mcp-unity | not read | not read | main | not read | not read | integration | MCP plugin connecting an agent to the Unity Editor. `GET /repos` answered **200**; branch seen, other fields not kept |
+| annulusgames/LitMotion | MIT | not read | main | not read | not read | library | Tween library for Unity. Licence read from `/repos/annulusgames/LitMotion/license` (`LICENSE`, MIT) |
+| CoderGamester/mcp-unity | MIT | not read | main | not read | not read | integration | MCP plugin connecting an agent to the Unity Editor. Licence read from `/repos/CoderGamester/mcp-unity/license` (`LICENSE.md`, MIT) |
+| Cysharp/UniTask | MIT | not read | master | not read | not read | library | Async/await helper for Unity. Licence read from `/repos/Cysharp/UniTask/license` (`LICENSE`, MIT) |
+| MirrorNetworking/Mirror | MIT | not read | master | not read | not read | networking library | Multiplayer networking for Unity. Licence read from `/repos/MirrorNetworking/Mirror/license` (`LICENSE`, MIT) |
 | game-ci/unity-builder | not read | not read | not read | not read | not read | build action | GitHub Action that builds Unity projects. `GET /repos` answered **200**; fields not kept |
 | godotengine/godot | MIT | no | master | 2026-11-24 | 120749 | engine | Full 2D and 3D engine, multi-platform (read in an earlier API pass this session) |
 | BabylonJS/Babylon.js | Apache-2.0 | no | master | 2026-11-24 | 26441 | engine | JavaScript 3D engine for the web (read in an earlier API pass) |
@@ -93,12 +95,10 @@ what they may do with the code.
 
 | Repository | Result |
 | --- | --- |
-| ashblue/fluid-behavior-tree | **Not contacted.** Open `https://github.com/ashblue/fluid-behavior-tree` and its `LICENSE` before relying on it. |
-| YarnSpinnerTool/YarnSpinner | **Not contacted.** Open `https://github.com/YarnSpinnerTool/YarnSpinner` and its `LICENSE` before relying on it. |
-| Syomus/ProceduralToolkit | **Not contacted.** Open `https://github.com/Syomus/ProceduralToolkit` and its `LICENSE` before relying on it. |
-| annulusgames/LitMotion | **Not contacted.** Open `https://github.com/annulusgames/LitMotion` and its `LICENSE` before relying on it. |
-| CoderGamester/mcp-unity | **Not contacted.** Open `https://github.com/CoderGamester/mcp-unity` and its `LICENSE` before relying on it. |
-| game-ci/unity-builder | **Not contacted.** Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
+| ashblue/fluid-behavior-tree | `GET /repos` answered **200**; only the branch (`develop`) was read out, so its licence, archived flag and stars are **not read**. Open `https://github.com/ashblue/fluid-behavior-tree` and its `LICENSE` before relying on it. |
+| YarnSpinnerTool/YarnSpinner | `GET /repos` answered **200**; no field was copied out. Open `https://github.com/YarnSpinnerTool/YarnSpinner` and its `LICENSE` before relying on it. |
+| Syomus/ProceduralToolkit | **Not contacted.** The API returned "Too many API requests" when asked. Open `https://github.com/Syomus/ProceduralToolkit` and its `LICENSE` before relying on it. |
+| game-ci/unity-builder | `GET /repos` answered **200**; no field was copied out. Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
 | KDE/krita | The repository answered `200` to `GET /repos/KDE/krita`, but the licence and branch fields were not read out of that answer, so no row above claims them. Open `https://github.com/KDE/krita` and its licence file first. |
 | IvanMurzak/Unity-MCP | Read: `Apache-2.0`, branch `main`, 2026-11-24. See its row in the table above. |
 | jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |

@@ -6,13 +6,24 @@ Plain record. If it is not listed here as run, it was not run.
 
 - Every upstream repository in `docs/repositories.md`: name, licence, archived
   state and description read from the GitHub API at the time recorded there.
+  Rows the API could not be read for are marked `not read`; on 2026-11-25 a
+  later attempt from the sandbox failed with `curl_http:000` / a JSON parse
+  error (the sandbox has no network), so those rows stay unconfirmed.
+- `skills/ghost-game-engine/README.md` was a copy of the root `README.md` until
+  commit `10d6b68`; it was then rebuilt as the 20-skill index and re-read on the
+  branch afterwards to confirm the new text had landed.
 - `README.md`, `AGENTS.md`, `PROJECT-INSTRUCTIONS.md`, `MISSING.md`,
   `skills/INDEX.md`, `skills/ghost-game-engine/README.md`: read after writing.
 - The 20 skills under `skills/ghost-game-engine/`: each has a purpose, when to
   use it, prerequisites, steps, references, licence cautions, acceptance
-  criteria and known limitations. Checked by a Node script run in the sandbox,
-  outside this repository (a script inside it makes the Screenshots check fail);
-  the method and its result are recorded in `docs/checks.md`.
+  criteria and known limitations. Checked on 2026-11-25 by searching the branch
+  itself (not a sandbox copy) for each required heading. Every heading was found
+  in **20 of 20** files: `## When to use it`, `## Required inputs and
+  prerequisites`, `## Steps`, `## Upstream references`, `## Compatibility and
+  licence cautions`, `## Acceptance criteria and verification`,
+  `## Known limitations`. No validation script is kept in this repository
+  because a script file makes the Screenshots check treat the repository as a
+  website; see `docs/checks.md`.
 - The 5 full skills and the 8 stubs under `skills/`:
   - `explain-like-im-new`, `social-media`, `planner`, `marketing-copy`,
     `clear-writer` hold the text from the request, word for word.
@@ -21,6 +32,12 @@ Plain record. If it is not listed here as run, it was not run.
   exists, and each folder has a `SKILL.md`. The Ghost Game Engine row points at
   `skills/ghost-game-engine/README.md`, which links a `SKILL.md` one folder
   down for each of its 20 skills.
+- `docs/repositories.md`: on 2026-11-25 the API reads recorded earlier were
+  extended with licence answers for `annulusgames/LitMotion` (MIT),
+  `CoderGamester/mcp-unity` (MIT), `boardgameio/boardgame.io` (MIT) and
+  `colyseus/colyseus` (200, fields not kept). Every row now either carries a
+  read value or says `not read`, and `Syomus/ProceduralToolkit` says the API
+  answered "Too many API requests" rather than pretending it was checked.
 ## Not checked
 
 - **No human reviewed the skill text.** The rules are the person's own words.
