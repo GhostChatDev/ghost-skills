@@ -10,7 +10,7 @@ change.
 - [ ] The first line is the skill's name, and it matches the row in the index.
 - [ ] The rules are written in full. No "TODO", no "...", no placeholder text.
 - [ ] Short sentences, plain words, the person's meaning kept.
-- [ ] A stub only, and only when the real text is missing: one MISSING line.
+- [ ] No empty or placeholder folders: a skill with no text is not listed.
 
 ## Indexes
 
@@ -18,13 +18,9 @@ change.
 - [ ] `skills/ghost-game-engine/README.md` lists every folder in
       `skills/ghost-game-engine/`, and `manifest.json` names every skill's path.
 - [ ] Each row gives: skill name, folder, when to use it, status.
-- [ ] Status says `ready` when the rules are written, `missing` for a stub.
+- [ ] Status says `ready` when the rules are written.
 - [ ] Every folder named in an index exists, and every folder is in an index.
-
-## Missing skills
-
-- [ ] Every stub is listed in `MISSING.md`.
-- [ ] No rules were invented to fill a stub.
+- [ ] No rules were invented for a skill whose text has not arrived.
 
 ## The rest of the repository
 

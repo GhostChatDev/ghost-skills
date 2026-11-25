@@ -34,6 +34,6 @@ It is not about running that repository's code.
   rules the user wrote, leave them and ask before changing them.
 - **A licence you cannot follow means you do not copy.** Say so, give the link,
   and let the person decide.
-- **Do not invent rules to fill a gap.** An empty stub stays a stub until the
-  person sends the real text. See `MISSING.md`.
+- **Do not invent rules to fill a gap.** A skill with no text is not listed
+  until the person sends the real text.
 - **Never replace `AGENTS.md`.** It is the entry point for every agent.
