@@ -51,8 +51,12 @@ whole game skeleton, so the game rules you write are small.
    fallback), `parent`, `width`, `height`, `scale`, `physics`.
 4. Preload every asset in `scene.preload()` and show a bar driven by
    `this.load.on('progress', ...)`. Never a frozen page.
-5. Movement goes in `update(time, delta)` and is multiplied by `delta / 1000`
-   (seconds), so a slow frame or a 144 Hz screen does not change the speed.
+5. Movement goes in `update(time, delta)`. With **arcade physics**, set a plain
+   velocity in pixels per second (`setVelocity`) and let Phaser apply delta; you
+   scale by `delta / 1000` (seconds) only when you move something yourself
+   without a physics body, and you clamp `delta` so a slow frame or a return
+   from a background tab does not teleport the player. Never multiply by delta
+   and divide by it again — that cancels out and breaks on a zero-delta frame.
 6. Collisions: arcade physics bodies and `this.physics.add.collider(a, b)` for
    platformers and simple hits; `overlap` when you only need to know they touch.
 7. Camera: `camera.startFollow(player, true, 0.1, 0.1)` and
