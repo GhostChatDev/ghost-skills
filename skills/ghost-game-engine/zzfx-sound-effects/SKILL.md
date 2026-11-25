@@ -240,6 +240,27 @@ Mute button markup, accessible and at least 44 px:
 - [ ] The mute control is reachable by keyboard and has an accessible name.
 - [ ] The honour of the source: the MIT notice for ZzFX is in the repository.
 
+## Known limitations
+
+- **Effects only, no music.** ZzFX plays one-shot sounds. For a looping
+  composition use `tonejs-music/SKILL.md`; ZzFXM is a separate companion project
+  and is not covered by this skill.
+- **No built-in mute, volume or persistence.** The volume argument is per call;
+  a global mute, a volume slider and the saved preference are your code (see
+  *Accessibility* above).
+- **No scheduling or precise timing.** A call plays now, on the audio context's
+  clock. Do not build a rhythm game on back-to-back `zzfx()` calls; use a
+  scheduler such as Web Audio's `currentTime` (or Tone.js).
+- **The parameter list is positional and unvalidated.** A missing or extra
+  comma shifts every later value and produces a different sound instead of an
+  error. Always paste the array from the designer, never retype it.
+- **Not verified in this session:** how the npm module's named exports behave in
+  a browser, and per-parameter defaults beyond what the README and the published
+  micro build show (stated again under *Sources checked*). Listen to every sound
+  once before shipping.
+- **One `AudioContext` per game.** Browsers cap the number of live contexts;
+  creating one per sound fails after a handful of plays.
+
 ## Upstream references
 
 - Repository: <https://github.com/KilledByAPixel/ZzFX>

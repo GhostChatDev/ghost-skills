@@ -255,6 +255,42 @@ memory on a phone within a few rounds.
 - [ ] Leaving or restarting the scene disposes geometries, materials and
       textures; memory does not grow on repeated restarts.
 
+## Accessibility and reduced motion
+
+A 3D canvas is opaque to assistive technology and can make people ill, so these
+are requirements, not polish.
+
+```js
+// Read once; the loop and the effects consult it.
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  if (!reduceMotion) camera.position.y = eyeY + Math.sin(clock.elapsedTime * 6) * 0.03; // no head bob
+  renderer.render(scene, camera);
+});
+```
+
+- **Turn off** head bob, view sway, camera shake, forced camera rotation,
+  full-screen flashes, fast strobe lights and continuous screen-filling motion
+  when `prefers-reduced-motion: reduce` is set. The world must stay playable and
+  the player must still be able to move; reduced motion is not "no game".
+- **Ship a "reduce motion" switch inside the game too**, next to the quality
+  setting, and save it in `localStorage`: some players cannot change the OS
+  setting, and some games are the reason they need it.
+- **Never encode gameplay information only in 3D.** Health, ammo, score and
+  objective go in HTML text over the canvas, with `aria-live="polite"` on the
+  parts that change, so a screen reader announces them.
+- **Name the canvas:** `role="img"` and an `aria-label` describing the scene, or
+  an adjacent description. A bare `<canvas>` is read as nothing.
+- **Every action needs a keyboard path.** Mouse-look with pointer lock is fine
+  as an option; it must never be the only way to play, and pointer lock only
+  after a deliberate click (never on page load).
+- **Photosensitivity:** no more than a few flashes a second; a white flash on
+  every hit is a health hazard.
+- **Pause the loop when hidden** (`visibilitychange` → `setAnimationLoop(null)`,
+  restart on return) so a background tab stops costing battery.
+
 ## Mobile performance
 
 - Cap the pixel ratio at 2 (1 on Low); phones have far more pixels than they can

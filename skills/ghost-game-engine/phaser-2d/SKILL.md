@@ -155,6 +155,42 @@ Arcade physics versus matter: arcade is box-only, fast and enough for platforms,
 top-down shooters and simple hits. Use matter only for physics puzzles (slopes,
 rotation, joints) and say why.
 
+## Accessibility, reduced motion and mobile performance
+
+- **Reduced motion is a preference, not a nicety.** Read it once at boot and
+  keep it on the scene:
+
+  ```js
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // In create(): spread the effect switch out where the effect is used.
+  if (!reduceMotion) this.cameras.main.shake(120, 0.006);
+  ```
+
+  Turn off camera shake, screen flashes, sprite bobbing, parallax scroll and
+  long tweens when it is set; keep the game fully playable. Do not switch off
+  the whole game, and never make a jump depend on a screen effect.
+- **Flashing.** No more than a few flashes a second, below the usual
+  photosensitivity guidance; a white full-screen flash on every hit is a real
+  health problem, not a style choice.
+- **Sound is never the only signal.** Pair every audio cue with a visible change
+  (a flash, a counter, a shape), and ship a visible mute control — see
+  `music-and-audio-playback/SKILL.md` and `zzfx-sound-effects/SKILL.md`.
+- **Keyboard and touch both work.** A player without a mouse or with one hand on
+  a phone must reach every action. On-screen buttons at least 44 px, labelled,
+  and reachable in `Tab` order when the game is HTML-driven.
+- **The canvas needs a name.** Give it `role="img"` plus an `aria-label` (or an
+  adjacent text description) so a screen reader says what the game is instead of
+  reading nothing.
+- **Pause when hidden.** On `visibilitychange`, pause physics and audio; a
+  backgrounded mobile tab otherwise returns with a huge delta and a jump.
+- **Mobile cost.** Cap the pixel ratio, avoid per-frame `Graphics` redraws, and
+  keep the live object count flat (pooling, step 8). A phone throttles the loop
+  when the device gets hot; test on a real phone, not only a desktop browser.
+- `prefers-reduced-motion` is read at boot here. Verify the exact Phaser 4 member
+  you use for tweens and shake on its docs page before relying on it — this
+  skill only shows `cameras.main.shake`, which is the one used above.
+
 ## Common mistakes and how to avoid them
 
 - **Physics enabled without bodies.** `this.physics.add.existing(obj)` before a
