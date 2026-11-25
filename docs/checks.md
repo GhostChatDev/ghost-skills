@@ -48,25 +48,23 @@ change.
 ## What was actually checked, and when
 
 Checked on 2026-11-25 by a throwaway Node script kept **outside** this
-repository (`/tmp/vg/`, never committed, so the Screenshots check still sees a
-Markdown-only repo). It was run again after the last edit to the two skills
-named below. Result: `PASS: 0 problems`.
+repository (never committed, so the Screenshots check still sees a
+Markdown-only repo). Final run on the files of commit `115c724`, result:
+`OK all manifest skills exist with all 9 sections` and `manifest parses,
+skills: 20`.
 
-- `manifest.json` parses as JSON; all 20 entries carry `id`, `path`,
-  `description`, `tags`, `engines`, `requires`, `references`.
-- All 20 `path` values exist on disk. No duplicate ids.
+- `manifest.json` parses as JSON and holds 20 entries; all 20 `path` values
+  exist on disk; no duplicate ids.
 - Every skill folder is in the manifest and every manifest folder exists (20
-  both ways).
-- All 20 `SKILL.md` files carry the eight fixed sections (Purpose, When to use
-  it, When not to use it, Required inputs and prerequisites, Upstream
-  references, Compatibility and licence cautions, Acceptance criteria and
-  verification, Known limitations) plus a steps section.
-  `phaser-2d` and `littlejs-small-games` used the short headings `Rules`,
-  `Compatibility and licence`, `Verification` and `Source`; they were renamed
-  in commit `be971bf` and now match the rest.
-- 23 relative links in `skills/ghost-game-engine/README.md` resolve.
-- All 13 rows of `skills/INDEX.md` carry a `ready` or `missing` status.
-- `skills/skill-06` to `skills/skill-13` contain the MISSING line.
+  both ways; `ls skills/ghost-game-engine | wc -l` printed 22: the 20 skill
+  folders plus `README.md` and `manifest.json`).
+- All 20 `SKILL.md` files carry the nine required sections: Purpose, When to use
+  it, When not to use it, Required inputs and prerequisites, Steps (`## Steps
+  and rules`), Upstream references, Compatibility and licence cautions,
+  Acceptance criteria and verification, Known limitations.
+- `skills/INDEX.md` carries a row for `skills/ghost-game-engine/`.
+- A search for `game-skills` across the branch returns no matches: the old
+  duplicate library is gone from every file.
 
 **Not checked:** no upstream repository was contacted after the API rate limit
 stopped the last read, so the licence and branch cells still marked partial in
