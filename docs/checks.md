@@ -47,10 +47,12 @@ change.
 
 ## What was actually checked, and when
 
-Checked on 2026-11-25 by a throwaway Node script kept **outside** this
-repository (`/tmp/vg/`, never committed, so the Screenshots check still sees a
-Markdown-only repo). It was run again after the last edit to the two skills
-named below. Result: `PASS: 0 problems`.
+Checked on 2026-11-25 by a Node script. That script must live **outside** this
+repository. One was once committed at `tmp/verify-library.mjs`; the Screenshots
+check read the `.mjs`, served the repo as a website and failed with `FAIL: no
+index.html found`, so it was deleted in commit `edeb00f` and the check passed.
+The final run was made in the sandbox and never committed. Result:
+`OK all manifest skills exist with all 9 sections`.
 
 - `manifest.json` parses as JSON; all 20 entries carry `id`, `path`,
   `description`, `tags`, `engines`, `requires`, `references`.
