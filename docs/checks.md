@@ -44,3 +44,32 @@ change.
       index.html found`. So a validator script cannot live in this repository,
       whatever language it is written in. That is why the checks here are a
       checklist instead of a script.
+
+## What was actually checked, and when
+
+Checked on 2026-11-25 by a throwaway Node script kept **outside** this
+repository (`/tmp/vg/`, never committed, so the Screenshots check still sees a
+Markdown-only repo). It was run again after the last edit to the two skills
+named below. Result: `PASS: 0 problems`.
+
+- `manifest.json` parses as JSON; all 20 entries carry `id`, `path`,
+  `description`, `tags`, `engines`, `requires`, `references`.
+- All 20 `path` values exist on disk. No duplicate ids.
+- Every skill folder is in the manifest and every manifest folder exists (20
+  both ways).
+- All 20 `SKILL.md` files carry the eight fixed sections (Purpose, When to use
+  it, When not to use it, Required inputs and prerequisites, Upstream
+  references, Compatibility and licence cautions, Acceptance criteria and
+  verification, Known limitations) plus a steps section.
+  `phaser-2d` and `littlejs-small-games` used the short headings `Rules`,
+  `Compatibility and licence`, `Verification` and `Source`; they were renamed
+  in commit `be971bf` and now match the rest.
+- 23 relative links in `skills/ghost-game-engine/README.md` resolve.
+- All 13 rows of `skills/INDEX.md` carry a `ready` or `missing` status.
+- `skills/skill-06` to `skills/skill-13` contain the MISSING line.
+
+**Not checked:** no upstream repository was contacted after the API rate limit
+stopped the last read, so the licence and branch cells still marked partial in
+`docs/repositories.md` stay unconfirmed. No check of the skill text against the
+person's original wording was done beyond reading `skills/` and the five named
+skills in full. `check_ci` on the final commit is separate from this list.
