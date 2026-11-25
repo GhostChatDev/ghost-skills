@@ -62,8 +62,14 @@ whole game skeleton, so the game rules you write are small.
 7. Camera: `camera.startFollow(player, true, 0.1, 0.1)` and
    `camera.setBounds(0, 0, worldWidth, worldHeight)` so the view stops at the
    world edge. `camera.shake(100, 0.01)` for hits, optional.
-8. Kill, do not hide: `destroy()` off-world sprites and bullets, and reuse a
-   small group pool (`group.get()` / `killAndHide()`), or memory climbs.
+8. Pool what you shoot and what you spawn. Disable and recycle a bullet instead
+   of destroying and recreating it every shot: a small `Phaser.Physics.Arcade.Group`
+   with `createCallback` and `group.get(x, y)` reuses a dead member. Clear a live
+   one with `sprite.disableBody(true, true)` (stops physics, hides it, keeps it in
+   the group) or `sprite.killAndHide()` for a sprite with no physics body — both
+   keep it in the group so `get()` can hand it back. Use `destroy()` only when the
+   object is permanently gone (a level ends, a boss dies). Mixing the two up is
+   the usual bug: `kill()` alone leaves an arcade body moving and still colliding.
 9. Scale with a `Phaser.Scale.FIT` config and one aspect ratio; test at phone
    width and check nothing is clipped.
 10. Input for keyboard, mouse and touch. On phones, add on-screen buttons of at
