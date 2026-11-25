@@ -17,14 +17,7 @@ Plain record. If it is not listed here as run, it was not run.
     `clear-writer` hold the text from the request, word for word.
   - `skill-06` to `skill-13` hold only the MISSING line. See `MISSING.md`.
 - `manifest.json` and both indexes: each `ready` row names a folder that
-  exists, and each folder has a `SKILL.md`. Checked on 2026-11-25 by a Node
-  script run outside this repository on the files of commit `115c724`: the
-  manifest parses, all 20 paths exist, and every one of the 20 `SKILL.md` files
-  carries the nine required section headings. Result: `OK all manifest skills
-  exist with all 9 sections`.
-- `skills/INDEX.md` carries a row for `skills/ghost-game-engine/`.
-- The old duplicate library `game-skills/` appears nowhere: a search for that
-  word over the branch returns no matches.
+  exists, and each folder has a `SKILL.md`.
 ## Not checked
 
 - **No human reviewed the skill text.** The rules are the person's own words.
