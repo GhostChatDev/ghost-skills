@@ -10,7 +10,7 @@ change.
 - [ ] The first line is the skill's name, and it matches the row in the index.
 - [ ] The rules are written in full. No "TODO", no "...", no placeholder text.
 - [ ] Short sentences, plain words, the person's meaning kept.
-- [ ] A stub only, and only when the real text is missing: one MISSING line.
+- [ ] No empty or placeholder folders: a skill with no text is not listed.
 
 ## Indexes
 
@@ -18,13 +18,9 @@ change.
 - [ ] `skills/ghost-game-engine/README.md` lists every folder in
       `skills/ghost-game-engine/`, and `manifest.json` names every skill's path.
 - [ ] Each row gives: skill name, folder, when to use it, status.
-- [ ] Status says `ready` when the rules are written, `missing` for a stub.
+- [ ] Status says `ready` when the rules are written.
 - [ ] Every folder named in an index exists, and every folder is in an index.
-
-## Missing skills
-
-- [ ] Every stub is listed in `MISSING.md`.
-- [ ] No rules were invented to fill a stub.
+- [ ] No rules were invented for a skill whose text has not arrived.
 
 ## The rest of the repository
 
@@ -72,10 +68,11 @@ The final run was made in the sandbox and never committed. Result:
   before that it was a copy of the root `README.md` and linked nothing. The link
   targets were **not** opened one by one; the 20 folder names came from
   `manifest.json`, whose paths were checked against the disk.
-- `skills/INDEX.md` holds 14 rows, one per folder: the 5 writing skills, one row
-  for `skills/ghost-game-engine/` that points at its own index, and the 8 stubs.
-
-- `skills/skill-06` to `skills/skill-13` contain the MISSING line.
+- `skills/` holds one library, `skills/ghost-game-engine/`, with 20 skill
+  folders plus `README.md` and `manifest.json`. The 5 writing skills, the eight
+  placeholder folders (`skill-06` to `skill-13`), `MISSING.md`,
+  `ghost-skills-project/` and `project/PROJECT-BUNDLE.md` were deleted on the
+  user's request on 2026-11-25 (commits `7c4c4c9`, `ba2d631`).
 
 **Not checked:** no upstream repository was contacted after the API rate limit
 stopped the last read, so the licence and branch cells still marked partial in
