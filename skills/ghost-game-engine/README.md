@@ -10,7 +10,7 @@ engine, and not a package. Every entry is a written instruction file at
    [../HOW-TO-USE.md](../HOW-TO-USE.md) first: it explains how to find, read and
    apply only the skills that match the task.
 2. Open **only** the `SKILL.md` files whose "when to use it" line matches the
-   task in front of you. Do not load all 20.
+   task in front of you. Do not load all 25.
 3. Read the target game repository's own instructions (`AGENTS.md`, `README`,
    its checks) before choosing an engine. If they conflict with these skills,
    say so and follow the target repository; report the conflict.
