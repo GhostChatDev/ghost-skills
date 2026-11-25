@@ -106,14 +106,14 @@ export async function showPanel(fromEl, toEl) {
   if (fromEl) {
     await animate(fromEl, { opacity: 0 }, {
       duration: reduce.matches ? 0 : DURATION,
-      easing: "ease-out",
+      ease: "easeOut",          // option is `ease`, not `easing`
     }).finished;
     fromEl.hidden = true;
   }
   toEl.hidden = false;
   animate(toEl, { opacity: [0, 1], y: reduce.matches ? [0, 0] : [12, 0] }, {
     duration: reduce.matches ? 0 : DURATION,
-    easing: "ease-out",
+    ease: "easeOut",
   });
 }
 ```
@@ -200,8 +200,11 @@ permission notice with any redistributed source.
 
 ## Sources checked
 
-2026-11-25: npm registry document for `motion` (`latest` 14.14.0, MIT) and a read
-of the repository README (install line, React and DOM entry points). Not verified:
-the exact current import path for the plain-DOM build and the full component list,
-because the docs site was not read this session; check the installed package's
-README before copying an import.
+2026-11-25: npm registry document for `motion` (`latest` 14.14.0, MIT), the
+published `exports` map (`motion` root = the DOM build, `motion/react` = the
+React build), the repository README (install line, quick-start examples) and the
+published types, where the animate options use `ease` (an `Easing` name such as
+`"easeOut"`), not `easing` — `easing` was the older Motion One option name and is
+not read by v14. Not verified this session: the full component list and every
+hook, because the docs site was not read; check the installed package's README
+or `node_modules/motion` before copying an import you have not seen there.

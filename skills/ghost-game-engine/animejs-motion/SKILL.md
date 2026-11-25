@@ -115,13 +115,18 @@ if (logoPath && typeof logoPath.getTotalLength === "function") {
 // Timeline positions: numbers are absolute ms on the timeline.
 // "+=200" means "200ms after the previous step ends".
 function buildIntro() {
-  return createTimeline({ autoplay: true })
-    .add(logoPath, {
+  const tl = createTimeline({ autoplay: true });
+  const hasLogo = Boolean(logoPath);
+  // Only add the SVG step when the path is really on the page: .add(null, …)
+  // is an error, and an optional logo must not break the whole title screen.
+  if (hasLogo) {
+    tl.add(logoPath, {
       strokeDashoffset: [dashLength, 0],   // the measured length, not a guess
       duration: 900,
       ease: "inOutSine",
-    })
-    .add(".game-title", {
+    });
+  }
+  tl.add(".game-title", {
       opacity: [0, 1],
       scale: [0.94, 1],
       duration: 500,
@@ -134,6 +139,7 @@ function buildIntro() {
       duration: 380,
       ease: "outQuad",
     }, "+=150");
+  return tl;
 }
 
 // Controls exist on the returned instance: play, pause, restart, seek.
@@ -164,16 +170,25 @@ path, which is why it beats guessing the dasharray.
 ```js
 import { animate, splitText, stagger } from "animejs";
 
-// splitText wraps the text in spans; store the result so you can revert it.
-const { chars } = splitText(".game-title");
-animate(chars, {
+// splitText(target, params) RETURNS the splitter; it does not hand back the
+// spans by itself. `chars: true` wraps each character (words are wrapped
+// already by default, but the word spans are not what you animate here).
+const split = splitText(".game-title", { chars: true });
+animate(split.chars, {
   opacity: [0, 1],
   translateY: [12, 0],
   delay: stagger(35),
   duration: 300,
   ease: "outQuad",
 });
+
+// Later, when the screen closes, undo the split:
+// split.revert();
 ```
+
+Keep the returned object: it is the only handle on `split.chars` and on
+`split.revert()`. Never wrap the call in `const { chars } = splitText(...)` — the
+destructured array cannot be reverted, and the split spans stay in the DOM.
 
 Splitting text replaces the DOM inside the element, so: split **once** (not on
 every frame or every resize), and revert it before the element is re-rendered.
