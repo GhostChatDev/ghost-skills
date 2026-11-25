@@ -97,9 +97,16 @@ import { tsParticles } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 let container = null;
+let loading = null;                     // the in-flight start, if any
+let loaded = false;
 
 export async function startStarfield() {
-  await loadSlim(tsParticles);          // once per page load
+  // Calling this twice (a setting toggled back on, a screen re-entered) would
+  // otherwise load a second container on the same element and leak a canvas.
+  if (container) return;                 // already running
+  if (loading) return loading;           // a start is already underway
+  loading = (async () => {
+  if (!loaded) { await loadSlim(tsParticles); loaded = true; }  // once per page load
   container = await tsParticles.load({
     id: "starfield",                   // matches the element id
     options: {
@@ -115,6 +122,12 @@ export async function startStarfield() {
       },
     },
   });
+  })();
+  try {
+    await loading;
+  } finally {
+    loading = null;
+  }
 }
 
 export function stopStarfield() {
@@ -122,6 +135,15 @@ export function stopStarfield() {
   container = null;
 }
 ```
+
+`container` is the guard: while it is set, `startStarfield()` does nothing, so a
+toggle or a re-entered screen never stacks a second canvas on the same element.
+`loading` covers the gap before the first `await` resolves, when `container` is
+still null and two quick calls would otherwise both load.
+
+Do **not** call `startStarfield()` twice without a `stopStarfield()` between
+them; if you need a second layer, give it its own element id and its own
+container variable.
 
 ### A confetti burst on a win, removed afterwards
 
@@ -218,8 +240,10 @@ phone drops frames before a desktop does. Practical rules:
    `pointer-events: none`, or no button underneath will be clickable.
 5. **High counts "because it looks richer".** It costs phone frames, and on a
    small screen most particles are off-screen anyway.
-6. **Never destroying a burst.** Each win adds another canvas; after ten wins
-   the page crawls.
+6. **Never destroying a burst, or starting the background twice.** Each win adds
+   another canvas; after ten wins the page crawls. And calling the *background*
+   start function again on the same element loads a second container — keep one
+   module-level `container` and return early while it is set.
 7. **Ignoring reduced motion.** Confetti and starfields are exactly the kind of
    motion some players need to switch off.
 8. **Particles as gameplay.** No collision, no reliable per-particle hit test,
@@ -232,6 +256,8 @@ phone drops frames before a desktop does. Practical rules:
 - [ ] The container has the size and stacking you intended; UI buttons under or
       over it are still clickable.
 - [ ] A background layer pauses when the tab is hidden.
+- [ ] Starting the background twice (a toggle, a re-entered screen) leaves one
+      canvas, not two.
 - [ ] Every burst is `destroy()`ed when it ends, and a rapid repeat win does not
       stack canvases.
 - [ ] Particle counts are the small numbers above and the page stays smooth on a
