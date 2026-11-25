@@ -11,11 +11,11 @@
       "requires": "tools or environment needed; empty when none",
       "references": "upstream source; verify at docs/repositories.md"
     },
-    "verification": "the value of verified_on is the date a person or agent actually read the source; null means not verified and the skill must say so"
+    "verification": "See docs/repositories.md: a source is only recorded there when a tool returned its fields. This manifest never carries a licence, version or verification date of its own; read that file."
   },
   "library": "ghost-game-engine",
   "library_version": "1.0.0",
-  "verified_on": null,
+  "source_catalog": "docs/repositories.md",
   "skills": [
     {"id": "game-planning-and-scope", "path": "game-planning-and-scope/SKILL.md", "description": "Turn a game idea into a one-build brief with scope, mechanics and a done check.", "tags": ["planning", "scope", "brief"], "engines": [], "requires": [], "references": []},
     {"id": "engine-selection", "path": "engine-selection/SKILL.md", "description": "Pick one primary engine by reading the target repo and the real requirements.", "tags": ["planning", "engines", "decision"], "engines": [], "requires": [], "references": ["https://github.com/phaserjs/phaser", "https://github.com/mrdoob/three.js", "https://github.com/pixijs/pixijs", "https://github.com/KilledByAPixel/LittleJS", "https://github.com/melonjs/melonJS"]},
@@ -25,7 +25,7 @@
     {"id": "pixijs-rendering", "path": "pixijs-rendering/SKILL.md", "description": "Use PixiJS as a fast 2D renderer for a game whose rules you write yourself.", "tags": ["2d", "browser", "rendering", "pixijs"], "engines": ["pixijs"], "requires": [], "references": ["https://github.com/pixijs/pixijs"]},
     {"id": "tilemaps-and-level-design", "path": "tilemaps-and-level-design/SKILL.md", "description": "Design tile-based levels and load them from Tiled maps.", "tags": ["2d", "level-design", "tilemap", "tiled"], "engines": ["phaser", "pixijs", "melonjs"], "requires": [], "references": ["https://github.com/mapeditor/tiled"]},
     {"id": "enemy-ai-and-behavior-trees", "path": "enemy-ai-and-behavior-trees/SKILL.md", "description": "Give enemies readable, testable behaviour with state machines or behaviour trees.", "tags": ["ai", "gameplay", "behaviour-tree"], "engines": [], "requires": [], "references": ["https://github.com/ashblue/fluid-behavior-tree"]},
-    {"id": "dialogue-and-narrative", "path": "dialogue-and-narrative/SKILL.md", "description": "Write and load branching dialogue without hard-coding it in the game loop.", "tags": ["story", "dialogue", "writing"], "engines": [], "requires": [], "references": ["https://github.com/jonnyreeves/yarn-bound", "https://github.com/YarnSpinnerTool/YarnSpinner"]},
+    {"id": "dialogue-and-narrative", "path": "dialogue-and-narrative/SKILL.md", "description": "Write and load branching dialogue without hard-coding it in the game loop.", "tags": ["story", "dialogue", "writing"], "engines": [], "requires": [], "references": ["https://github.com/YarnSpinnerTool/YarnSpinner"]},
     {"id": "procedural-world-generation", "path": "procedural-world-generation/SKILL.md", "description": "Generate levels that are reproducible from a seed and still playable.", "tags": ["generation", "levels", "seed"], "engines": [], "requires": [], "references": ["https://github.com/Syomus/ProceduralToolkit"]},
     {"id": "animation-and-game-feel", "path": "animation-and-game-feel/SKILL.md", "description": "Make movement and feedback feel good: easing, squash, hit pause, screenshake.", "tags": ["feel", "animation", "polish"], "engines": [], "requires": [], "references": ["https://github.com/annulusgames/LitMotion"]},
     {"id": "retro-sound-effects", "path": "retro-sound-effects/SKILL.md", "description": "Make small retro sound effects and keep them legal and lightweight.", "tags": ["audio", "sfx", "retro"], "engines": [], "requires": [], "references": ["https://github.com/chr15m/jsfxr"]},

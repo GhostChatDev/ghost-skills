@@ -29,7 +29,7 @@ scale, in a project that builds and runs.
   cell there is blank, read the repository's own `LICENSE` file instead of
   quoting from memory. Confirm the version in `package.json` after install.
 
-## Steps and rules
+## Steps
 
 1. One scene per concern: `Boot`, `Preload`, `Menu`, `Play`, `GameOver`.
 2. Pin the Phaser version in `package.json` and say which one you installed.

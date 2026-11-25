@@ -26,7 +26,7 @@ hundred lines that run anywhere.
   blank there, so read the repository before stating one.
 - A way to open the page: a local server, not `file://`, if you load files.
 
-## Steps and rules
+## Steps
 
 1. One HTML file, one script, no build step unless the person asks.
 2. Keep it under about 500 lines. Past that, move to Phaser and say why.
