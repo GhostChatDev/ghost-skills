@@ -10,14 +10,17 @@ Plain record. If it is not listed here as run, it was not run.
   `skills/INDEX.md`, `skills/ghost-game-engine/README.md`: read after writing.
 - The 20 skills under `skills/ghost-game-engine/`: each has a purpose, when to
   use it, prerequisites, steps, references, licence cautions, acceptance
-  criteria and known limitations. Checked by `grep` for the section headings on
-  the committed files.
+  criteria and known limitations. Checked by a Node script run in the sandbox,
+  outside this repository (a script inside it makes the Screenshots check fail);
+  the method and its result are recorded in `docs/checks.md`.
 - The 5 full skills and the 8 stubs under `skills/`:
   - `explain-like-im-new`, `social-media`, `planner`, `marketing-copy`,
     `clear-writer` hold the text from the request, word for word.
   - `skill-06` to `skill-13` hold only the MISSING line. See `MISSING.md`.
-- `manifest.json` and both indexes: each `ready` row names a folder that
-  exists, and each folder has a `SKILL.md`.
+- `manifest.json` and `skills/INDEX.md`: each `ready` row names a folder that
+  exists, and each folder has a `SKILL.md`. The Ghost Game Engine row points at
+  `skills/ghost-game-engine/README.md`, which links a `SKILL.md` one folder
+  down for each of its 20 skills.
 ## Not checked
 
 - **No human reviewed the skill text.** The rules are the person's own words.
