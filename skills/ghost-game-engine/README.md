@@ -1,52 +1,87 @@
-# ghost-skills
+# ghost-game-engine
 
-Shared skills for Ghost Code and Ghost Chat.
+A shared game-development skill library for Ghost Code agents.
 
-One skill = one folder. Each folder holds a `SKILL.md` file. `skills/INDEX.md`
-lists every skill, where it lives, when to use it, and whether it is ready or
-still missing.
+These are **repository instructions**. They are not registered Ghost Chat Skills
+and not globally loaded agent capabilities. An agent reads them only when this
+repository, or a Project holding these files, is chosen for the session.
 
-Markdown only. No app, no game engine, no packages.
+## Read this first
 
-## How to use this repo
+1. Read this index.
+2. Load **only** the skills that match the task. Do not load all 20.
+3. Inspect the target game repository before choosing an engine: its
+   instructions, its code, its package files, its checks.
+4. Follow the target repository's instructions. If they conflict with a skill
+   here, say so and report the conflict. Do not silently override either one.
 
-Two ways. Pick one.
+## The rules that apply to every skill
 
-1. **Ghost Code:** in the `+` menu, choose this repo (`GhostChatDev/ghost-skills`)
-   before your first message. The agent then reads the skills from the repo.
-2. **Ghost Chat Project:** put your chat or session inside the **Ghost Skills**
-   Project. Paste the block from `PROJECT-INSTRUCTIONS.md` into the Project's
-   instructions.
+- One primary engine per game. Do not combine competing engines by default.
+- A skill here is guidance. No dependency is installed because a skill names it.
+  Never add a paid service or a dependency without saying why it is needed.
+- Never invent a version, a benchmark, a licence or a capability. If a source
+  was not read, mark it unverified.
+- No upstream source code is vendored in this repository. If code is ever
+  imported, keep its licence and notices.
+- Check the licence of every asset and library before shipping.
 
-## What this library can and cannot do
+## Engine-selection rules (short form)
 
-- A repo is **not** auto-loaded into every agent. An agent only sees a repo you
-  pick for that session.
-- A Project shares its instructions and files with every chat and session
-  inside it. That is how one Project can carry this whole library.
-- The Skills toggle still allows **only 5 skills on at a time**. That limit does
-  not change. This library is how you keep *all* your skills in one place anyway:
-  the files are here, and the agent reads them from the repo or the Project.
-- Ghost Code never merges. It commits to its own `ghost-code/` branch and opens a
-  draft pull request. **You merge the pull request on GitHub.** Main stays
-  untouched until you do.
+- **Phaser**: a fuller 2D browser game (scenes, physics, input, tilemaps).
+- **LittleJS**: a compact browser game in a few files.
+- **three.js**: 3D rendering. It is a renderer, not a game engine; plan the game
+  systems (collision, state, input, sound) explicitly.
+- **PixiJS**: a fast 2D renderer for a game whose rules you write yourself. Not a
+  full gameplay engine.
+- **melonJS**: evaluate it as an alternative engine when it fits. Do not add it
+  automatically.
+- **jsfxr, Howler.js, a dialogue library, Colyseus, boardgame.io**: add only when
+  the game needs them, each with a stated reason.
+- **Unity and desktop art tools** (Blockbench, Krita, Unity MCP bridges, Unity
+  build actions): a separate workflow with prerequisites a person must set up
+  first. See the last skill in the list below.
 
-## Files
+## Index
+
+Status is `ready`: the skill is written in full. Every skill below is `ready`.
+
+| Skill | When to use it |
+| --- | --- |
+| [`game-planning-and-scope`](game-planning-and-scope/SKILL.md) | Before writing code for a new game: turn the idea into a one-build brief. |
+| [`engine-selection`](engine-selection/SKILL.md) | When the engine is not decided yet, or the target repo already uses one. |
+| [`phaser-2d`](phaser-2d/SKILL.md) | A fuller 2D browser game with scenes, sprites, arcade physics and input. |
+| [`littlejs-small-games`](littlejs-small-games/SKILL.md) | A small browser game that should stay in a few files. |
+| [`threejs-3d`](threejs-3d/SKILL.md) | A 3D browser game built on three.js. |
+| [`pixijs-rendering`](pixijs-rendering/SKILL.md) | Custom 2D rendering where you write the game rules yourself. |
+| [`tilemaps-and-level-design`](tilemaps-and-level-design/SKILL.md) | Tile-based levels, Tiled maps, level layout and pacing. |
+| [`enemy-ai-and-behavior-trees`](enemy-ai-and-behavior-trees/SKILL.md) | Enemy behaviour that must be readable and testable. |
+| [`dialogue-and-narrative`](dialogue-and-narrative/SKILL.md) | Branching dialogue and story that is data, not code in the game loop. |
+| [`procedural-world-generation`](procedural-world-generation/SKILL.md) | Levels generated from a seed, and still playable. |
+| [`animation-and-game-feel`](animation-and-game-feel/SKILL.md) | Making movement and feedback feel good: easing, hit pause, screenshake. |
+| [`retro-sound-effects`](retro-sound-effects/SKILL.md) | Small retro sound effects that stay legal and light. |
+| [`music-and-audio-playback`](music-and-audio-playback/SKILL.md) | Music and sound playback, including browser autoplay rules. |
+| [`multiplayer-with-colyseus`](multiplayer-with-colyseus/SKILL.md) | A real-time multiplayer room with a server that owns the state. |
+| [`turn-based-with-boardgameio`](turn-based-with-boardgameio/SKILL.md) | A turn-based board game with explicit moves and game state. |
+| [`asset-pipeline-and-licensing`](asset-pipeline-and-licensing/SKILL.md) | Bringing art in at the right size, with the licence recorded. |
+| [`web-game-testing`](web-game-testing/SKILL.md) | Proving the game builds, loads, reacts to controls and keeps saved data. |
+| [`performance-and-accessibility`](performance-and-accessibility/SKILL.md) | Frame time inside budget, and a game usable without colour or sound. |
+| [`release-and-documentation`](release-and-documentation/SKILL.md) | Shipping with a README, credits and no unchecked claims. |
+| [`unity-and-desktop-tool-boundaries`](unity-and-desktop-tool-boundaries/SKILL.md) | Any Unity or desktop art-tool work: what an agent can do and what a person must do. |
+
+## Files in this folder
 
 | File | What it is |
 | --- | --- |
-| `AGENTS.md` | Rules an agent follows before any task. |
-| `PROJECT-INSTRUCTIONS.md` | Short block to paste into a Ghost Chat Project. |
-| `skills/INDEX.md` | Table of every skill: name, folder, when to use, status. |
-| `skills/<folder>/SKILL.md` | One skill. |
-| `skills/ghost-game-engine/README.md` | The game-development library: index, engine-selection rules, upstream references. |
-| `skills/ghost-game-engine/<skill-name>/SKILL.md` | One game skill, with the upstream source to read in `docs/repositories.md`. |
-| `skills/ghost-game-engine/manifest.json` | Every skill's id, path, tags, engines and references. No source code is vendored. |
-| `docs/repositories.md` | The upstream sources: what was read and when, licence, archived state. |
-| `docs/adoption.md` | How to bring in a skill from outside, without copying its licence or its secrets. |
-| `docs/verification.md` | What was actually read, and what was not. |
-| `docs/checks.md` | The manual checklist to tick before merging a change. There is no code here to run. |
-| `MISSING.md` | Skills still waiting for your real text. |
+| `manifest.json` | Every skill: id, path, description, tags, engines, requirements, references. |
+| `<skill-name>/SKILL.md` | One skill, with the 9 required sections. |
 
----
-<img src="https://ghostchat.tech/icons/ghost-code-dev.png" width="20" height="20" alt="" align="top"> Built by [Ghost Code Dev](https://ghostchat.tech)
+Upstream sources, what was read and when, licence and archived state:
+[`docs/repositories.md`](../../docs/repositories.md).
+Adopting a skill in another repository:
+[`docs/adoption.md`](../../docs/adoption.md).
+What was verified and what was not:
+[`docs/verification.md`](../../docs/verification.md).
+
+The skill files also link to `docs/ghost-game-engine/...`. Those three files are
+one-line redirects to the docs above, so no page holds a second copy.
