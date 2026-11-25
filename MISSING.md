@@ -1,29 +1,25 @@
 # Missing skills
 
-Eight folders are still empty. They hold no rules yet.
+This file used to list eight empty stub folders, `skills/skill-06/` through
+`skills/skill-13/`. They held no rules, only a placeholder line.
 
-| Folder | Skill name | What to send |
-| --- | --- | --- |
-| `skills/skill-06/` | not known yet | name + full text |
-| `skills/skill-07/` | not known yet | name + full text |
-| `skills/skill-08/` | not known yet | name + full text |
-| `skills/skill-09/` | not known yet | name + full text |
-| `skills/skill-10/` | not known yet | name + full text |
-| `skills/skill-11/` | not known yet | name + full text |
-| `skills/skill-12/` | not known yet | name + full text |
-| `skills/skill-13/` | not known yet | name + full text |
+**They were deleted on the user's request on 2026-11-25.** Nothing was lost: a
+stub never carried any skill text.
 
-## What to do
+## What is in the library now
 
-Reply with the **name** and the **full text** of each missing skill. One skill per
-reply, or all eight in one message. Both are fine.
+| Skill | Folder |
+| --- | --- |
+| Explain Like I'm New | `skills/explain-like-im-new/` |
+| Social Media | `skills/social-media/` |
+| Planner | `skills/planner/` |
+| Marketing Copy | `skills/marketing-copy/` |
+| Clear Writer | `skills/clear-writer/` |
+| Ghost Game Engine (20 game skills) | `skills/ghost-game-engine/` |
 
-When the text arrives:
+## To add a skill
 
-1. Replace the stub in `skills/skill-06/SKILL.md` (and so on) with the real text.
-   Do not keep the old placeholder line.
-2. Update the name, the "when to use it" column and the status to `ready` in
-   `skills/INDEX.md`.
-3. Remove that skill's row from this file.
-
-Do not invent rules for any of these skills. If the text is unclear, ask.
+Send its **name** and its **full text**. Then it gets one folder with a
+`SKILL.md`, one row in `skills/INDEX.md`, and nothing else. Do not create an
+empty placeholder to fill in later, and do not invent rules for a skill whose
+text has not arrived.
