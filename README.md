@@ -44,9 +44,8 @@ Two ways. Pick one.
 | `manifest.json` | Every verified upstream source mapped to the skill that uses it. |
 | `docs/repositories.md` | The upstream sources: what was read and when, licence, archived state. |
 | `docs/adoption.md` | How to bring in a skill from outside, without copying its licence or its secrets. |
-| `docs/verification.md` | What was actually run or read, and what was not. |
-| `scripts/validate-skills.mjs` | Checks both libraries, the stubs and the manifest. `node scripts/validate-skills.mjs`. |
-| `tests/validate-skills.test.mjs` | Tests for that script. `node --test tests/*.test.mjs`. |
+| `docs/verification.md` | What was actually read, and what was not. |
+| `docs/checks.md` | The manual checklist to tick before merging a change. There is no code here to run. |
 | `MISSING.md` | Skills still waiting for your real text. |
 
 ---
