@@ -88,7 +88,8 @@ animate(".menu-item", {
   opacity: [0, 1],
   translateY: [24, 0],
   duration: 450,
-  // stagger(value, options): seconds between each target's start
+  // stagger(value): MILLISECONDS between each target's start in Anime.js v4
+  // (all time values in v4 are ms — 60 here = 0.06s, not 60s).
   delay: stagger(60),
   ease: "outCubic",
 });
@@ -99,31 +100,45 @@ animate(".menu-item", {
 ```js
 import { createTimeline, stagger } from "animejs";
 
+// 1. Measure the real path first — `pathLength` is not a built-in name, it is
+//    whatever getTotalLength() returns for THIS path.
+const logoPath = document.querySelector(".logo-path");
+let dashLength = 0;
+if (logoPath && typeof logoPath.getTotalLength === "function") {
+  dashLength = logoPath.getTotalLength();
+  logoPath.style.strokeDasharray = String(dashLength);
+  logoPath.style.strokeDashoffset = String(dashLength);
+}
+
+// 2. Build the timeline in a function, so the reduced-motion branch below can
+//    create it too (a listener must never call .play() on something undefined).
 // Timeline positions: numbers are absolute ms on the timeline.
 // "+=200" means "200ms after the previous step ends".
-const intro = createTimeline({ autoplay: true })
-  .add(".logo-path", {
-    // Dashes are set in JS from getTotalLength() first: see the SVG note below.
-    strokeDashoffset: [pathLength, 0],
-    duration: 900,
-    ease: "inOutSine",
-  })
-  .add(".game-title", {
-    opacity: [0, 1],
-    scale: [0.94, 1],
-    duration: 500,
-    ease: "outQuad",
-  }, "-=300")            // overlap the previous step by 300ms
-  .add(".menu-item", {
-    opacity: [0, 1],
-    translateY: [18, 0],
-    delay: stagger(70),
-    duration: 380,
-    ease: "outQuad",
-  }, "+=150");
+function buildIntro() {
+  return createTimeline({ autoplay: true })
+    .add(logoPath, {
+      strokeDashoffset: [dashLength, 0],   // the measured length, not a guess
+      duration: 900,
+      ease: "inOutSine",
+    })
+    .add(".game-title", {
+      opacity: [0, 1],
+      scale: [0.94, 1],
+      duration: 500,
+      ease: "outQuad",
+    }, "-=300")            // overlap the previous step by 300ms
+    .add(".menu-item", {
+      opacity: [0, 1],
+      translateY: [18, 0],
+      delay: stagger(70),
+      duration: 380,
+      ease: "outQuad",
+    }, "+=150");
+}
 
 // Controls exist on the returned instance: play, pause, restart, seek.
 // Read the docs for the full set before using a method by name.
+let intro = buildIntro();
 document.querySelector("#skip").addEventListener("click", () => intro.seek(9999));
 ```
 
@@ -171,13 +186,34 @@ longer than a short title, keep one accessible copy of the text (for example
 ```js
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (reduce.matches) {
-  // No motion: put every animated element in its final state at once.
+function showFinalState() {
   document.querySelectorAll(".menu-item, .game-title")
     .forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; });
-} else {
-  // start the timeline as shown above
+  // The SVG title: dash out means "fully drawn".
+  const logoPath = document.querySelector(".logo-path");
+  if (logoPath) logoPath.style.strokeDashoffset = "0";
 }
+
+// `intro` comes from buildIntro() above. Build it once, here, so the listener
+// below always has a real object. null when motion is reduced from the start.
+let intro = null;
+if (reduce.matches) {
+  showFinalState();
+} else {
+  intro = buildIntro();
+}
+
+// Also react if the setting changes while the page is open.
+// Optional chaining and a null check: never call a method on nothing.
+reduce.addEventListener("change", (e) => {
+  if (e.matches) {
+    if (intro) { intro.pause(); intro = null; }
+    showFinalState();
+  } else {
+    intro = buildIntro();
+  }
+});
+```
 
 // Also react if the setting changes while the page is open:
 reduce.addEventListener("change", (e) => {

@@ -25,7 +25,8 @@ reversed from wherever it is, which CSS keyframes cannot do easily.
   the engine (`phaser-2d/SKILL.md`, `threejs-3d/SKILL.md`) or the canvas. An
   animation library outside the loop runs at a different clock and desyncs.
 - A single CSS transition is enough (a colour on hover): use CSS, it is free.
-- Complex choreographed sequences and SVG morphs or drawing: `animejs/SKILL.md`
+- Complex choreographed sequences and SVG morphs or drawing:
+  `animejs-motion/SKILL.md`
   has the timeline and SVG tooling.
 
 ## Setup and supported version

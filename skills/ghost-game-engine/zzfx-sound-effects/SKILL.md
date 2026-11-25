@@ -148,14 +148,32 @@ export function play(name) {
 }
 
 // Call this from the first real pointer or key event.
+// Resume the context ZzFX ALREADY plays through (ZZFX.audioContext), never a
+// new AudioContext: a new one is a different context, so ZzFX's own context
+// stays suspended and every sound is silent. Calling this repeatedly is cheap
+// and safe; creating contexts repeatedly is not (browsers refuse past ~6).
 export function unlockAudio() {
-  const ctx = new AudioContext();
-  ctx.resume().catch(() => { /* the next gesture will try again */ });
+  const ctx = ZZFX.audioContext;       // the shared one, created by ZzFX at import
+  if (ctx && ctx.state !== "running") {
+    ctx.resume().catch(() => { /* blocked: the next gesture tries again */ });
+  }
 }
 ```
 
-ZzFX keeps its own `AudioContext` in the micro build; a second context is only
-needed when you must resume one yourself. Do not create a new context per sound.
+The imported module must therefore also bring in `ZZFX`, which is where that
+shared context lives (`export const ZZFX = { audioContext: new AudioContext, ... }`
+in `zzfx@1.4.0`). Change the top of `audio.js` to:
+
+```js
+import { zzfx, ZZFX } from "zzfx";
+```
+
+ZzFX makes its context once, at import (`ZZFX.audioContext`). Never build your
+own for it: resume that one. On Safari and iOS the context starts `suspended`
+until a gesture, and it can be suspended again when the tab is hidden — call
+`unlockAudio()` from a `visibilitychange` handler as well as the first press.
+If `ctx` is missing (an older or different build), fall back to playing the
+sound only — never throw.
 
 Mute button markup, accessible and at least 44 px:
 

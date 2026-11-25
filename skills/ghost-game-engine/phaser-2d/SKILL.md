@@ -106,12 +106,17 @@ class Play extends Phaser.Scene {
       this.coin.setPosition(Phaser.Math.Between(40, 440), Phaser.Math.Between(40, 320));
     });
   }
-  update(_time, delta) {
-    const speed = 220 * (delta / 1000);
+  update(_time, _delta) {
+    // Arcade velocity is in pixels PER SECOND, so give plain speeds here and
+    // let Phaser apply delta itself. Arcade physics already steps against delta,
+    // so do NOT multiply by delta and convert back: that cancels out, and a
+    // zero-delta frame divides by zero (NaN velocity). `_delta` is unused on
+    // purpose; use it for timers, not for setting velocity.
+    const SPEED = 220;
     const body = this.player.body;
     body.setVelocity(
-      this.cursors.left.isDown ? -speed / (delta / 1000) : this.cursors.right.isDown ? speed / (delta / 1000) : 0,
-      this.cursors.up.isDown ? -speed / (delta / 1000) : this.cursors.down.isDown ? speed / (delta / 1000) : 0
+      this.cursors.left.isDown ? -SPEED : this.cursors.right.isDown ? SPEED : 0,
+      this.cursors.up.isDown ? -SPEED : this.cursors.down.isDown ? SPEED : 0
     );
   }
 }
@@ -198,3 +203,11 @@ licence record; see `asset-pipeline-and-licensing/SKILL.md`.
 `GET https://registry.npmjs.org/phaser/latest` (version 4.2.1), and the
 repository's README and examples links above. Not checked: Phaser 3 API
 differences against these snippets, and the contents of its `skills` directory.
+
+The CDN import line was checked separately: `phaser@4.2.1`'s own `package.json`
+`exports["."].import` is `./dist/phaser.esm.js`, and
+`https://cdn.jsdelivr.net/npm/phaser@4.2.1/dist/phaser.esm.js` answered
+`200` (~8.8 MB) with a real `export { ... __webpack_exports__default as default }`
+at the end, so `import Phaser from "<that URL>"` resolves. That is a network
+check of the file and its export list, not a play-test of the snippet: serve it
+once and watch the console before relying on it.
