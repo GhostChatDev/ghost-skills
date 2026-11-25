@@ -1,0 +1,41 @@
+{
+  "$schema": "see SCHEMA in this file's README section",
+  "schema": {
+    "version": "1",
+    "fields": {
+      "id": "stable kebab-case id, never reused for another skill",
+      "path": "relative to this folder, the canonical SKILL.md",
+      "description": "one line, what the skill is for",
+      "tags": "lowercase words for matching a task",
+      "engines": "engines or libs the skill names; empty when engine-neutral",
+      "requires": "tools or environment needed; empty when none",
+      "references": "upstream source; verify at docs/ghost-game-engine/repositories.md"
+    },
+    "verification": "the value of verified_on is the date a person or agent actually read the source; null means not verified and the skill must say so"
+  },
+  "library": "ghost-game-engine",
+  "library_version": "1.0.0",
+  "verified_on": null,
+  "skills": [
+    {"id": "game-planning-and-scope", "path": "game-planning-and-scope/SKILL.md", "description": "Turn a game idea into a one-build brief with scope, mechanics and a done check.", "tags": ["planning", "scope", "brief"], "engines": [], "requires": [], "references": []},
+    {"id": "engine-selection", "path": "engine-selection/SKILL.md", "description": "Pick one primary engine by reading the target repo and the real requirements.", "tags": ["planning", "engines", "decision"], "engines": [], "requires": [], "references": ["https://github.com/phaserjs/phaser", "https://github.com/mrdoob/three.js", "https://github.com/pixijs/pixijs", "https://github.com/KilledByAPixel/LittleJS", "https://github.com/melonjs/melonJS"]},
+    {"id": "phaser-2d", "path": "phaser-2d/SKILL.md", "description": "Build a 2D browser game with Phaser scenes, sprites, physics and input.", "tags": ["2d", "browser", "phaser"], "engines": ["phaser"], "requires": ["node22", "npm"], "references": ["https://github.com/phaserjs/phaser"]},
+    {"id": "littlejs-small-games", "path": "littlejs-small-games/SKILL.md", "description": "Build a compact browser game in a few files with LittleJS.", "tags": ["2d", "browser", "small", "littlejs"], "engines": ["littlejs"], "requires": [], "references": ["https://github.com/KilledByAPixel/LittleJS"]},
+    {"id": "threejs-3d", "path": "threejs-3d/SKILL.md", "description": "Render and run a 3D browser game with three.js, adding game systems explicitly.", "tags": ["3d", "browser", "threejs", "rendering"], "engines": ["threejs"], "requires": ["node22"], "references": ["https://github.com/mrdoob/three.js"]},
+    {"id": "pixijs-rendering", "path": "pixijs-rendering/SKILL.md", "description": "Use PixiJS as a fast 2D renderer for a game whose rules you write yourself.", "tags": ["2d", "browser", "rendering", "pixijs"], "engines": ["pixijs"], "requires": [], "references": ["https://github.com/pixijs/pixijs"]},
+    {"id": "tilemaps-and-level-design", "path": "tilemaps-and-level-design/SKILL.md", "description": "Design tile-based levels and load them from Tiled maps.", "tags": ["2d", "level-design", "tilemap", "tiled"], "engines": ["phaser", "pixijs", "melonjs"], "requires": [], "references": ["https://github.com/mapeditor/tiled"]},
+    {"id": "enemy-ai-and-behavior-trees", "path": "enemy-ai-and-behavior-trees/SKILL.md", "description": "Give enemies readable, testable behaviour with state machines or behaviour trees.", "tags": ["ai", "gameplay", "behaviour-tree"], "engines": [], "requires": [], "references": ["https://github.com/ashblue/fluid-behavior-tree"]},
+    {"id": "dialogue-and-narrative", "path": "dialogue-and-narrative/SKILL.md", "description": "Write and load branching dialogue without hard-coding it in the game loop.", "tags": ["story", "dialogue", "writing"], "engines": [], "requires": [], "references": ["https://github.com/jonnyreeves/yarn-bound", "https://github.com/YarnSpinnerTool/YarnSpinner"]},
+    {"id": "procedural-world-generation", "path": "procedural-world-generation/SKILL.md", "description": "Generate levels that are reproducible from a seed and still playable.", "tags": ["generation", "levels", "seed"], "engines": [], "requires": [], "references": ["https://github.com/Syomus/ProceduralToolkit"]},
+    {"id": "animation-and-game-feel", "path": "animation-and-game-feel/SKILL.md", "description": "Make movement and feedback feel good: easing, squash, hit pause, screenshake.", "tags": ["feel", "animation", "polish"], "engines": [], "requires": [], "references": ["https://github.com/annulusgames/LitMotion"]},
+    {"id": "retro-sound-effects", "path": "retro-sound-effects/SKILL.md", "description": "Make small retro sound effects and keep them legal and lightweight.", "tags": ["audio", "sfx", "retro"], "engines": [], "requires": [], "references": ["https://github.com/chr15m/jsfxr"]},
+    {"id": "music-and-audio-playback", "path": "music-and-audio-playback/SKILL.md", "description": "Play music and sound with Howler.js, including the browser autoplay rules.", "tags": ["audio", "music", "howler"], "engines": [], "requires": [], "references": ["https://github.com/goldfire/howler.js"]},
+    {"id": "multiplayer-with-colyseus", "path": "multiplayer-with-colyseus/SKILL.md", "description": "Add a real-time multiplayer room with Colyseus, server authoritative.", "tags": ["multiplayer", "server", "colyseus"], "engines": ["colyseus"], "requires": ["node22", "server"], "references": ["https://github.com/colyseus/colyseus"]},
+    {"id": "turn-based-with-boardgameio", "path": "turn-based-with-boardgameio/SKILL.md", "description": "Build a turn-based board game with boardgame.io state and moves.", "tags": ["turn-based", "board-game", "boardgameio"], "engines": ["boardgameio"], "requires": ["node22"], "references": ["https://github.com/boardgameio/boardgame.io"]},
+    {"id": "asset-pipeline-and-licensing", "path": "asset-pipeline-and-licensing/SKILL.md", "description": "Get art into the game at the right size, with its licence recorded.", "tags": ["assets", "licensing", "art"], "engines": [], "requires": [], "references": ["https://github.com/JannisX11/blockbench", "https://github.com/KDE/krita"]},
+    {"id": "web-game-testing", "path": "web-game-testing/SKILL.md", "description": "Prove a browser game builds, loads, reacts to every control and keeps saved data.", "tags": ["testing", "browser", "verification"], "engines": [], "requires": ["browser"], "references": []},
+    {"id": "performance-and-accessibility", "path": "performance-and-accessibility/SKILL.md", "description": "Keep frame time inside budget and keep the game usable without colour or sound.", "tags": ["performance", "accessibility"], "engines": [], "requires": [], "references": []},
+    {"id": "release-and-documentation", "path": "release-and-documentation/SKILL.md", "description": "Ship a build with a README, credits and no unchecked claims.", "tags": ["release", "docs", "credits"], "engines": [], "requires": [], "references": []},
+    {"id": "unity-and-desktop-tool-boundaries", "path": "unity-and-desktop-tool-boundaries/SKILL.md", "description": "Say what an agent can do with Unity and desktop art tools, and what a person must do.", "tags": ["unity", "desktop", "boundaries"], "engines": ["unity"], "requires": ["editor-by-the-person"], "references": ["https://github.com/game-ci/unity-builder", "https://github.com/IvanMurzak/Unity-MCP", "https://github.com/CoderGamester/mcp-unity", "https://github.com/Unity-Technologies/unity-agent-plugin"]}
+  ]
+}
