@@ -26,7 +26,9 @@ hundred lines that run anywhere.
   2026-11-25).
 - A way to open the page: a local server, not `file://`, if you load files.
 
-## Rules
+## Steps
+
+## Upstream references
 
 1. One HTML file, one script, no build step unless the person asks.
 2. Keep it under about 500 lines. Past that, move to Phaser and say why.
@@ -39,12 +41,12 @@ hundred lines that run anywhere.
 7. The first screen draws in under a few seconds on a slow machine.
 8. Save the best score in `localStorage` if the person asks for it.
 
-## Compatibility and licence
+## Compatibility and licence cautions
 
 Licence and branch: `docs/ghost-game-engine/repositories.md`. Check it before
 repeating a claim. Loading the engine from a CDN pins a version in the URL.
 
-## Verification
+## Acceptance criteria and verification
 
 Acceptance criteria:
 

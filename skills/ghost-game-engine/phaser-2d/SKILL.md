@@ -29,7 +29,9 @@ scale, in a project that builds and runs.
 default branch `master` (read 2026-11-25); confirm the version in
   `package.json` after install.
 
-## Rules
+## Steps
+
+## Upstream references
 
 1. One scene per concern: `Boot`, `Preload`, `Menu`, `Play`, `GameOver`.
 2. Pin the Phaser version in `package.json` and say which one you installed.
@@ -42,13 +44,13 @@ default branch `master` (read 2026-11-25); confirm the version in
 8. Keyboard, mouse and touch: on-screen buttons at least 44 px on phones.
 9. Save progress in `localStorage` with a versioned key.
 
-## Compatibility and licence
+## Compatibility and licence cautions
 
 See the licence row above and `docs/ghost-game-engine/repositories.md` for the
 recorded values and the date they were read. Never state a licence that file
 does not hold.
 
-## Verification
+## Acceptance criteria and verification
 
 Acceptance criteria:
 
