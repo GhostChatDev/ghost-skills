@@ -18,7 +18,8 @@ It is not about running that repository's code.
    `THIRD-PARTY-NOTICES.md` (create that file only when you first need it).
 5. **Add the row to `skills/INDEX.md` or `game-skills/INDEX.md`.** Name, folder,
    when to use it, status (`ready` or `missing`).
-6. **Add it to `manifest.json`** if it comes from a verified source.
+6. **Add it to `skills/ghost-game-engine/manifest.json`** (the only manifest) if
+   it comes from a verified source.
 7. **Run the checklist in `docs/checks.md`.** Every item must hold.
 
 ## Rules

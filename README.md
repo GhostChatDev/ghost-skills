@@ -39,9 +39,9 @@ Two ways. Pick one.
 | `PROJECT-INSTRUCTIONS.md` | Short block to paste into a Ghost Chat Project. |
 | `skills/INDEX.md` | Table of every skill: name, folder, when to use, status. |
 | `skills/<folder>/SKILL.md` | One skill. |
-| `game-skills/INDEX.md` | Second library: the game-development skills. Same rules, one folder per skill. |
-| `game-skills/<folder>/SKILL.md` | One game skill, with the upstream source to read in `docs/repositories.md`. |
-| `manifest.json` | Every verified upstream source mapped to the skill that uses it. |
+| `skills/ghost-game-engine/README.md` | The game-development library: index, engine-selection rules, upstream references. |
+| `skills/ghost-game-engine/<skill-name>/SKILL.md` | One game skill, with the upstream source to read in `docs/repositories.md`. |
+| `skills/ghost-game-engine/manifest.json` | Every skill's id, path, tags, engines and references. No source code is vendored. |
 | `docs/repositories.md` | The upstream sources: what was read and when, licence, archived state. |
 | `docs/adoption.md` | How to bring in a skill from outside, without copying its licence or its secrets. |
 | `docs/verification.md` | What was actually read, and what was not. |

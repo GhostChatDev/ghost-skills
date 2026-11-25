@@ -33,7 +33,8 @@ change.
 - [ ] `PROJECT-INSTRUCTIONS.md` still asks for every `SKILL.md` to be read.
 - [ ] `README.md` still says a repo is not auto-loaded, a Project is shared, and
       the Skills toggle allows only 5 skills on.
-- [ ] `manifest.json` lists only sources recorded in `docs/repositories.md`.
+- [ ] `skills/ghost-game-engine/manifest.json` lists only sources recorded in
+      `docs/repositories.md`, and every `path` in it exists on disk.
 - [ ] No secrets, keys, tokens or real personal details anywhere.
 - [ ] Markdown and JSON only: no `package.json`, no `.html`, no `.js`, `.mjs`,
       `.cjs`, `.ts`, `.jsx`, `.tsx`, `.css`, `.py`, `.rb`, `.go`, no website.
