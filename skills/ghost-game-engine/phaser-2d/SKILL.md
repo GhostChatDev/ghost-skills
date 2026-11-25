@@ -214,6 +214,21 @@ licence record; see `asset-pipeline-and-licensing/SKILL.md`.
 repository's README and examples links above. Not checked: Phaser 3 API
 differences against these snippets, and the contents of its `skills` directory.
 
+## Known limitations
+
+- The snippets here were written against the **Phaser 4** API surface and were
+  syntax-checked, not play-tested. Open the game once and watch the console before
+  building on them.
+- Plenty of Phaser material on the web is Phaser 3. `npm ls phaser` tells you which
+  major version is installed; a Phaser 3 snippet dropped into a Phaser 4 project is
+  a common source of "the method is not a function" errors. Pin the version and
+  check any copied snippet against that major version's own docs.
+- The contents of Phaser's `skills` directory are unverified (see above). Do not
+  cite it as if it had been read.
+- Arcade physics is axis-aligned boxes and circles only. Slopes, rotating
+  platforms and precise polygon contact need Matter physics, which is a different
+  API from the one used here.
+
 The CDN import line was checked separately: `phaser@4.2.1`'s own `package.json`
 `exports["."].import` is `./dist/phaser.esm.js`, and
 `https://cdn.jsdelivr.net/npm/phaser@4.2.1/dist/phaser.esm.js` answered
