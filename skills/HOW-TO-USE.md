@@ -23,17 +23,25 @@ user's own project.
 
 ## 3. Read a skill in this order
 
-Each `SKILL.md` has the same sections, so you can skim in this order:
+Each `SKILL.md` has the same sections in the same order. Heading wording varies
+slightly between skills (listed below), so use the order, not the exact words:
 
-| Order | Section | Why |
+| Order | Section heading (as written in the files) | Why |
 | --- | --- | --- |
-| 1 | What it does / When to use it | confirms you opened the right file |
-| 2 | When **not** to use it | the fastest way to avoid a wrong choice |
-| 3 | Required setup and supported version | tells you whether the project can take it |
-| 4 | Common mistakes | read before coding, not after the bug |
-| 5 | Implementation steps and examples | the actual work |
-| 6 | Verification checklist | what you must prove before saying it works |
-| 7 | Licence, links, date checked | what to credit, and whether the claim is current |
+| 1 | `## Purpose` — sometimes followed by `## When to use it` | confirms you opened the right file |
+| 2 | `## When not to use it` | the fastest way to avoid a wrong choice |
+| 3 | `## Required setup and version` / `## Setup and supported version` / `## Supported version` | tells you whether the project can take it |
+| 4 | `## Steps` | the plan, in order |
+| 5 | `## Code examples` | the actual work, and the pattern to copy |
+| 6 | `## Common mistakes` / `## Common mistakes and how to avoid them` | read before coding, not after the bug |
+| 7 | `## Verification checklist` / `## Acceptance criteria and verification` | what you must prove before saying it works |
+| 8 | `## Upstream references`, `## Licence and attribution`, `## Sources checked` | what to credit, and whether the claim is current |
+
+Skills that touch sound, animation or frame rate also carry the topic headings
+that matter for them: `## Browser audio restrictions`, `## Accessibility`,
+`## Reduced motion and accessibility`, `## Mobile performance`,
+`## Performance limits`, and `## Known limitations`. Read those too; they are
+requirements, not notes.
 
 Stop at step 2 if the skill says it does not fit.
 
