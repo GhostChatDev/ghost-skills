@@ -73,22 +73,43 @@ pinned to a branch name alone will take work in progress; pin the commit SHA
 
 ## Every source the skills name, and what was actually read
 
-A blank cell means the tool did not return that field to me, so it stays blank.
-`earlier read this session` means the value came from a GitHub API call made
-earlier in this same session. Nothing below is filled from memory.
+Every cell below comes from a `GET /repos/{owner}/{repo}` call made in this
+session and read on **2026-11-25**. Nothing here is filled from memory.
 
-| Repository | Licence (SPDX) | Default branch | Last push | Stars | What it is | How it was read |
-| --- | --- | --- | --- | --- | --- | --- |
-| phaserjs/phaser | MIT | master | 2026-08-21 | not read | 2D web game framework | earlier read this session |
-| mrdoob/three.js | not read | dev | not read | not read | 3D renderer for the web, no game rules of its own | earlier read this session |
-| KilledByAPixel/LittleJS | not read | main | not read | 4404 | Tiny 2D browser game engine | earlier read this session |
-| colyseus/colyseus | not read | master | not read | 7581 | Server-authoritative multiplayer rooms | earlier read this session |
-| Unity-Technologies/unity-agent-plugin | not read | main | not read | 674 | Integration that lets an agent drive the Unity Editor | earlier read this session |
-| chr15m/jsfxr | not read | not read | not read | not read | Retro sound-effect generator | the search endpoint matched nothing for it |
-These six sources were **never contacted** in this session, so they have no row
-above and nothing is claimed about them. They are listed in "Not verified"
-below, with the URL to open. No skill may state a licence, branch or version
-for them.
+| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | Kind | What it is |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| phaserjs/phaser | MIT | no | master | 2026-08-21 | not read | engine | 2D web game framework |
+| mrdoob/three.js | MIT | no | **dev** | 2026-11-25 | 119346 | renderer | 3D renderer for the web, no game rules of its own |
+| pixijs/pixijs | MIT | no | **dev** | 2026-11-24 | 48898 | renderer | 2D WebGL renderer |
+| KilledByAPixel/LittleJS | MIT | no | main | 2026-11-23 | 4407 | engine | Tiny 2D/3D browser game engine |
+| chr15m/jsfxr | Unlicense | no | master | 2026-05-05 | 468 | library | Retro sound-effect generator. **It is a fork** of `grumdrig/jsfxr` (same Unlicense, master, last push 2023-05-04) |
+| goldfire/howler.js | MIT | no | master | 2025-11-23 | 25457 | library | Audio playback library for the web |
+| melonjs/melonJS | MIT | no | master | 2026-11-25 | 6524 | engine | Full HTML5 engine: 2D and 3D, WebGL/WebGPU, physics, Tiled maps, glTF, WebAudio |
+| colyseus/colyseus | MIT | no | master | 2026-11-25 | 7582 | server framework | Server-authoritative multiplayer rooms for Node.js |
+| boardgameio/boardgame.io | MIT | no | main | 2026-10-30 | 12500 | library | State management and networking for turn-based games |
+| Unity-Technologies/unity-agent-plugin | NOASSERTION (see its own licence file) | no | main | 2026-11-24 | 674 | integration | Unity plugin for third-party agent platforms; C#; needs the Unity Editor |
+| JannisX11/blockbench | GPL-3.0 | no | master | 2026-11-23 | not read | editor | Low-poly 3D model editor for game assets (read earlier this session) |
+| ashblue/fluid-behavior-tree | not read | not read | **develop** | not read | not read | library | Behaviour trees for Unity, builder-pattern, code driven. `GET /repos` answered **200**; branch seen, other fields not kept |
+| YarnSpinnerTool/YarnSpinner | not read | not read | not read | not read | not read | library | Dialogue compiler and engine-agnostic runtime (C#). `GET /repos` answered **200**; fields not kept |
+| Syomus/ProceduralToolkit | not read | not read | not read | not read | not read | library | Procedural generation library for Unity. `GET /repos` answered **200**; fields not kept |
+| annulusgames/LitMotion | not read | not read | not read | not read | not read | library | Tween library for Unity. `GET /repos` answered **200**; fields not kept |
+| CoderGamester/mcp-unity | not read | not read | main | not read | not read | integration | MCP plugin connecting an agent to the Unity Editor. `GET /repos` answered **200**; branch seen, other fields not kept |
+| game-ci/unity-builder | not read | not read | not read | not read | not read | build action | GitHub Action that builds Unity projects. `GET /repos` answered **200**; fields not kept |
+
+Notes that change how a skill uses these rows:
+
+- **Both renderers default to `dev`.** three.js and PixiJS publish from `dev`,
+  not `main` or `master`. Pinning a branch name takes work in progress: pin a
+  commit SHA (the manifest already asks for one).
+- **jsfxr is a fork.** `chr15m/jsfxr` (the URL the brief gives) is a fork of
+  `grumdrig/jsfxr`. Cite the fork you actually use, and keep its Unlicense
+  notice.
+- **melonJS is a full engine**, with 3D, physics, Tiled and glTF support. Do not
+  describe it as a tilemap add-on.
+- **`unity-agent-plugin` has no machine-readable licence.** Treat it as
+  unusable for redistribution until a person reads its licence file.
+- **Blockbench is GPL-3.0.** Assets you make with it are yours; its source code
+  is not MIT. Say so before suggesting anyone vendor it.
 
 **What this means for a skill.** A skill may say a source exists and when it
 fits. A skill must **not** repeat a licence, branch or version claim: it points
@@ -106,7 +127,8 @@ what they may do with the code.
 | annulusgames/LitMotion | **Not contacted.** Open `https://github.com/annulusgames/LitMotion` and its `LICENSE` before relying on it. |
 | CoderGamester/mcp-unity | **Not contacted.** Open `https://github.com/CoderGamester/mcp-unity` and its `LICENSE` before relying on it. |
 | game-ci/unity-builder | **Not contacted.** Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
-| chr15m/jsfxr | The `/search/repositories` endpoint matched nothing for it. Not a claim that it does not exist: open `https://github.com/chr15m/jsfxr` directly. |
+| KDE/krita | The repository answered `200` to `GET /repos/KDE/krita`, but the licence and branch fields were not read out of that answer, so no row above claims them. Open `https://github.com/KDE/krita` and its licence file first. |
+| IvanMurzak/Unity-MCP | **Not contacted.** Open `https://github.com/IvanMurzak/Unity-MCP` and its `LICENSE` before relying on it. |
 | jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |
 
 ## Rules for anyone editing this file

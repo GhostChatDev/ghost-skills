@@ -452,7 +452,8 @@ jobs:
           const OUT = path.join(BASE, "ghost-screenshots");
           const TYPES = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain", ".wasm": "application/wasm" };
           await mkdir(OUT, { recursive: true });
-          const report = { console: [], page: [], requests: [], overflow: {}, blank: [], views: [], menu: [], clicks: [], serverErrors: [], deadLinks: [] };
+          const report = { console: [], page: [], requests: [], overflow: {}, blank: [], views: [], menu: [], clicks: [], serverErrors: [], deadLinks: [], play: [] };
+          let phase = ""; // said with an uncaught error: what the check was doing (the play test)
           let serverOut = ""; // the app's own server output (npm start), shown when the check fails
           // A broken page fails the check (an uncaught error, a blank page, no app, a page that won't open), with
           // one FAIL: line each, so the fix loop reads what broke. Console errors, failed requests, sideways
@@ -467,6 +468,11 @@ jobs:
               if (report.login.result !== "ok" && !/^could not run|^login only/.test(report.login.result)) fails.push("the login doesn't work for a new person: " + report.login.result + ". The check signs up with an email and password, reloads, logs out, tries a wrong password and logs in again" + (report.login.steps.length ? " (it got as far as: " + report.login.steps.join(", ") + ")" : "") + ".");
             }
             for (const p of report.page) fails.push("uncaught error or page that won't open: " + p);
+            // The play test (a game): its Start must start the game, and playing must not throw (the errors above).
+            for (const p of report.play) {
+              console.log("PLAY (" + p.view + "): " + p.started + ", " + p.errors + " error(s) in 10 s of play" + (p.state ? ", window.game " + p.state : ""));
+              if (p.started === "did nothing") fails.push("the game's Start button did nothing (" + p.view + "): pressing it (a " + (p.view === "phone" ? "tap" : "click") + ") left the start screen up" + (p.state ? " and window.game unchanged" : "") + ". Start must start play on a click AND a tap (pointer or touch events, not only keys)");
+            }
             report.serverErrors = [...new Set(report.serverErrors || [])].slice(0, 6);
             if (report.serverErrors.length) fails.push("the app's own server answered with an error while the first screen loaded (" + report.serverErrors.join(", ") + "): the screen people open shows an error, not the app. Read SERVER OUTPUT below for why. This check gives the app a database when it uses one (DATABASE_URL) and nothing else: anything more the first screen needs (a key, a seeded row, another service) must have a working default, or the screen must work without it");
             for (const b of report.blank) fails.push(b + ": the page is blank (almost no text)");
@@ -912,6 +918,47 @@ jobs:
             return did.join(", ");
           };
 
+          // THE PLAY TEST, for a game (a big canvas). Real runs: two shooters passed this check and then threw "Cannot read
+          // properties of undefined" the first time a shot hit an enemy, and one game's Start button did nothing; pressing
+          // each button once never got that far. So the game is started (its Start button, clicked or tapped) and played
+          // for 10 seconds: fire held and moving side to side with the keys on a computer, tapping the canvas on a phone,
+          // pressing through "next level" or "play again". An uncaught error while playing fails like any other; a Start
+          // that leaves the start screen up fails. window.game, when the game keeps its state there, is read before and after.
+          const isGame = (page) => page.evaluate(() => [...document.querySelectorAll("canvas")].some((c) => { const r = c.getBoundingClientRect(); return r.width * r.height > 40000; })).catch(() => false);
+          const gameState = (page) => page.evaluate(() => { try { const g = window.game; return g && typeof g === "object" ? JSON.stringify({ screen: g.screen ?? g.state ?? null, level: g.level ?? null, score: g.score ?? null }) : null; } catch (e) { return null; } }).catch(() => null);
+          const playGame = async (page, name, mobile) => {
+            const errorsBefore = report.page.length;
+            await page.goto(url, { waitUntil: "load", timeout: 20000 });
+            await page.waitForTimeout(WAIT * 800);
+            const before = await gameState(page);
+            const start = page.getByRole("button", { name: /^\s*(start|play|new game|begin)/i }).filter({ visible: true }).first();
+            let started = "no Start button (pressed Enter and Space)";
+            phase = " (while playing the game for 10 s)";
+            if (await start.count().catch(() => 0)) {
+              if (mobile) await start.tap({ timeout: 3000 }).catch(() => {}); else await start.click({ timeout: 3000 }).catch(() => {});
+              await page.waitForTimeout(WAIT * 700);
+              const stillThere = await start.isVisible().catch(() => false);
+              const after = await gameState(page);
+              started = (before !== null ? after === before : stillThere) ? "did nothing" : "started";
+            } else {
+              await page.keyboard.press("Enter").catch(() => {});
+              await page.keyboard.press("Space").catch(() => {});
+            }
+            const box = await page.locator("canvas").first().boundingBox().catch(() => null);
+            const t0 = Date.now();
+            if (!mobile) await page.keyboard.down("Space").catch(() => {});
+            while (Date.now() - t0 < 10000) {
+              if (mobile && box) await page.touchscreen.tap(box.x + box.width * (0.2 + Math.random() * 0.6), box.y + box.height * 0.8).catch(() => {});
+              else for (const k of ["ArrowLeft", "ArrowRight"]) { await page.keyboard.down(k).catch(() => {}); await page.waitForTimeout(250); await page.keyboard.up(k).catch(() => {}); }
+              const next = page.getByRole("button", { name: /next|continue|level|restart|play again|try again/i }).filter({ visible: true }).first();
+              if (await next.count().catch(() => 0)) await next.click({ timeout: 1000 }).catch(() => {});
+              await page.waitForTimeout(200);
+            }
+            if (!mobile) await page.keyboard.up("Space").catch(() => {});
+            phase = "";
+            return { view: name, started, errors: report.page.length - errorsBefore, state: await gameState(page) };
+          };
+
           const VIEWS = [["desktop", 1280, 800, false], ["tablet", 820, 1100, false], ["phone", 390, 844, true]];
           const browser = await chromium.launch();
           let frozenPage = false; // a frozen page is frozen at every size: one report, no 20-second wait per size
@@ -920,7 +967,7 @@ jobs:
             const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, isMobile: mobile, hasTouch: mobile });
             const page = await context.newPage();
             const scripts = name === "desktop" ? await watchScripts(context, page) : { cdp: null, files: new Map() };
-            page.on("pageerror", (e) => report.page.push(name + ": " + e.message));
+            page.on("pageerror", (e) => report.page.push(name + phase + ": " + e.message));
             page.on("console", (m) => { if (m.type() === "error" && !/favicon/i.test(m.text())) report.console.push(name + ": " + m.text().slice(0, 300)); });
             // While the first screen loads: an error from the app's OWN server (5xx) means the screen people open is an error
             // message, not the app. That fails the check (a kanban build was green on "Could not load board": every picture
@@ -1038,6 +1085,8 @@ jobs:
                 }
               }
 
+              // The play test on a phone (taps): after its pictures, so they show the first screen.
+              if (name === "phone" && (await isGame(page))) report.play.push(await playGame(page, name, mobile).catch((e) => { phase = ""; return { view: name, started: "could not run (" + String(e.message).split("\n")[0] + ")", errors: 0, state: null }; }));
               // The other screens: up to three items of the menu (sidebar, nav bar or tabs), opened one at a time on desktop.
               // A menu item that opens nothing, or a page that errors, shows up in the pictures and in the report.
               if (name === "desktop") {
@@ -1231,6 +1280,8 @@ jobs:
                   report.menu.push("desktop: the click test could not run (" + String(e.message).split("\n")[0] + ")");
                 }
 
+                // The play test (above) on a computer (keys); the phone's is before the menu.
+                if (await isGame(page)) report.play.push(await playGame(page, name, mobile).catch((e) => { phase = ""; return { view: name, started: "could not run (" + String(e.message).split("\n")[0] + ")", errors: 0, state: null }; }));
                 // The refresh test: type a unique word into the first text box, add it, and see whether it shows on the
                 // page. If it does, open the app again in a NEW browser (no memory, no service worker), carrying over only
                 // what the app saved (cookies, localStorage, IndexedDB), and check the word is still there.
