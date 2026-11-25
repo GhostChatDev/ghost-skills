@@ -39,6 +39,14 @@ Two ways. Pick one.
 | `PROJECT-INSTRUCTIONS.md` | Short block to paste into a Ghost Chat Project. |
 | `skills/INDEX.md` | Table of every skill: name, folder, when to use, status. |
 | `skills/<folder>/SKILL.md` | One skill. |
+| `game-skills/INDEX.md` | Second library: the game-development skills. Same rules, one folder per skill. |
+| `game-skills/<folder>/SKILL.md` | One game skill, with the upstream source to read in `docs/repositories.md`. |
+| `manifest.json` | Every verified upstream source mapped to the skill that uses it. |
+| `docs/repositories.md` | The upstream sources: what was read and when, licence, archived state. |
+| `docs/adoption.md` | How to bring in a skill from outside, without copying its licence or its secrets. |
+| `docs/verification.md` | What was actually run or read, and what was not. |
+| `scripts/validate-skills.mjs` | Checks both libraries, the stubs and the manifest. `node scripts/validate-skills.mjs`. |
+| `tests/validate-skills.test.mjs` | Tests for that script. `node --test tests/*.test.mjs`. |
 | `MISSING.md` | Skills still waiting for your real text. |
 
 ---
