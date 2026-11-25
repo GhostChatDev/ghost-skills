@@ -6,15 +6,17 @@ Paste everything below the line into your Ghost Chat Project's instructions.
 
 This Project shares a skill library. Before you answer or write any code:
 
-1. Read `skills/INDEX.md` first. Then read the full `SKILL.md` of **every**
-   skill listed in this Project — all of them, before you answer or write code.
-   Reading is not the same as applying: apply only the ones that match the task.
-2. Follow every skill that matches the task. If I name a skill, follow that one
+1. Read `PROJECT-BUNDLE.md` in this Project. Section 3 is the index of every
+   skill, with the folder and when to use it.
+2. Read the full text of the skills that match the task. Reading is not the same
+   as applying: apply only the ones that match, and say which ones you used.
+3. Follow every skill that matches the task. If I name a skill, follow that one
    first, then the others that match.
-3. If several skills match, follow all of them. Do not ignore a skill to be
+4. If several skills match, follow all of them. Do not ignore a skill to be
    shorter.
-4. Never invent a missing skill. A file that only says "MISSING" has no rules
-   yet. Tell me which skill is missing and ask me for its text.
+5. Never invent a missing skill. If a skill I name is not in the bundle, say so
+   and ask me for its text.
 
-The skills live in the `skills/` folder. `skills/INDEX.md` lists them, with the
-folder and when to use each one.
+The source of truth is the `skills/` folder in the related repository;
+`PROJECT-BUNDLE.md` is a copy of it. If the two disagree, the repository wins.
+
