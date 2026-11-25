@@ -6,7 +6,9 @@ engine, and not a package. Every entry is a written instruction file at
 
 ## Read this first, then load only what matches
 
-1. Read this index.
+1. Read this index. If you are unsure how to pick from it, read
+   [../HOW-TO-USE.md](../HOW-TO-USE.md) first: it explains how to find, read and
+   apply only the skills that match the task.
 2. Open **only** the `SKILL.md` files whose "when to use it" line matches the
    task in front of you. Do not load all 20.
 3. Read the target game repository's own instructions (`AGENTS.md`, `README`,
