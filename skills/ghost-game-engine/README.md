@@ -20,7 +20,7 @@ These are repository instructions. They are **not** registered Ghost Chat
 Skills and **not** globally loaded agent capabilities. An agent sees them only
 when this repository (or a Project holding it) is chosen for the session.
 
-## The 20 skills
+## The 25 skills
 
 | # | Skill | File | Use it when |
 | --- | --- | --- | --- |
@@ -44,6 +44,11 @@ when this repository (or a Project holding it) is chosen for the session.
 | 18 | Performance and accessibility | [performance-and-accessibility/SKILL.md](performance-and-accessibility/SKILL.md) | frame budget, draw calls, keyboard and touch, contrast |
 | 19 | Release and documentation | [release-and-documentation/SKILL.md](release-and-documentation/SKILL.md) | a build someone else can run and read |
 | 20 | Unity and desktop tool boundaries | [unity-and-desktop-tool-boundaries/SKILL.md](unity-and-desktop-tool-boundaries/SKILL.md) | Unity, Godot, art tools and build machines: what an agent can and cannot do |
+| 21 | ZzFX sound effects | [zzfx-sound-effects/SKILL.md](zzfx-sound-effects/SKILL.md) | sound effects generated in code from one array: presets, mute, volume |
+| 22 | Tone.js music | [tonejs-music/SKILL.md](tonejs-music/SKILL.md) | generated music, loops, transport timing, synths — no audio files |
+| 23 | Motion interface animation | [motion-ui/SKILL.md](motion-ui/SKILL.md) | menus, screens and HUD motion in a React/Vue app, with reduced motion |
+| 24 | Anime.js timelines and titles | [animejs-motion/SKILL.md](animejs-motion/SKILL.md) | title screens, staggered entrances, SVG line drawing, sequenced intros |
+| 25 | tsParticles backgrounds and confetti | [tsparticles/SKILL.md](tsparticles/SKILL.md) | ambient particles, snow or embers, a confetti burst on a win |
 
 The machine-readable list is [manifest.json](manifest.json): stable id, path,
 description, tags, engines, required environment, external references.
@@ -58,6 +63,17 @@ description, tags, engines, required environment, external references.
 - melonJS: an alternative engine to evaluate, not a default dependency.
 - Add jsfxr, Howler, a dialogue library or a multiplayer library only when the
   game needs it, and say why.
+- Audio: **ZzFX** for single generated sound effects, **Howler** for playing
+  files (music, voice) with reliable mobile behaviour, **Tone.js** for music
+  played from code with a transport. Pick per job; they can coexist, but say
+  why each is there.
+- Interface and title motion: **Motion** in a React/Vue app, **Anime.js** for a
+  plain page or an SVG title sequence. Do not add both to one page for the same
+  job, and do not animate in-game sprites with either — the game loop owns those.
+- Party, ambient and celebration effects: **tsParticles** for non-gameplay
+  particles; particles that must collide or be counted belong in the game loop.
+- Every one of them needs a reduced-motion path and a cleanup path. A skill that
+  animates or plays sound without both is not applied.
 - Unity packages and desktop art tools are separate workflows with their own
   prerequisites. An agent cannot drive a desktop application's UI; it can write
   files and project settings, and the human runs the editor.
