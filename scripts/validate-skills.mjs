@@ -21,15 +21,21 @@ export function parseIndex(text) {
     if (!t.startsWith("|") || t.startsWith("| ---") || t.startsWith("| Skill name")) continue;
     const cells = t.split("|").map((c) => c.trim()).filter((c) => c.length > 0);
     if (cells.length < 4) continue;
-    const folder = cells[1].replace(/`/g, "");
+    // Index rows usually write `skills/planner/`; keep the folder without a trailing slash.
+    const folder = cells[1].replace(/`/g, "").replace(/\/+$/, "");
     rows.push({ name: cells[0], folder, when: cells[2], status: cells[3] });
   }
   return rows;
 }
 
-export function checkSkillFile(path, status, read = (p) => readFileSync(resolve(ROOT, p), "utf8")) {
+export function checkSkillFile(
+  path,
+  status,
+  read = (p) => readFileSync(resolve(ROOT, p), "utf8"),
+  exists = (p) => existsSync(resolve(ROOT, p)),
+) {
   const problems = [];
-  if (!existsSync(resolve(ROOT, path))) {
+  if (!exists(path)) {
     problems.push(`${path}: file does not exist`);
     return problems;
   }
@@ -58,7 +64,7 @@ export function validate(read = (p) => readFileSync(resolve(ROOT, p), "utf8"), e
     if (rows.length === 0) problems.push(`${lib.index}: no skill rows found`);
     for (const row of rows) {
       const file = `${row.folder}/SKILL.md`;
-      problems.push(...checkSkillFile(file, row.status, read));
+      problems.push(...checkSkillFile(file, row.status, read, exists));
       if (row.status === "ready") readyFolders.push(row.folder);
     }
   }
