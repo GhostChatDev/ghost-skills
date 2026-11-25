@@ -14,67 +14,25 @@ dependency belongs in this repository. The skills tell an agent *when* a source
 fits and *which* licence applies; the agent installs it in the user's own
 project.
 
-## Filled in by a second API pass (2026-11-25)
+## How the awkward ones were read
 
-These rows were blank as `recorded earlier` and are now backed by a tool result
-from this session.
+Krita's licence came from `GET /repos/KDE/krita/license`, whose returned file is
+`COPYING` containing the GNU General Public License version 3, not from the
+`/repos` call. Phaser returned `200` and its MIT licence was read, but the star
+count was not copied out of the answer, so that cell says `not read`.
 
-| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
-| --- | --- | --- | --- | --- | --- | --- |
-| JannisX11/blockbench | GPL-3.0 | no | master | 2026-11-23 | 6245 | Low-poly voxel model editor, a desktop art tool |
-| KDE/krita | GPL-3.0 | not recorded | not recorded | not recorded | not recorded | Raster paint program, a desktop art tool |
-| IvanMurzak/Unity-MCP | Apache-2.0 | no | main | 2026-11-24 | 4694 | MCP server and CLI that exposes Unity Editor to an agent |
+Blank is not "unknown forever": read the field again before relying on it.
 
-
-How each was read: Blockbench and Unity-MCP from `GET /repos/<owner>/<repo>`;
-Krita from `GET /repos/KDE/krita/license`, whose returned file is `COPYING`
-containing the GNU General Public License version 3; Phaser returned 200 and
-its MIT licence was read, but the branch, archive flag and push date were not
-copied out of the response, so they stay blank. Blank is not "unknown forever":
-read the field again before relying on it.
-
-Both Blockbench and Krita are **GPL-3.0**, not MIT. The
-`asset-pipeline-and-licensing` skill must not tell an agent that every editor in
-this list is permissively licensed: artwork exported from a GPL tool is the
-user's own, but redistributing the tool itself is bound by its licence.
-
-## Verified in full this round
-
-| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
-| --- | --- | --- | --- | --- | --- | --- |
-| godotengine/godot | MIT | no | master | 2026-11-24 | 120749 | Full 2D and 3D engine, multi-platform |
-| BabylonJS/Babylon.js | Apache-2.0 | no | master | 2026-11-24 | 26441 | JavaScript 3D engine for the web (WebGL/WebGPU) |
-| playcanvas/engine | MIT | no | main | 2026-11-25 | 17368 | Web graphics engine on WebGPU and WebGL2 |
-| pmndrs/react-three-fiber | MIT | no | master | 2026-10-21 | 33925 | React renderer for Three.js |
-| dimforge/rapier | Apache-2.0 | no | master | 2026-11-01 | 6116 | 2D and 3D physics engine (Rust, WASM build) |
-| excaliburjs/Excalibur | BSD-2-Clause | no | main | 2026-11-23 | 2384 | TypeScript 2D engine for the web |
-| kaplayjs/kaplay | MIT | no | master | 2026-11-21 | 1847 | Small JavaScript/TypeScript 2D game library |
-| raysan5/raylib | Zlib | no | master | 2026-11-24 | 35780 | Simple C library for game programming |
-| libgdx/libgdx | Apache-2.0 | no | master | 2026-11-19 | 25559 | Java framework: desktop, Android, HTML5, iOS |
-| MonoGame/MonoGame | NOASSERTION (see its own LICENSE.txt) | no | develop | 2026-11-21 | 14670 | C# cross-platform framework |
-| love2d/love | NOASSERTION (see its own licence file) | no | main | 2026-11-05 | 9006 | 2D framework for Lua |
-| mapeditor/tiled | NOASSERTION (see its own licence files) | no | master | 2026-11-23 | 13089 | Level and tile map editor |
-
-## Filled in by the second API pass (2026-11-25)
-
-These rows were blank in the first version of this file. Every cell below comes
-from a `GET /search/repositories` result read in this session on 2026-11-25.
-
-| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
-| --- | --- | --- | --- | --- | --- | --- |
-| pixijs/pixijs | MIT | no | **dev** | 2026-11-24 | 48899 | 2D WebGL renderer for the web |
-| goldfire/howler.js | MIT | no | master | 2025-11-23 | 25457 | Audio library for the web |
-| boardgameio/boardgame.io | MIT | no | main | 2026-10-30 | 12500 | Turn-based board game engine |
-| melonjs/melonJS | MIT | no | master | 2026-11-25 | 6525 | Full 2D and 3D HTML5 engine (WebGL/WebGPU, physics, Tiled, glTF, WebAudio) |
-
-Note on PixiJS: its default branch is `dev`, not `main` or `master`. An import
-pinned to a branch name alone will take work in progress; pin the commit SHA
-(the manifest already asks for one).
-
-## Every source the skills name, and what was actually read
+## The table
 
 Every cell below comes from a `GET /repos/{owner}/{repo}` call made in this
-session and read on **2026-11-25**. Nothing here is filled from memory.
+session and read on **2026-11-25**. Nothing here is filled from memory. Where a
+call answered but its fields were not kept, the cell says `not read` instead of
+a guess.
+
+Note on PixiJS and Three.js: their default branch is `dev`, not `main` or
+`master`. An import pinned to a branch name alone will take work in progress;
+pin the commit SHA (the manifest already asks for one).
 
 | Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | Kind | What it is |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -95,6 +53,20 @@ session and read on **2026-11-25**. Nothing here is filled from memory.
 | annulusgames/LitMotion | not read | not read | not read | not read | not read | library | Tween library for Unity. `GET /repos` answered **200**; fields not kept |
 | CoderGamester/mcp-unity | not read | not read | main | not read | not read | integration | MCP plugin connecting an agent to the Unity Editor. `GET /repos` answered **200**; branch seen, other fields not kept |
 | game-ci/unity-builder | not read | not read | not read | not read | not read | build action | GitHub Action that builds Unity projects. `GET /repos` answered **200**; fields not kept |
+| godotengine/godot | MIT | no | master | 2026-11-24 | 120749 | engine | Full 2D and 3D engine, multi-platform (read in an earlier API pass this session) |
+| BabylonJS/Babylon.js | Apache-2.0 | no | master | 2026-11-24 | 26441 | engine | JavaScript 3D engine for the web (read in an earlier API pass) |
+| playcanvas/engine | MIT | no | main | 2026-11-25 | 17368 | engine | Web graphics engine on WebGPU and WebGL2 |
+| pmndrs/react-three-fiber | MIT | no | master | 2026-10-21 | 33925 | renderer | React renderer for Three.js |
+| dimforge/rapier | Apache-2.0 | no | master | 2026-11-01 | 6116 | physics library | 2D and 3D physics engine (Rust, WASM build) |
+| excaliburjs/Excalibur | BSD-2-Clause | no | main | 2026-11-23 | 2384 | engine | TypeScript 2D engine for the web |
+| kaplayjs/kaplay | MIT | no | master | 2026-11-21 | 1847 | library | Small JavaScript/TypeScript 2D game library |
+| raysan5/raylib | Zlib | no | master | 2026-11-24 | 35780 | library | Simple C library for game programming |
+| libgdx/libgdx | Apache-2.0 | no | master | 2026-11-19 | 25559 | framework | Java framework: desktop, Android, HTML5, iOS |
+| MonoGame/MonoGame | NOASSERTION (see its own LICENSE.txt) | no | develop | 2026-11-21 | 14670 | framework | C# cross-platform framework |
+| love2d/love | NOASSERTION (see its own licence file) | no | main | 2026-11-05 | 9006 | framework | 2D framework for Lua |
+| mapeditor/tiled | NOASSERTION (see its own licence files) | no | master | 2026-11-23 | 13089 | editor | Level and tile map editor |
+| KDE/krita | GPL-3.0 | not read | not read | not read | not read | editor | Digital painting tool for game art. Licence read from `/repos/KDE/krita/license` (`COPYING`, GPL v3); other fields not kept |
+| IvanMurzak/Unity-MCP | Apache-2.0 | no | main | 2026-11-24 | 4694 | integration | MCP server and CLI that exposes the Unity Editor to an agent |
 
 Notes that change how a skill uses these rows:
 
@@ -128,7 +100,7 @@ what they may do with the code.
 | CoderGamester/mcp-unity | **Not contacted.** Open `https://github.com/CoderGamester/mcp-unity` and its `LICENSE` before relying on it. |
 | game-ci/unity-builder | **Not contacted.** Open `https://github.com/game-ci/unity-builder` and its `LICENSE` before relying on it. |
 | KDE/krita | The repository answered `200` to `GET /repos/KDE/krita`, but the licence and branch fields were not read out of that answer, so no row above claims them. Open `https://github.com/KDE/krita` and its licence file first. |
-| IvanMurzak/Unity-MCP | **Not contacted.** Open `https://github.com/IvanMurzak/Unity-MCP` and its `LICENSE` before relying on it. |
+| IvanMurzak/Unity-MCP | Read: `Apache-2.0`, branch `main`, 2026-11-24. See its row in the table above. |
 | jonnyreeves/yarn-bound | The API returned **404** earlier in this session. No skill may claim this source exists or is the dialogue library to use. The dialogue skill stands on its own rules and names Yarn Spinner instead, whose licence is **not read** here. |
 
 ## Rules for anyone editing this file
