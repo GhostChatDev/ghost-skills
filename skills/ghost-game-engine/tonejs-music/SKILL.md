@@ -65,13 +65,22 @@ A loop, a kick and a mute path:
 ```js
 import * as Tone from "tone";
 
-const master = new Tone.Gain(0.5).toDestination();  // one place for volume
-const pad = new Tone.PolySynth(Tone.Synth).connect(master);
-const kick = new Tone.MembraneSynth().connect(master);
+// The instruments live in module variables set by buildBand(), NOT in module
+// constants: after disposeMusic() the old nodes are dead, so the next
+// startMusic() builds a fresh band instead of triggering disposed synths.
+let master = null;                     // one place for volume
+let pad = null;
+let kick = null;
 
 const loops = [];
 let started = false;
 let starting = null;                   // the promise of an in-flight start
+
+function buildBand() {
+  master = new Tone.Gain(0.5).toDestination();
+  pad = new Tone.PolySynth(Tone.Synth).connect(master);
+  kick = new Tone.MembraneSynth().connect(master);
+}
 
 export async function startMusic() {
   if (started) return;
@@ -80,6 +89,7 @@ export async function startMusic() {
   if (starting) return starting;
   starting = (async () => {
     await Tone.start();                // must be inside a user gesture
+    if (!master) buildBand();          // first run, or a run after disposeMusic()
 
     loops.push(
       new Tone.Loop((time) => {
@@ -108,6 +118,7 @@ export function setVolume(level) {        // 0..1
 
 export function stopMusic() {
   Tone.getTransport().stop();
+  Tone.getTransport().position = 0;       // the next start begins at bar 1
   loops.forEach((loop) => loop.dispose());
   loops.length = 0;
   started = false;                        // lets startMusic run again cleanly
@@ -115,23 +126,37 @@ export function stopMusic() {
 
 export function disposeMusic() {
   stopMusic();
-  pad.dispose();
-  kick.dispose();
-  master.dispose();
-}
+  pad?.dispose();
+  kick?.dispose();
+  master?.dispose();
+  pad = kick = master = null;             // null them: disposed nodes must not
+}                                         // be triggered or reused
 ```
 
 Starting from a button, and pausing when the tab hides:
 
 ```js
+let playing = false;                      // what the PLAYER wants, not what the tab does
+
 document.querySelector("#play").addEventListener("click", async () => {
   await startMusic();                     // the gesture unlocks audio
+  playing = true;
   document.querySelector("#play").hidden = true;
 });
 
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) Tone.getTransport().pause();
-  else if (started) Tone.getTransport().start();
+document.addEventListener("visibilitychange", async () => {
+  const transport = Tone.getTransport();
+  if (document.hidden) {
+    transport.pause();                    // only pause; never stop (position kept)
+    return;
+  }
+  // Coming back: resume ONLY if the player had music on. After disposeMusic()
+  // `started` is false, so a disposed band is never restarted from here.
+  if (!playing || !started) return;
+  // On mobile the page can come back with a suspended context; resume it, and
+  // do not start the Transport if the context could not resume.
+  if (Tone.getContext().state !== "running") await Tone.getContext().resume();
+  if (Tone.getContext().state === "running") transport.start();
 });
 ```
 
@@ -193,7 +218,10 @@ dangerLayer.start("+1m");
 - [ ] No audio before a gesture; after the first click the music plays.
 - [ ] Music starts once, and Start/Restart never stacks a second band.
 - [ ] Mute, volume and "music off" apply immediately and survive a refresh.
-- [ ] Hiding the tab pauses; returning resumes (or stays paused, deliberately).
+- [ ] Hiding the tab pauses; returning resumes only when the player had music on,
+      and never revives a disposed band.
+- [ ] After `disposeMusic()`, a later `startMusic()` builds a fresh band and
+      plays (no "disposed node" error).
 - [ ] Restarting the level leaves no leftover loop or instrument (CPU flat).
 - [ ] The game runs with audio blocked, no uncaught error.
 - [ ] Leaving the screen disposes every instrument it created.
