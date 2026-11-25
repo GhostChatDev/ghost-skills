@@ -40,6 +40,11 @@ pin the commit SHA (the manifest already asks for one).
 | mrdoob/three.js | MIT | no | **dev** | 2026-11-25 | 119346 | renderer | 3D renderer for the web, no game rules of its own |
 | pixijs/pixijs | MIT | no | **dev** | 2026-11-24 | 48898 | renderer | 2D WebGL renderer |
 | KilledByAPixel/LittleJS | MIT | no | main | 2026-11-23 | 4407 | engine | Tiny 2D/3D browser game engine |
+| KilledByAPixel/ZzFX | MIT | no | master | 2026-11-03 | 813 | library | Tiny generated sound-effect system (one function, one array of numbers). Licence read from its own `LICENSE` |
+| Tonejs/Tone.js | MIT | no | **dev** | 2026-11-20 | 14956 | library | Web Audio framework for interactive music: synths, transport, scheduling. Licence read from its own `LICENSE.md` |
+| motiondivision/motion | MIT | no | main | 2026-11-25 | 35550 | library | Animation library for React and plain JavaScript (interface motion, gestures, springs). Licence read from `/repos/motiondivision/motion/license` (`LICENSE.md`, MIT) |
+| juliangarnier/anime | MIT | no | master | 2026-11-02 | 75060 | library | JavaScript animation engine: timelines, stagger, SVG. Licence read from its own `LICENSE.md` |
+| tsparticles/tsparticles | MIT | no | main | 2026-11-25 | 9129 | library | Canvas particles, confetti and fireworks, and animated backgrounds. Licence read from its own `LICENSE` |
 | chr15m/jsfxr | Unlicense | no | master | 2026-05-05 | 468 | library | Retro sound-effect generator. **It is a fork** of `grumdrig/jsfxr` (same Unlicense, master, last push 2023-05-04) |
 | goldfire/howler.js | MIT | no | master | 2025-11-23 | 25457 | library | Audio playback library for the web |
 | melonjs/melonJS | MIT | no | master | 2026-11-25 | 6524 | engine | Full HTML5 engine: 2D and 3D, WebGL/WebGPU, physics, Tiled maps, glTF, WebAudio |
@@ -75,6 +80,8 @@ Notes that change how a skill uses these rows:
 - **Both renderers default to `dev`.** three.js and PixiJS publish from `dev`,
   not `main` or `master`. Pinning a branch name takes work in progress: pin a
   commit SHA (the manifest already asks for one).
+- **Tone.js also defaults to `dev`.** Its published package is fine to install
+  by exact version; a branch or `main` URL takes unreleased work.
 - **jsfxr is a fork.** `chr15m/jsfxr` (the URL the brief gives) is a fork of
   `grumdrig/jsfxr`. Cite the fork you actually use, and keep its Unlicense
   notice.

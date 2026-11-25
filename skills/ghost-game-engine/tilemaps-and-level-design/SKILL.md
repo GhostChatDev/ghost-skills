@@ -19,7 +19,7 @@ keep collision, camera and spawn data in the map instead of in the code.
 ## Required inputs and prerequisites
 
 - A tile editor. Tiled is the usual choice; read its row in
-  `docs/ghost-game-engine/repositories.md` before naming a licence (it is listed
+  `docs/repositories.md` before naming a licence (it is listed
   as `NOASSERTION` there: open its own licence files).
 - The tile size, the map size and the layers planned: ground, decoration,
   collision, objects, spawns.
@@ -41,7 +41,7 @@ keep collision, camera and spawn data in the map instead of in the code.
 
 `mapeditor/tiled` for editing. Engine-specific loading is in that engine's skill
 (Phaser, melonJS, Excalibur, Godot). Licence state for each:
-`docs/ghost-game-engine/repositories.md`.
+`docs/repositories.md`.
 
 ## Compatibility and licence cautions
 

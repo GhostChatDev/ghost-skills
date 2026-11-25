@@ -26,7 +26,7 @@ written by hand.
   and collision shapes.
 - The resolution and whether the game uses WebGL or WebGPU.
 - Read the licence row for `pixijs/pixijs` in
-  `docs/ghost-game-engine/repositories.md` first. It is listed as reachable with
+  `docs/repositories.md` first. It is listed as reachable with
   fields not yet recorded.
 
 ## Steps
@@ -48,12 +48,12 @@ written by hand.
 ## Upstream references
 
 `pixijs/pixijs`. Licence and verification state:
-`docs/ghost-game-engine/repositories.md`. Use its own guide and examples for the
+`docs/repositories.md`. Use its own guide and examples for the
 API of the version you pinned.
 
 ## Compatibility and licence cautions
 
-See `docs/ghost-game-engine/repositories.md`. PixiJS is not a game engine: do not
+See `docs/repositories.md`. PixiJS is not a game engine: do not
 describe it as one, and do not imply physics, audio or scenes come with it. Add
 each extra library deliberately and record its licence.
 

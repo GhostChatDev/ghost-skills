@@ -43,7 +43,7 @@ particles and sound cues that all answer the player's input quickly.
 
 Engine docs for tweens, timers and particles (Phaser, Godot, PixiJS, Three.js).
 For Unity, a tween library may be used; read its row in
-`docs/ghost-game-engine/repositories.md` before naming its licence.
+`docs/repositories.md` before naming its licence.
 
 ## Compatibility and licence cautions
 

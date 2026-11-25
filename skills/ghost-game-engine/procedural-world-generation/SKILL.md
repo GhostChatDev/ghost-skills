@@ -44,7 +44,7 @@ tune.
 ## Upstream references
 
 Engine-specific generators exist (for example a procedural toolkit for Unity; read
-its row in `docs/ghost-game-engine/repositories.md` before naming a licence). A
+its row in `docs/repositories.md` before naming a licence). A
 small generator written by hand is often enough and has no licence of its own.
 
 ## Compatibility and licence cautions

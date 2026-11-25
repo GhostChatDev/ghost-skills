@@ -28,7 +28,7 @@ browser rules that stop audio until the player interacts.
 1. Pick the playback path: the engine's own audio system first; a library only
    if the engine's is missing something you can name.
 2. Read the row for `goldfire/howler.js` in
-   `docs/ghost-game-engine/repositories.md` before naming its licence; the same
+   `docs/repositories.md` before naming its licence; the same
    for the engine's audio module.
 3. Unlock audio on the first user gesture, and show that sound is on.
 4. Load music before the scene that needs it, with a real loading state.
@@ -45,7 +45,7 @@ browser rules that stop audio until the player interacts.
 ## Upstream references
 
 `goldfire/howler.js` for the library path; engine docs for built-in audio.
-Licence and verification state: `docs/ghost-game-engine/repositories.md`.
+Licence and verification state: `docs/repositories.md`.
 
 ## Compatibility and licence cautions
 

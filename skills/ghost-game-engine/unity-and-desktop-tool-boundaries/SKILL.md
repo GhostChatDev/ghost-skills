@@ -34,7 +34,7 @@ what a person must do in the editor instead.
    cloud sandbox cannot press Play.
 3. Choose the integration only if the person has the editor running: an editor
    plugin or an MCP bridge. Read its row in
-   `docs/ghost-game-engine/repositories.md` before naming its licence, and never
+   `docs/repositories.md` before naming its licence, and never
    claim the bridge is installed or working unless the person says so.
 4. Install a package by editing `Packages/manifest.json` to an exact version, in
    the same commit that uses it.
@@ -44,7 +44,7 @@ what a person must do in the editor instead.
 7. Do not add a paid Asset Store item, a licence-locked shader or an external
    service without saying what it costs and why it is needed.
 8. Build through the project's own CI (for example a Unity build action read from
-   its own row in `docs/ghost-game-engine/repositories.md`) or through the
+   its own row in `docs/repositories.md`) or through the
    person's editor; say which one actually ran.
 9. Desktop art tools are separate programs: an agent can write files those tools
    open, but cannot click inside them. Say what the person must do there.
@@ -52,7 +52,7 @@ what a person must do in the editor instead.
 ## Upstream references
 
 Unity editor integrations, MCP bridges and build actions are listed in
-`docs/ghost-game-engine/repositories.md`. Read the row before citing a licence or
+`docs/repositories.md`. Read the row before citing a licence or
 version; several of those rows are reachable but not yet recorded in full.
 
 ## Compatibility and licence cautions

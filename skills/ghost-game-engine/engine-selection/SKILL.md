@@ -38,7 +38,7 @@ looking at the target repository as it really is.
    native 3D with an editor -> Godot or Unity; C desktop -> raylib; Lua 2D ->
    LÖVE; one Java codebase for desktop and Android -> libGDX; C# -> MonoGame.
 5. Name the version you install and where it came from. Read the licence from
-   `docs/ghost-game-engine/repositories.md`; if the row has no value, say it was
+   `docs/repositories.md`; if the row has no value, say it was
    not recorded and check the repository's own licence file.
 6. Say why the runner-up lost in one line.
 7. These are not auto-registered Ghost Chat Skills. They are files an agent
@@ -48,7 +48,7 @@ looking at the target repository as it really is.
 ## Upstream references
 
 Every engine named above is listed with its source URL in
-`docs/ghost-game-engine/repositories.md`. Citation list:
+`docs/repositories.md`. Citation list:
 phaserjs/phaser, mrdoob/three.js, pixijs/pixijs, KilledByAPixel/LittleJS,
 melonjs/melonJS, godotengine/godot, Unity-Technologies/unity-agent-plugin,
 raysan5/raylib, libgdx/libgdx, MonoGame/MonoGame, love2d/love,
@@ -56,7 +56,7 @@ excaliburjs/Excalibur, kaplayjs/kaplay. Read the row before repeating a fact.
 
 ## Compatibility and licence cautions
 
-Each engine's licence and default branch: `docs/ghost-game-engine/repositories.md`.
+Each engine's licence and default branch: `docs/repositories.md`.
 A licence is a fact from that file, never from memory. A copyleft licence
 (GPL) in an engine affects what the person may do with their build: say so
 plainly and let them decide.
@@ -81,7 +81,7 @@ over to that engine's skill.
 
 ## Source
 
-Own rules. Engine facts: `docs/ghost-game-engine/repositories.md`.
+Own rules. Engine facts: `docs/repositories.md`.
 
 ## Do not
 

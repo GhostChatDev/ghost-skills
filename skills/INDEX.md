@@ -1,8 +1,11 @@
 # Skills index
 
 Read this file first. Then open `skills/ghost-game-engine/README.md`, which is
-the index of the 20 game skills, and load **only** the ones that match the task.
+the index of the 25 game skills, and load **only** the ones that match the task.
 If several match, follow all of them.
+
+How to find, read and apply a skill (and why a GitHub link alone does nothing):
+[HOW-TO-USE.md](HOW-TO-USE.md).
 
 Every skill lives in `skills/ghost-game-engine/<folder>/SKILL.md`.
 
@@ -28,6 +31,11 @@ Every skill lives in `skills/ghost-game-engine/<folder>/SKILL.md`.
 | Performance and Accessibility | `performance-and-accessibility/` | Frame budget, load size, input alternatives and readable UI. | ready |
 | Release and Documentation | `release-and-documentation/` | Writing the README, controls, credits and store facts. | ready |
 | Unity and Desktop Tool Boundaries | `unity-and-desktop-tool-boundaries/` | Unity, desktop editors and build actions: what needs what environment. | ready |
+| ZzFX Sound Effects | `zzfx-sound-effects/` | Generated sound effects from one array: presets, mute, volume, no audio files. | ready |
+| Tone.js Music | `tonejs-music/` | Music and loops written in code with a transport, synths and scheduling. | ready |
+| Motion Interface Animation | `motion-ui/` | Menus, screens and HUD motion in a React/Vue app, with reduced-motion support. | ready |
+| Anime.js Timelines and Titles | `animejs-motion/` | Title screens, staggered entrances, SVG line drawing, sequenced intros. | ready |
+| tsParticles | `tsparticles/` | Ambient backgrounds, weather, confetti — with a particle-count limit. | ready |
 
 `ready` means the rules are written in full. To add a skill, add a folder with a
 `SKILL.md`, add its row here and to `skills/ghost-game-engine/manifest.json`, and

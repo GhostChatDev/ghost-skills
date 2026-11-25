@@ -25,7 +25,7 @@ that players join.
 - The authority decision: the server decides, clients only send intents.
 - The state shape and the message list.
 - Read the row for `colyseus/colyseus` in
-  `docs/ghost-game-engine/repositories.md` before naming its licence; it is
+  `docs/repositories.md` before naming its licence; it is
   listed as reachable with fields not yet recorded.
 
 ## Steps
@@ -47,7 +47,7 @@ that players join.
 ## Upstream references
 
 `colyseus/colyseus`. Licence and verification state:
-`docs/ghost-game-engine/repositories.md`. Use its own docs for the schema and
+`docs/repositories.md`. Use its own docs for the schema and
 room API of the pinned version.
 
 ## Compatibility and licence cautions
