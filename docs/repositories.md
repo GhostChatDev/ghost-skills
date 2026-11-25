@@ -14,6 +14,30 @@ dependency belongs in this repository. The skills tell an agent *when* a source
 fits and *which* licence applies; the agent installs it in the user's own
 project.
 
+## Filled in by a second API pass (2026-11-25)
+
+These rows were blank as `recorded earlier` and are now backed by a tool result
+from this session.
+
+| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
+| --- | --- | --- | --- | --- | --- | --- |
+| JannisX11/blockbench | GPL-3.0 | no | master | 2026-11-23 | 6245 | Low-poly voxel model editor, a desktop art tool |
+| KDE/krita | GPL-3.0 | not recorded | not recorded | not recorded | not recorded | Raster paint program, a desktop art tool |
+| IvanMurzak/Unity-MCP | Apache-2.0 | no | main | 2026-11-24 | 4694 | MCP server and CLI that exposes Unity Editor to an agent |
+| phaserjs/phaser | MIT | not recorded | not recorded | not recorded | not recorded | 2D web game framework |
+
+How each was read: Blockbench and Unity-MCP from `GET /repos/<owner>/<repo>`;
+Krita from `GET /repos/KDE/krita/license`, whose returned file is `COPYING`
+containing the GNU General Public License version 3; Phaser returned 200 and
+its MIT licence was read, but the branch, archive flag and push date were not
+copied out of the response, so they stay blank. Blank is not "unknown forever":
+read the field again before relying on it.
+
+Both Blockbench and Krita are **GPL-3.0**, not MIT. The
+`asset-pipeline-and-licensing` skill must not tell an agent that every editor in
+this list is permissively licensed: artwork exported from a GPL tool is the
+user's own, but redistributing the tool itself is bound by its licence.
+
 ## Verified in full this round
 
 | Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
