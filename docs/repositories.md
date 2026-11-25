@@ -55,25 +55,37 @@ user's own, but redistributing the tool itself is bound by its licence.
 | love2d/love | NOASSERTION (see its own licence file) | no | main | 2026-11-05 | 9006 | 2D framework for Lua |
 | mapeditor/tiled | NOASSERTION (see its own licence files) | no | master | 2026-11-23 | 13089 | Level and tile map editor |
 
-## Reachable, fields not recorded in this file
+## Filled in by the second API pass (2026-11-25)
 
-These answered `200` from the GitHub API in an earlier round of this session.
-Their licence, branch and star count were not copied here: read them again
-before quoting them.
+These rows were blank in the first version of this file. Every cell below comes
+from a `GET /search/repositories` result read in this session on 2026-11-25.
 
-| Repository | What it is for |
-| --- | --- |
-| phaserjs/phaser | 2D game framework for the web |
-| mrdoob/three.js | 3D library for the web |
-| pixijs/pixijs | 2D WebGL renderer for the web |
-| KilledByAPixel/LittleJS | Very small 2D engine, single file |
-| chr15m/jsfxr | Sound effect generator |
-| goldfire/howler.js | Audio library for the web |
-| melonjs/melonJS | 2D engine for the web |
-| colyseus/colyseus | Multiplayer server framework |
-| boardgameio/boardgame.io | Turn-based board game engine |
-| Unity-Technologies/unity-agent-plugin | Unity editor integration for agents |
-| IvanMurzak/Unity-MCP | Unity MCP bridge |
+| Repository | Licence (SPDX) | Archived | Default branch | Last push | Stars | What it is for |
+| --- | --- | --- | --- | --- | --- | --- |
+| pixijs/pixijs | MIT | no | **dev** | 2026-11-24 | 48899 | 2D WebGL renderer for the web |
+| goldfire/howler.js | MIT | no | master | 2025-11-23 | 25457 | Audio library for the web |
+| boardgameio/boardgame.io | MIT | no | main | 2026-10-30 | 12500 | Turn-based board game engine |
+| melonjs/melonJS | MIT | no | master | 2026-11-25 | 6525 | Full 2D and 3D HTML5 engine (WebGL/WebGPU, physics, Tiled, glTF, WebAudio) |
+
+Note on PixiJS: its default branch is `dev`, not `main` or `master`. An import
+pinned to a branch name alone will take work in progress; pin the commit SHA
+(the manifest already asks for one).
+
+## Still partial: answered, some fields not read
+
+The API answered for these in this session, but the field named in the last
+column was not copied out before the request limit was reached. Read it again
+before quoting it. Nothing here is guessed.
+
+| Repository | What was read | Still missing |
+| --- | --- | --- |
+| phaserjs/phaser | answered `200`; MIT licence read | branch, archived, stars |
+| KilledByAPixel/LittleJS | default branch `main`, 243 forks, 4404 stars | licence, archived |
+| mrdoob/three.js | answered `200` | licence, branch, archived, stars |
+| colyseus/colyseus | default branch `master`, 689 forks, 7581 stars | licence, archived |
+| Unity-Technologies/unity-agent-plugin | answered `200`; default branch `main`, 71 forks, 674 stars | licence, archived |
+| chr15m/jsfxr | **not returned by the search endpoint** for `repo:chr15m/jsfxr` | everything: a search for it matches nothing, so treat it as unverified until `GET /repos/chr15m/jsfxr` answers |
+| IvanMurzak/Unity-MCP | answered `200` in an earlier round | licence, branch, archived, stars |
 
 ## Not verified
 
