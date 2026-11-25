@@ -115,4 +115,4 @@ os.makedirs(os.path.dirname(out), exist_ok=True)
 with open(out, "w", encoding="utf-8") as f:
     f.write(text)
 print("bytes", len(text), "skills", len(files), "index rows", text.count("\n| "),
-      "licence table", "| Source" in text)
+      "licence table", "| Repository |" in text)
