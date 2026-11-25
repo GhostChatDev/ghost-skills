@@ -76,8 +76,16 @@ const loops = [];
 let started = false;
 let starting = null;                   // the promise of an in-flight start
 
+// The player's chosen level, kept before the band exists and across rebuilds.
+const VOLUME_KEY = "game.volume";      // the same key the settings screen reads
+let volume = 0.5;
+try {
+  const saved = Number(localStorage.getItem(VOLUME_KEY));
+  if (Number.isFinite(saved) && saved >= 0 && saved <= 1) volume = saved;
+} catch { /* storage can be blocked: keep the default */ }
+
 function buildBand() {
-  master = new Tone.Gain(0.5).toDestination();
+  master = new Tone.Gain(volume).toDestination();   // a stopped slider applies here
   pad = new Tone.PolySynth(Tone.Synth).connect(master);
   kick = new Tone.MembraneSynth().connect(master);
 }
@@ -113,7 +121,14 @@ export async function startMusic() {
 }
 
 export function setVolume(level) {        // 0..1
-  master.gain.rampTo(Math.max(0, Math.min(1, level)), 0.1);
+  volume = Math.max(0, Math.min(1, level));
+  // ?. because a settings slider can be dragged BEFORE the first startMusic(),
+  // when `master` is still null: that must not throw. The value is kept in
+  // `volume` and localStorage, and buildBand() applies it when the band starts.
+  master?.gain.rampTo(volume, 0.1);
+  try {
+    localStorage.setItem(VOLUME_KEY, String(volume));
+  } catch { /* storage can be blocked: the level still applies this session */ }
 }
 
 export function stopMusic() {
@@ -218,6 +233,8 @@ dangerLayer.start("+1m");
 - [ ] No audio before a gesture; after the first click the music plays.
 - [ ] Music starts once, and Start/Restart never stacks a second band.
 - [ ] Mute, volume and "music off" apply immediately and survive a refresh.
+- [ ] Dragging the volume slider before the first Start does not throw, and the
+      chosen level is the one the music plays at.
 - [ ] Hiding the tab pauses; returning resumes only when the player had music on,
       and never revives a disposed band.
 - [ ] After `disposeMusic()`, a later `startMusic()` builds a fresh band and
