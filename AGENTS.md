@@ -15,6 +15,11 @@ that points at it.
 6. A skill folder with only the MISSING line has no rules yet. Do not fill it in
    yourself. Ask the user for the real text.
 
+## The second library
+
+`game-skills/INDEX.md` is a second library: game-development skills. Read it
+when the task is a game. Same rules apply to both libraries.
+
 ## Status marks
 
 `skills/INDEX.md` marks each skill `ready` or `missing`. `ready` means the rules
